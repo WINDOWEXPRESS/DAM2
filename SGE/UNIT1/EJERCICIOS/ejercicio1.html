@@ -7,26 +7,32 @@
     <style>
         a {font-size: 50px;}
         #lipsum{
-            margin : 10%
+            margin : 5%
+            
+        }
+        p{
+            text-align: start;
+        }
+        div{
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <!--crear una funcion en javascript que me cambie la direccion y el texto del 3 enlace 
-    por uno que entre por prompt-->
-    <a href="https://www.google.es/" >Google</a><br>
-    <a href="https://aulavirtual33.educa.madrid.org/ies.juandelacierva.madrid/" >AulaVirtual:"Juan de la cierva"</a></br>
-    <a href="https://www.liaoxuefeng.com/" id="3enlace" >Liaoxuefeng</a></br>
-    <input type="button" value="Cambiar tercer enlace" id="botonCambiar">
-
-    <br>
-    <br>
-    <br>
+    <div id="ejercicio1">
+        <!--crear una funcion en javascript que me cambie la direccion y el texto del 3 enlace 
+        por uno que entre por prompt-->
+        <a href="https://www.google.es/" >Google</a><br>
+        <a href="https://aulavirtual33.educa.madrid.org/ies.juandelacierva.madrid/" >AulaVirtual:"Juan de la cierva"</a></br>
+        <a href="https://www.liaoxuefeng.com/" id="3enlace" >Liaoxuefeng</a></br>
+        <input type="button" value="Cambiar tercer enlace" id="botonCambiar">
+        <input type="button" value="Cambiar parrafo" id="botonCambiarP">
+    </div>
     
     <!--crea una funcion en javascript que cambie el texto que entre por prompt por el texto
     que haya en el 2 parrafo <p>-->
     <div id="lipsum">
-        <p>
+        <p id="primerP">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at dui consectetur, volutpat nulla id, efficitur orci. 
         Donec faucibus magna eget lorem aliquam finibus. In a fermentum nulla. Donec non nisl faucibus, gravida libero ut, pulvinar ex. 
         Sed a ornare nunc, sit amet suscipit nisl. Suspendisse potenti. Quisque semper dictum massa sit amet tincidunt. 
@@ -61,6 +67,9 @@
         velit est tempor eros, non finibus odio diam sed velit. Morbi et porta lacus, quis tincidunt purus.
         </p>
     </div>
+    <div id="ejercicio3">
+        <label>Pulsame!<input type="button" value="Enlaces" id="VerEnlaces"></label>
+    </div>
 </body>
 <script>
     document.getElementById("botonCambiar").addEventListener("click",cambiarEnlace);
@@ -72,6 +81,27 @@
         document.getElementById("3enlace")["href"] =  "https://"+window.prompt("Introducir URL");
         document.getElementById("3enlace").innerHTML = window.prompt("Introducir nombre URL");
 
+    }
+
+    document.getElementById("botonCambiarP").addEventListener("click",cambiarParrafo);
+    function cambiarParrafo(){
+       document.getElementById("primerP").innerHTML =  window.prompt("Introducir algo para cambiar un parrafo")
+       
+    }
+
+    document.getElementById("VerEnlaces").addEventListener("click",bucleEnlaces);
+    function bucleEnlaces(){
+        var listaEnlace = document.getElementsByTagName("a");
+        
+        for (let index = 0; index < listaEnlace.length; index++) {
+            console.log(listaEnlace[index].innerHTML);
+            
+        }
+
+        Array.from(document.getElementsByTagName("a")).forEach(element =>{
+            console.log(element.innerHTML)
+            }
+        );
     }
 
 </script>
