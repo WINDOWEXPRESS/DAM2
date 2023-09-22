@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="Texto" id="Texto"><br>
+    <label>Texto<input type="radio" name="Radio" id="RadioTexto"></label>
+    <label>Enlace<input type="radio" name="Radio" id="RadioEnlace"></label>
+    <label>Foto<input type="radio" name="Radio" id="RadioFoto"></label><br>
+    <input type="button" value="Añadir" id="btAñadir"><br>
+
+
+    <ul id="ulId">
+    </ul>
+</body>
+
+<script>
+    
+
+    document.getElementById("btAñadir").addEventListener("click",aniadir);
+    function aniadir() {
+        let liNuevo = document.createElement("li");
+
+        let infor = document.getElementById("Texto").value;
+        let liTextContenido = document.createTextNode(infor);
+        
+        //let opcionActivo = document.querySelector('input[name="Radio"]:checked').value;   
+        
+        let opcionActivo = document.getElementsByName("Radio");
+        if(opcionActivo[0].checked){
+
+            liNuevo.appendChild(liTextContenido);
+
+            document.getElementById("ulId").appendChild(liNuevo);
+        }
+
+        if(opcionActivo[1].checked){
+            let elementoA = document.createElement("a");
+            elementoA.innerHTML = infor;
+
+            elementoA.setAttribute("href","https://"+infor);
+            liNuevo.appendChild(elementoA);
+
+            document.getElementById("ulId").appendChild(liNuevo);
+        }
+        if(opcionActivo[2].checked){
+            let elementoImg = document.createElement("img");
+            elementoImg.setAttribute("src",infor);
+            elementoImg.setAttribute("height",100);
+            elementoImg.setAttribute("width",100);
+            liNuevo.appendChild(elementoImg);
+
+            document.getElementById("ulId").appendChild(liNuevo);
+        }
+    }
+
+</script>
+</html>
