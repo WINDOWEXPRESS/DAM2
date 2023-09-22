@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">HolaMundo</string>
+    <string name="textViewLove">Me gusta PMDM</string>
+    <!--    Actividad Bomba digital-->
+    <string name="tVTitulo">Bomba digital</string>
+    <string name="tVDescripcion">Por lo general, varias personas pueden jugar al minijuego de la bomba digital.
+        Las reglas del juego también son muy sencillas: Un número aleatorio entre 0 y 100 como "bomba".
+        \nTodos se turnan para adivinar y el rango de números sigue reduciéndose hasta que alguien "pisa la bomba " .</string>
+    <string name="btReiniciar">Reiniciar</string>
+    <string name="btConfirmar">Confirmar</string>
+    <string name="tV_Resultado">0 - 100</string>
+    <string name="tV_introducir_numero">Introducir numero</string>
+
+</resources>
