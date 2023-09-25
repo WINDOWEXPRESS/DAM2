@@ -1,0 +1,17 @@
+sudo su -                               para ser administrador
+apt install                             instalar app
+usermod -a -G vboxsf big-boss           compatibilidad con WINDOW
+echo "Contenido" > nombre.extencion     crear archivo
+cp archivo /url                         copiar un archivo a una ruta
+
+
+
+big-boss@bigboss-VirtualBox:~/Desktop$ ps   
+   PID TTY          TIME CMD                                                                                    
+   2006 pts/0    00:00:00 bash
+   2013 pts/0    00:00:00 ps
+ps  (Proceso estado)
+PID (Proceso id)
+TTY (Terminal que se encuentra)
+tty1 ternimal fisico  para entrar a terminal ctrl alt f1 - f7
+
