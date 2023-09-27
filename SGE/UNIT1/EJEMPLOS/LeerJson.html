@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Nombre <input type="text" name="nombre" id="nombre"></label>
+    <label>Apellido <input type="text" name="apellido" id="apellido"></label>
+    <label>Edad <input type="text" name="edad" id="edad"></label><br>
+    <p>Estado civil</p>
+    <label>Soltero <input type="radio" name="Estado_Civil" id="Soltero" value="Soltero"></label>
+    <label>Casado <input type="radio" name="Estado_Civil" id="Casado" value="Casado"></label>
+    <input type="submit" value="Añadir" id="aniadir">
+    <ul id="ul"></ul>
+</body>
+<script>
+    //JSON
+    var persona = {
+        "Nombre":"Homer",
+        "Apellido": "Simpson",
+        "Edad" : 42,
+        "Estado civil" : "Casado",
+        "Telefono" : 666666666,
+        "Direccion" : "Sprinfield , Los p,bajo",
+        "Asignaturas del primero" : ["Programacion","Base de datos","Lenguaje de marca","Sistema informatica"],
+        "Nota primero" : [9,6,5,2],
+        "Asignaturas del segundo" : ["PSP","PMDM","SGE","DI"],
+        "Nota segundo" : [9,9,9,9]
+
+    }
+
+    document.getElementById("aniadir").addEventListener("click",toHTML);
+    function toHTML(){
+        //Datos obtenido de json
+        let nombre = persona["Nombre"];
+        let apellido = persona["Apellido"];
+        let edad = persona["Edad"];
+        let estado = persona["Estado civil"];
+
+        //Guardar los input correspondiente
+        document.getElementById("nombre").value = nombre;
+        document.getElementById("apellido").value = apellido;
+        document.getElementById("edad").value = edad ;
+        if (document.getElementById("Soltero").value == estado) {
+            document.getElementById("Soltero").checked = true; ;
+        } else {
+            document.getElementById("Casado").checked = true;
+        }
+
+    }
+    document.getElementById("aniadir").addEventListener("click",toUl);
+
+    function toUl(){
+        //Datos obtenido de json
+        let nombre = persona.Nombre;
+        let apellido = persona["Apellido"];
+        let edad = persona["Edad"];
+        let estado = persona["Estado civil"];
+
+        let elementLi = document.createElement("li");
+        Object.keys(persona).forEach((key) =>{
+            let contentLi = document.createTextNode(key + " : "+ persona[key]);
+            console.log(contentLi);
+            elementLi.appendChild(contentLi);
+            let elementUl = document.getElementById("ul").appendChild(elementLi);
+        })
+
+
+    }
+
+
+</script>
+</html>
