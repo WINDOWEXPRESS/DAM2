@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "Pokemon_details">
+        <div id="nombreCodigo"></div>
+        <div class="img_perfil">
+            <img src="" alt="" id="perfil">
+        </div>
+        <div id="estadistica"><ul id="estadisticaUl"></ul></div>
+        
+    </div>
+</body>
+
+<script>
+    fetch('https://pokeapi.co/api/v2/pokemon/rayquaza')
+    .then(response => response.json())
+    .then(data => formatear(data));
+
+    function formatear(datos){
+        //Imprimir por consola
+        console.log("=====POKEMON=====");
+        console.log("Nombre: ");
+        console.log("\n\t"+datos.name)
+        console.log("Tipos: ");
+        for (let index = 0; index < datos.types.length; index++) {
+            const tipos = datos.types[index];
+            console.log("\n\t"+tipos.type.name);
+        }
+
+        console.log("Stats: ");
+        for (let index = 0; index < datos.stats.length; index++) {
+            const stats = datos.stats[index];
+            console.log("\n\tStat name: "+stats.stat.name);
+            console.log("\n\t\tBase stat: "+stats.base_stat);
+            console.log("\n\t\tEffort: "+stats.effort);
+        }
+
+        console.log("Moves: ");
+        let numeroHabilidad = 5;
+        for (let index = 0; index < numeroHabilidad; index++) {
+            const moves = datos.moves[index];
+            console.log("\n\tname: "+moves.move.name);
+        }
+        
+        console.log("Moves with forEach: ");
+        let contador = 0;
+        datos.moves.forEach((hability) => {
+            if(contador == 5) return;
+            console.log("\n\tname: "+hability.move.name);
+            contador++;
+        });
+
+        //Imprimir por html
+        //aparecer img de perfil
+        var perfil = document.getElementById("perfil");
+        perfil.setAttribute("src",datos.sprites.other["official-artwork"].front_default);
+
+        //nombre y codigo de pokemon
+        document.getElementById("nombreCodigo").innerHTML = datos.name + " N.º "+datos.id;
+
+        //estatisticas de pokemon
+
+        for (let index = 0; index < datos.stats.length; index++) {
+            const stats = datos.stats[index];
+            var elementLi = document.createElement("li");
+            let elementUl = document.getElementById("estadisticaUl");
+            let estadisticas = document.getElementById("estadistica").innerText = stats.stat.name+ "\n\tStat name: "+stats.stat.name +"\n\t\tBase stat: "+stats.base_stat +"\n\t\tEffort: "+stats.effort;
+            let contenidoLi = document.createTextNode(estadisticas);
+            elementLi.appendChild(contenidoLi);
+            elementUl.appendChild(elementLi);
+        }
+
+    }
+</script>
+
+</html>
