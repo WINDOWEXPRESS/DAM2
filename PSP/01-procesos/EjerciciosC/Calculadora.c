@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#define NUMERO_0_ASCII 48;
 /*
 int main(void){
     float num1 = 0.0f;
@@ -29,37 +30,44 @@ int main(int argc, char const *argv[])
         printf("Error: Se necesitan al menos 3 parámetros.\n");
         return 1; // Código de error
     }
-        operador = argv[1];
-        numero1 = atof(argv[2]);
-        numero1 = atof(argv[3]);
-        
-        printf("argv[1]:%s.\n",argv[1]);
-        printf("argv[2]:%s.\n",argv[2]);
-                printf("argv[3]:%s.\n",argv[3]);
+    operador = argv[1];
+    numero1 = (double)(*argv[2]) - NUMERO_0_ASCII;
+    numero2 = (double)(*argv[3]) - NUMERO_0_ASCII;
 
-
-         if (strcmp(operador,"suma")) {
+    if (strcmp(operador, "suma") == 0)
+    {
         resultado = numero1 + numero2;
-    } else if (operador == "resta" ) {
-         resultado = numero1 - numero2;
-    } /*else if (operacion[0] == 'm' && operacion[1] == 'u' && operacion[2] == 'l' && operacion[3] == 't' && operacion[4] == 'i' && operacion[5] == 'p' && operacion[6] == 'l' && operacion[7] == 'i' && operacion[8] == 'c' && operacion[9] == 'a' && operacion[10] == 'c' && operacion[11] == 'i' && operacion[12] == 'o' && operacion[13] == 'n') {
-        resultado = operando1 * operando2;
-    } else if (operacion[0] == 'd' && operacion[1] == 'i' && operacion[2] == 'v' && operacion[3] == 'i' && operacion[4] == 's' && operacion[5] == 'i' && operacion[6] == 'o' && operacion[7] == 'n') {
+        operador = "+";
+    }
+    else if (strcmp(operador, "resta") == 0)
+    {
+        resultado = numero1 - numero2;
+        operador = "-";
+    }
+    else if (strcmp(operador, "multiplicar") == 0)
+    {
+        resultado = numero1 * numero2;
+        operador = "*";
+    }
+    else if (strcmp(operador, "division") == 0)
+    {
         // Verificar si el segundo operando es 0
-        if (operando2 == 0) {
+        if (numero2 == 0)
+        {
             printf("Error: División por cero no permitida.\n");
             return 1; // Código de error
         }
-        resultado = operando1 / operando2;
-    } */else {
-        printf("Error: Operación no válida.\n");
+        resultado = numero1 / numero2;
+        operador = "/";
+    }
+    else
+    {
+        printf("Error: Operación inválida.\n");
         return 1; // Código de error
     }
 
     // Imprimir el resultado
-    printf("Resultado: %lf\n", resultado);
-    
-
+    printf("%.2lf %s %.2lf = %.2lf\n",numero1,operador,numero2, resultado);
 
     return 0;
 }
