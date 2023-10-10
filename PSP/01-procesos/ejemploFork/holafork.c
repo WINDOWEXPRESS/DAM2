@@ -13,7 +13,7 @@ int main(void)
     id_hijo = fork();
 
     //Hay dos procesos
-    if(id != 0){
+    if(id_hijo != 0){
         //¿Padre?
         printf("Soy el padre %d\n",id_hijo);
     }else{
