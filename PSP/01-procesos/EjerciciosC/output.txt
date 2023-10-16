@@ -1,0 +1,58 @@
+
+Configuraci車n IP de Windows
+
+
+Adaptador de Ethernet Ethernet:
+
+   Estado de los medios. . . . . . . . . . . : medios desconectados
+   Sufijo DNS espec赤fico para la conexi車n. . : 
+
+Adaptador de Ethernet Ethernet 3:
+
+   Sufijo DNS espec赤fico para la conexi車n. . : 
+   V赤nculo: direcci車n IPv6 local. . . : fe80::5a54:e0e7:9b97:eaab%13
+   Direcci車n IPv4. . . . . . . . . . . . . . : 192.168.56.1
+   M芍scara de subred . . . . . . . . . . . . : 255.255.255.0
+   Puerta de enlace predeterminada . . . . . : 
+
+Adaptador de LAN inal芍mbrica Conexi車n de 芍rea local* 1:
+
+   Estado de los medios. . . . . . . . . . . : medios desconectados
+   Sufijo DNS espec赤fico para la conexi車n. . : 
+
+Adaptador de LAN inal芍mbrica Conexi車n de 芍rea local* 2:
+
+   Estado de los medios. . . . . . . . . . . : medios desconectados
+   Sufijo DNS espec赤fico para la conexi車n. . : 
+
+Adaptador de Ethernet VMware Network Adapter VMnet1:
+
+   Sufijo DNS espec赤fico para la conexi車n. . : 
+   V赤nculo: direcci車n IPv6 local. . . : fe80::a523:7328:6cda:7800%17
+   Direcci車n IPv4. . . . . . . . . . . . . . : 192.168.134.1
+   M芍scara de subred . . . . . . . . . . . . : 255.255.255.0
+   Puerta de enlace predeterminada . . . . . : 
+
+Adaptador de Ethernet VMware Network Adapter VMnet8:
+
+   Sufijo DNS espec赤fico para la conexi車n. . : 
+   V赤nculo: direcci車n IPv6 local. . . : fe80::6327:d15e:6708:11cb%4
+   Direcci車n IPv4. . . . . . . . . . . . . . : 192.168.100.1
+   M芍scara de subred . . . . . . . . . . . . : 255.255.255.0
+   Puerta de enlace predeterminada . . . . . : 
+
+Adaptador de Ethernet Ethernet 2:
+
+   Estado de los medios. . . . . . . . . . . : medios desconectados
+   Sufijo DNS espec赤fico para la conexi車n. . : 
+
+Adaptador de LAN inal芍mbrica Wi-Fi:
+
+   Sufijo DNS espec赤fico para la conexi車n. . : 
+   Direcci車n IPv6 . . . . . . . . . . : 2a0c:5a80:b208:9000:17fe:5a80:2f8d:e80e
+   Direcci車n IPv6 temporal. . . . . . : 2a0c:5a80:b208:9000:81e3:b34e:c86f:ef86
+   V赤nculo: direcci車n IPv6 local. . . : fe80::63e7:45f9:4e81:9%6
+   Direcci車n IPv4. . . . . . . . . . . . . . : 192.168.1.143
+   M芍scara de subred . . . . . . . . . . . . : 255.255.255.0
+   Puerta de enlace predeterminada . . . . . : fe80::1%6
+                                       192.168.1.1

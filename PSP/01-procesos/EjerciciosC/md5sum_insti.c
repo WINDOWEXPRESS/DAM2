@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <openssl/evp.h>
+<<<<<<< HEAD
 #include "GeneratorMD5.c"
 
 #define ASCII_a 97
@@ -9,6 +10,31 @@
 
 int main(int arc, char *argv[])
 {
+=======
+
+#define MD5_LEN 16
+
+void generateMD5(const char *string, unsigned char *str_result) {
+    EVP_MD_CTX *ctx;
+    const EVP_MD *md;
+    unsigned char result[EVP_MAX_MD_SIZE];
+
+    ctx = EVP_MD_CTX_new();
+    md = EVP_md5();
+
+    EVP_DigestInit_ex(ctx, md, NULL);
+    EVP_DigestUpdate(ctx, string, strlen(string));
+    EVP_DigestFinal_ex(ctx, result, NULL);
+
+    EVP_MD_CTX_free(ctx);
+
+    for(int i = 0; i < MD5_LEN; i++){   // MD5 result is always 16 bytes
+        sprintf(str_result+(i*2),"%02x", result[i]);
+    }
+}
+
+int main(int arc, char *argv[]) {
+>>>>>>> 1cdc42886e8dcd99eaf888d69c0f1094ea7aca5c
     char *string = argv[1];
 
     unsigned char result[EVP_MAX_MD_SIZE];
@@ -16,6 +42,7 @@ int main(int arc, char *argv[])
 
     generateMD5(string, result);
 
+<<<<<<< HEAD
     // Demostrar el md5 de argumento
     // printf("MD5(\"%s\") = %s", string, result);
 
@@ -54,5 +81,11 @@ int main(int arc, char *argv[])
     }
 
     printf("\n");
+=======
+    printf("MD5(\"%s\") = %s", string, result);
+   
+    printf("\n");
+
+>>>>>>> 1cdc42886e8dcd99eaf888d69c0f1094ea7aca5c
     return 0;
 }
