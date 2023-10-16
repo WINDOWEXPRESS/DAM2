@@ -2,27 +2,64 @@
 #include <unistd.h>
 #include <sys/types.h>
 
+int fork1(){
+    int childip;
+    int i;
+
+    if(fork() ==0){
+        for(i = 1; i<=8;i++){
+            printf("Este es proceso hijo\n");
+        }
+    }else{
+        for(i = 1; i<=8;i++){
+            printf("Este es proceso padre\n");
+        }
+    }
+}
+int fork2(){
+    int childip;
+    int i;
+
+    if(fork() ==0){
+        for(i = 1; i<=8;i++){
+            printf("Este es proceso hijo\n");
+        }
+        exit(0);
+    }else{
+        for(i = 1; i<=8;i++){
+            printf("Este es proceso padre\n");
+        }
+    }
+    printf("Paso2 despues de fork() !! \n");
+}
+
+int fork3(){
+    int childip;
+    int i;
+
+    if(fork() ==0){
+        for(i = 1; i<=8;i++){
+            printf("Este es proceso hijo\n");
+        }
+        exit(0);
+    }else{
+        wait();
+        for(i = 1; i<=8;i++){
+            printf("Este es proceso padre\n");
+        }
+    }
+    printf("Paso2 despues de fork() !! \n");
+}
+
+
 int main(void)
 {
-    pid_t id_hijo;
-
-    int n = 42;
-    double pi = 3.14;
-
-    //¡¡¡Clonacion!!!
-    id_hijo = fork();
-
-    //Hay dos procesos
-    if(id != 0){
-        //¿Padre?
-        printf("Soy el padre %d\n",id_hijo);
-    }else{
-        //¿?
-        printf("Soy el hijo %d\n",id_hijo);
-    }
-    
+    fork1();
+    fork2();
+    fork3();
 
 
 
     return 0;
 }
+
