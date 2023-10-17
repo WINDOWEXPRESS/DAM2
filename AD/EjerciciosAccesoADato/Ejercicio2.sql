@@ -1,0 +1,55 @@
+SET SERVEROUTPUT ON;
+DROP TABLE TEMPORAL;
+CREATE TABLE TEMPORAL(
+    TOD_PED NUMBER(8,2) NOT NULL,
+    PRECIO_TOD NUMBER(8,2) NOT NULL,
+    COD_CLI NUMBER(6) NOT NULL,
+    NOMBRE_CLI VARCHAR2(255) NOT NULL
+);
+
+DROP TABLE temporal2;
+CREATE TABLE TEMPORAL2(
+    INFO VARCHAR2(50 BYTE)
+);
+
+DECLARE
+		VTOD_PED sales_order.total%TYPE;
+        VTOD_PED2 sales_order.total%TYPE DEFAULT(0);
+        VPRECIO_TOD item.total%TYPE;
+        VPRECIO_TOD2 item.total%TYPE DEFAULT(0);
+        VCOD_CLI customer.customer_id%TYPE;
+        VNOMBRE_CLIE customer.name%TYPE;
+        CONT INTEGER DEFAULT(0);
+        CUSTOMERRORS EXCEPTION;
+		CURSOR C1 IS  SELECT so.total, it.total, cu.name, cu.customer_id FROM CUSTOMER CU, SALES_ORDER SO, ITEM IT WHERE CU.CUSTOMER_ID = SO.CUSTOMER_ID AND SO.ORDER_ID = IT.ORDER_ID AND CU.CUSTOMER_ID = &CODIGO;
+BEGIN
+    OPEN C1;
+    LOOP 
+        FETCH C1 INTO vtod_ped,vprecio_tod,vnombre_clie,vcod_cli;
+        EXIT WHEN C1%NOTFOUND;
+        IF (CONT = 0) THEN
+            VTOD_PED2 := VTOD_PED;
+            VPRECIO_TOD2 := VPRECIO_TOD;
+        ELSIF (CONT > 0) THEN
+            VTOD_PED2 := VTOD_PED2 + VTOD_PED;
+            VPRECIO_TOD2 := VPRECIO_TOD2 + VPRECIO_TOD;
+        END IF;
+        CONT := CONT + 1;
+    END LOOP;
+    CLOSE C1;
+    IF vcod_cli IS NOT NULL THEN
+        INSERT INTO TEMPORAL VALUES(VTOD_PED2,VPRECIO_TOD2,VCOD_CLI,VNOMBRE_CLIE);
+    ELSE
+         raise CUSTOMERRORS;
+    END IF;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO temporal2 VALUES('Error dato no encotrado!');
+        WHEN CUSTOMERRORS THEN
+            INSERT INTO temporal2 VALUES('Error dato no encotrado!');
+END;
+/
+
+SELECT * FROM TEMPORAL;
+SELECT * FROM temporal2;
+    
