@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://rapidapi-prod-apis.s3.amazonaws.com/b3cf1481-b941-4c20-95fd-e59ef70396ba.png" alt="duckduckgo" id="Img_DDG">
+</body>
+<script>
+    const url = 'https://duckduckgo10.p.rapidapi.com/search/images?term=vodafone&region=wt-wt&safeSearch=off';
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '8fd23bd095msh86d2825434432d5p1d45e1jsnffc5245fbe4d',
+            'X-RapidAPI-Host': 'duckduckgo10.p.rapidapi.com'
+        }
+    };
+
+    fetch(url,options)
+    .then(response => response.json())
+    .then(data => verImg(data));
+
+
+    var img = document.getElementById("Img_DDG");
+    //img.addEventListener("click",verImg);
+  //document.getElementById("Boton").addEventListener("click",espiar);
+  document.getElementById("Img_DDG").addEventListener("click",verImg);
+    function verImg(data){
+
+        img.setAttribute("src","https://www.chirnsidepark.com.au/Upload/ChirnsidePark/Media/Store-Logo/logo-vodafone.jpg?width=250&height=161");
+    }
+
+</script>
+</html>

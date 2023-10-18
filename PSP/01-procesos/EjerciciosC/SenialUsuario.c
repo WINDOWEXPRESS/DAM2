@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <unistd.h>
+
+// Función de controlador de señal para SIGINT
+void sigint_handler(int signo) { 
+     // Aquí puedes realizar acciones adicionales antes de salir si lo deseas
+    if(signo == SIGUSR1){
+            printf("Hola");
+    }else{
+        printf("Mundo");
+    }
+}
+
+int main() {
+    // Registrar un manejador de señales para SIGINT usando la función signal
+    signal(SIGUSR1, sigint_handler);
+
+    signal(SIGUSR2, sigint_handler);
+
+    printf("Ejecuta este programa y presiona Ctrl + C para generar una señal SIGINT.\n");
+
+    // Mantén el programa en ejecución para recibir la señal
+    while (1) {
+        //forzar el envio de buffer
+        printf(".");
+        fflush(stdout);
+        sleep(1);
+    }
+
+    return 0;
+}

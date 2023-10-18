@@ -52,6 +52,8 @@ int main(int arc, char *argv[])
     clock_t start, end;
     double cpu_time_used;
 
+
+    //start = clock(); // Guardamos el tiempo de inicio
     for (char i = ASCII_a; i <= ASCII_z; i++)
     {
         password[0] = i;
@@ -59,9 +61,9 @@ int main(int arc, char *argv[])
         hijo = fork();
         if (hijo == 0)
         {
-            long long result = descifra(hijo, password);
-
+            descifra(hijo, password);
         }
+        
         // Ejecutamos la tarea cuyo tiempo de ejecución queremos medir
 
         end = clock(); // Guardamos el tiempo de finalización
@@ -73,9 +75,17 @@ int main(int arc, char *argv[])
 
         contador++;
 
-        printf("%d Tiempo de ejecución %d : %f segundos\n", contador, hijo, cpu_time_used);
+       printf("%d Tiempo de ejecución %d : %f segundos\n", contador, hijo, cpu_time_used);
 
     }
+    /*
+        end = clock(); // Guardamos el tiempo de finalización
 
+        // Calculamos el tiempo de ejecución en segundos
+        // Tomamos la diferencia entre el tiempo de finalización y el tiempo de inicio
+        // Luego dividimos por CLOCKS_PER_SEC para obtener el tiempo en segundos
+        cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+        printf("%d Tiempo de ejecución %d : %f segundos\n", contador, hijo, cpu_time_used);
+    */
     return 0;
 }
