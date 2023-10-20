@@ -6,10 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="https://rapidapi-prod-apis.s3.amazonaws.com/b3cf1481-b941-4c20-95fd-e59ef70396ba.png" alt="duckduckgo" id="Img_DDG">
+    <label>Clave para busqueda<input type="text" id="termino"></label>
+    <input type="button" value="Buscar" id="buscar"></br>
+    <img src="" alt="duckduckgo" id="Img_DDG" width="500px" height="500px">
+   
 </body>
 <script>
-    const url = 'https://duckduckgo10.p.rapidapi.com/search/images?term=vodafone&region=wt-wt&safeSearch=off';
+
+    const url = 'https://duckduckgo10.p.rapidapi.com/search/images?term=gatitos&region=wt-wt&safeSearch=off';
     const options = {
         method: 'GET',
         headers: {
@@ -22,14 +26,35 @@
     .then(response => response.json())
     .then(data => verImg(data));
 
+    var busqueda = document.getElementById("termino").innerHTML;
+    var botonBuscar = document.getElementById("buscar");
+    document.getElementById("buscar").addEventListener("buscar",busq);
+    
+    function busq(){
+        const url = 'https://duckduckgo10.p.rapidapi.com/search/images?term='+busqueda+'&region=wt-wt&safeSearch=off';
+        const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '8fd23bd095msh86d2825434432d5p1d45e1jsnffc5245fbe4d',
+            'X-RapidAPI-Host': 'duckduckgo10.p.rapidapi.com'
+            }
+        };
+
+        fetch(url,options)
+        .then(response => response.json())
+        .then(data => verImg(data));
+
+    }
+
 
     var img = document.getElementById("Img_DDG");
-    //img.addEventListener("click",verImg);
-  //document.getElementById("Boton").addEventListener("click",espiar);
-  document.getElementById("Img_DDG").addEventListener("click",verImg);
-    function verImg(data){
 
-        img.setAttribute("src","https://www.chirnsidepark.com.au/Upload/ChirnsidePark/Media/Store-Logo/logo-vodafone.jpg?width=250&height=161");
+    document.getElementById("Img_DDG").addEventListener("click",verImg);
+
+    function verImg(data){
+        var numero = Math.random*10;
+        console.log(numero);
+        //img.setAttribute("src",data.data[2].image);
     }
 
 </script>
