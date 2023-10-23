@@ -26,11 +26,13 @@
     .then(response => response.json())
     .then(data => verImg(data));
 
-    var busqueda = document.getElementById("termino").innerHTML;
-    var botonBuscar = document.getElementById("buscar");
-    document.getElementById("buscar").addEventListener("buscar",busq);
     
+    var botonBuscar = document.getElementById("buscar");
+    botonBuscar.addEventListener("click",busq);
+    var busqueda = document.getElementById("termino").value;
+
     function busq(){
+        busqueda = document.getElementById("termino").value;
         const url = 'https://duckduckgo10.p.rapidapi.com/search/images?term='+busqueda+'&region=wt-wt&safeSearch=off';
         const options = {
         method: 'GET',
@@ -49,12 +51,32 @@
 
     var img = document.getElementById("Img_DDG");
 
-    document.getElementById("Img_DDG").addEventListener("click",verImg);
+    img.addEventListener("click",function(){
+        busqueda = document.getElementById("termino").value;
+        const url = 'https://duckduckgo10.p.rapidapi.com/search/images?term='+busqueda+'&region=wt-wt&safeSearch=off';
+        const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '8fd23bd095msh86d2825434432d5p1d45e1jsnffc5245fbe4d',
+            'X-RapidAPI-Host': 'duckduckgo10.p.rapidapi.com'
+            }
+        };
+
+        fetch(url,options)
+        .then(response => response.json())
+        .then(data => verImg(data));
+
+    });
 
     function verImg(data){
-        var numero = Math.random*10;
-        console.log(numero);
-        //img.setAttribute("src",data.data[2].image);
+        let tamañoJson = data.data.length;
+        var numeroAleatorio = Math.floor(Math.random()*tamañoJson);
+        /*
+        console.log("TAMAÑO : "+tamañoJson);
+        console.log("NUMERO ALEATORIO : "+numeroAleatorio);
+        console.log("data.data[1].image: "+data.data[1].image);
+        */
+        img.setAttribute("src",data.data[numeroAleatorio].image);
     }
 
 </script>
