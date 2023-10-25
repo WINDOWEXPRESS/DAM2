@@ -80,7 +80,7 @@ int main(int arc, char *argv[])
     }
     /*
         end = clock(); // Guardamos el tiempo de finalización
-
+    
         // Calculamos el tiempo de ejecución en segundos
         // Tomamos la diferencia entre el tiempo de finalización y el tiempo de inicio
         // Luego dividimos por CLOCKS_PER_SEC para obtener el tiempo en segundos
