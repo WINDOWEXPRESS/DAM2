@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="mostrarJSON" id="BotonJSOn">
+
+</body>
+<script>
+    var obj =
+    {
+        "Cliente": 1233,
+        "Nombre": "Pedro Ramirez",
+        "Dirección": "Calle de la piruleta 14",
+        "ultimo_pedido": {
+            "id_pedido": 2,
+            "Productos": [
+                {
+                    "id_producto": 77,
+                    "Nombre": "Impresora Láser",
+                    "Fabricante": "Canon",
+                    "Cantidad": 3,
+                    "precio_uni": 80
+                },
+                {
+                    "id_producto": 22,
+                    "Nombre": "Ratón Gamer",
+                    "Fabricante": "Logitech",
+                    "Cantidad": 2,
+                    "precio_uni": 55
+                }
+            ]
+        }
+    }
+
+    var insti = 
+    {
+        "NombreInstitulo": "IES Juan de la cierva",
+        "Profesor": [
+            {
+                "nombre": "David",
+                "dni": "A123456789Z",
+                "telefono": "612345678",
+                "departamento": "Informatica",
+                "asignatura": [
+                    "DI",
+                    "SGE"
+                ],
+                "proyectos": [
+
+                ]
+            },
+            {
+                "nombre": "Sebastian",
+                "dni": "B1234123Z",
+                "telefono": "612312321",
+                "departamento": "Informatica",
+                "asignatura": [
+                    "AD"
+                ],
+                "proyectos": [
+                    "convivencia", "deportivo"
+                ]
+            },
+            {
+                "nombre": "Jorge",
+                "dni": "Z87654321A",
+                "telefono": "666666666",
+                "departamento": "Informatica",
+                "asignatura": [
+                    "PMDM",
+                    "PSP",
+                    "PPP",
+                    "SSS"
+                ],
+                "proyectos": [
+                    "deportivo"
+                ]
+            }
+        ]
+    }
+
+    document.getElementById("BotonJSOn").addEventListener("click", mostrar);
+    function mostrar() {
+        var list = "";
+        var precioTotal = 0;
+        obj.ultimo_pedido.Productos.forEach(function (element) {
+            list += element.Cantidad + " " + element.Nombre + " " + element.Fabricante + " ";
+            precioTotal += element.precio_uni * element.Cantidad;
+        });
+        console.log(list);
+
+        const nuevoP = document.createElement("p");
+        const nuevoContenido = document.createTextNode("El cliente " + obj.Nombre + " que vive en " + obj.Dirección + " ha comprado " + list + " Por un importe total de " + precioTotal + "e");
+        nuevoP.appendChild(nuevoContenido);
+
+        const currentDiv = document.getElementById("div1");
+        document.body.insertBefore(nuevoP, currentDiv);
+
+    }
+
+</script>
+
+</html>

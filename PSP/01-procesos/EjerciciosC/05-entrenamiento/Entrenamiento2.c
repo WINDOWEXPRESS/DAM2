@@ -31,20 +31,21 @@ int main(int argc, char const *argv[])
         perror("pid Error");
         exit(EXIT_FAILURE);
     }
-    
+
     if (pid == 0)
-    {// Código del primer hijo
-        int numerosAleatorios_Recibido[TAMANIO_NUMEROS_ALEATORIOS];
+    { // Código del primer hijo
+        int numerosAleatorios_Recibido;
         // El hijo no escribirá en el pipe, así que cerramos el descriptor de escritura
         close(fd_hijo1[WRITE]);
-        
-        read(fd_hijo1[READ], &numerosAleatorios_Recibido, sizeof(numerosAleatorios_Recibido));
-        close(fd_hijo1[READ]); // Cerrar el descriptor de lectura después de leer
+
         for (size_t i = 0; i < TAMANIO_NUMEROS_ALEATORIOS; i++)
         {
-            printf("Primer hijo recibe par : %d\n", numerosAleatorios_Recibido[i]);
+            read(fd_hijo1[READ], &numerosAleatorios_Recibido, sizeof(numerosAleatorios_Recibido));
+            printf("Primer hijo recibe par : %d\n", numerosAleatorios_Recibido);
         }
-        
+        close(fd_hijo1[READ]); // Cerrar el descriptor de lectura después de leer
+        close(fd_hijo2[WRITE]);
+        close(fd_hijo2[READ]);
         exit(0);
     }
     else
@@ -59,51 +60,45 @@ int main(int argc, char const *argv[])
         }
         else if (pid1 == 0)
         {
-            int numerosAleatorios_Recibido[TAMANIO_NUMEROS_ALEATORIOS];
+            int numerosAleatorios_Recibido;
             // El hijo no escribirá en el pipe, así que cerramos el descriptor de escritura
             close(fd_hijo2[WRITE]);
 
-            read(fd_hijo2[READ], &numerosAleatorios_Recibido, sizeof(numerosAleatorios_Recibido));
-            close(fd_hijo2[READ]); // Cerrar el descriptor de lectura después de leer
             for (size_t i = 0; i < TAMANIO_NUMEROS_ALEATORIOS; i++)
             {
-                printf("Segundo hijo recibe impar : %d\n", numerosAleatorios_Recibido[i]);
+                read(fd_hijo2[READ], &numerosAleatorios_Recibido, sizeof(numerosAleatorios_Recibido));
+                printf("Segundo hijo recibe impar : %d\n", numerosAleatorios_Recibido);
             }
+            close(fd_hijo2[READ]); // Cerrar el descriptor de lectura después de leer
+            close(fd_hijo1[WRITE]);
+            close(fd_hijo1[READ]);
             exit(0);
         }
 
-        int numerosAleatorios[TAMANIO_NUMEROS_ALEATORIOS];
+        int numerosAleatorios;
         srand(time(NULL));
 
-        for (size_t i = 0; i < TAMANIO_NUMEROS_ALEATORIOS; i++)
-        { // Guardar Nuemros aleaatorios entre 0 100
-            numerosAleatorios[i] = rand() % 100;
-        }
-        
         for (int i = 0; i < TAMANIO_NUMEROS_ALEATORIOS; i++)
-        {
-            printf("numero %d : %d\n", i, numerosAleatorios[i]);
+        { // Guardar Nuemros aleaatorios entre 0 100
+            numerosAleatorios = rand() % 100;
+            if (numerosAleatorios % 2 == 0)
+            {
+                write(fd_hijo1[WRITE], &numerosAleatorios, sizeof(numerosAleatorios));
+            }
+            else
+            {
+                write(fd_hijo2[WRITE], &numerosAleatorios, sizeof(numerosAleatorios));
+            }
+            printf("Numero aleatorios  %d : %d\n",i, numerosAleatorios);
+            
         }
 
         close(fd_hijo1[READ]);
         close(fd_hijo2[READ]);
-
-        for (int i = 0; i < TAMANIO_NUMEROS_ALEATORIOS; i++)
-        {
-            if (numerosAleatorios[i] % 2 == 0)
-            {
-                write(fd_hijo1[WRITE], &numerosAleatorios[i], sizeof(numerosAleatorios));
-            }
-            else
-            {
-                write(fd_hijo2[WRITE], &numerosAleatorios[i], sizeof(numerosAleatorios));
-            }
-        }
-        //write(fd[WRITE], &numerosAleatorios, sizeof(numerosAleatorios));
+        // write(fd[WRITE], &numerosAleatorios, sizeof(numerosAleatorios));
         close(fd_hijo1[WRITE]);
         close(fd_hijo2[WRITE]);
-            wait(null);
-    wait(null);
+
     }
 
     return 0;
