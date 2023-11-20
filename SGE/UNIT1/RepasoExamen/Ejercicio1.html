@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="texto">
+    <input type="button" value="Arriba">
+    <input type="button" value="Debajo" id = "debajo">
+    <ul id="lista"></ul>
+</body>
+
+<script>
+    document.getElementById("debajo").addEventListener("click",mostrarDebajo);
+
+    function mostrarDebajo(){
+        if( document.getElementsByName("texto")[0].value != ""){
+            newLi = document.createElement("li");
+            console.log(document.getElementsByTagName("texto").innerHTML)
+            newContent =  document.createTextNode( document.getElementsByName("texto")[0].value);
+            newLi.appendChild(newContent);
+            document.getElementById("lista").appendChild(newLi);
+        }else{
+            console.log("Falta contenido en el elemento");
+        }
+
+    }
+    let buttonArriba = document.querySelectorAll("input");
+    buttonArriba.forEach(function(node) {
+        if(node.value == "Arriba"){
+            console.log(node.value)
+            node.addEventListener("click",mostrarArriba);
+        }
+    })
+
+    function mostrarArriba(){
+        if( document.getElementsByName("texto")[0].value != ""){
+            newLi = document.createElement("li");
+            console.log(document.getElementsByTagName("texto").innerHTML)
+            newContent =  document.createTextNode( document.getElementsByName("texto")[0].value);
+            newLi.appendChild(newContent);
+            document.getElementById("lista").insertBefore(newLi,document.getElementById("lista").children[0]);
+        }else{
+            console.log("Falta contenido en el elemento");
+        }
+
+    }
+</script>
+</html>
