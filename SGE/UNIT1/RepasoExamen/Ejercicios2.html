@@ -27,10 +27,16 @@
     listaElementoInput[5].addEventListener("click",comprobarDatos);
 
     function comprobarDatos(){
-        if(listaElementoInput[0].value != "" && listaElementoInput[1].value != "" && (listaElementoInput[0].value.length>=5 && listaElementoInput[0].value.length<=40)){
-            console.log("GGG")
-        }
+        if(listaElementoInput[0].value != "" && listaElementoInput[1].value != "" && 
+            (listaElementoInput[0].value.length>=5 && listaElementoInput[0].value.length<=40)){
 
+            console.log("Campos completo");
+        }
+        if(listaElementoInput[2].checked == true || listaElementoInput[3].checked == true ||listaElementoInput[4].checked == true ){
+            console.log("Tiene color seleccionado");
+        }else{
+            console.log("Tiene que seleccionar minimo un color");
+        }
     }
 
 
