@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <label>Nombre <input type="text" name="nombre" id="nombre"></label>
     <label>Apellido <input type="text" name="apellido" id="apellido"></label>
@@ -18,58 +20,99 @@
 <script>
     //JSON
     var persona = {
-        "Nombre":"Homer",
-        "Apellido": "Simpson",
-        "Edad" : 42,
-        "Estado civil" : "Casado",
-        "Telefono" : 666666666,
-        "Direccion" : "Sprinfield , Los p,bajo",
-        "Asignaturas del primero" : ["Programacion","Base de datos","Lenguaje de marca","Sistema informatica"],
-        "Nota primero" : [9,6,5,2],
-        "Asignaturas del segundo" : ["PSP","PMDM","SGE","DI"],
-        "Nota segundo" : [9,9,9,9]
-
+        "estudiantes": [
+            {
+                "nombre": "Homer",
+                "apellido": "Simpson",
+                "edad": 42,
+                "estadoCivil": "Casado",
+                "telefono": 666666666,
+                "direccion": "Sprinfield, Los P. Bajo",
+                "cursos": [
+                    {
+                        "nombre": "Primero",
+                        "asignaturas": [
+                            { "nombre": "Programacion", "nota": 9 },
+                            { "nombre": "Base de datos", "nota": 6 },
+                            { "nombre": "Lenguaje de marca", "nota": 5 },
+                            { "nombre": "Sistema informatica", "nota": 2 }
+                        ]
+                    },
+                    {
+                        "nombre": "Segundo",
+                        "asignaturas": [
+                            { "nombre": "PSP", "nota": 9 },
+                            { "nombre": "PMDM", "nota": 9 },
+                            { "nombre": "SGE", "nota": 9 },
+                            { "nombre": "DI", "nota": 9 }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 
-    document.getElementById("aniadir").addEventListener("click",toHTML);
-    function toHTML(){
+    document.getElementById("aniadir").addEventListener("click", toHTML);
+    function toHTML() {
         //Datos obtenido de json
-        let nombre = persona["Nombre"];
-        let apellido = persona["Apellido"];
-        let edad = persona["Edad"];
-        let estado = persona["Estado civil"];
+        let nombre = persona.estudiantes[0].nombre;
+        let apellido = persona.estudiantes[0].apellido;
+        let edad = persona.estudiantes[0].edad;
+        let estado = persona.estudiantes[0].estadoCivil;
 
         //Guardar los input correspondiente
         document.getElementById("nombre").value = nombre;
         document.getElementById("apellido").value = apellido;
-        document.getElementById("edad").value = edad ;
+        document.getElementById("edad").value = edad;
         if (document.getElementById("Soltero").value == estado) {
-            document.getElementById("Soltero").checked = true; ;
+            document.getElementById("Soltero").checked = true;;
         } else {
             document.getElementById("Casado").checked = true;
         }
 
     }
-    document.getElementById("aniadir").addEventListener("click",toUl);
+    document.getElementById("aniadir").addEventListener("click", 
+        toUl
+    );
 
-    function toUl(){
+    function toUl() {
+        /*
         //Datos obtenido de json
-        let nombre = persona.Nombre;
-        let apellido = persona["Apellido"];
-        let edad = persona["Edad"];
-        let estado = persona["Estado civil"];
+        let nombre = persona.estudiantes[0].nombre;
+        let apellido = persona.estudiantes[0].apellido;
+        let edad = persona.estudiantes[0].edad;
+        let estado = persona.estudiantes[0].estadoCivil;
 
         let elementLi = document.createElement("li");
-        Object.keys(persona).forEach((key) =>{
-            let contentLi = document.createTextNode(key + " : "+ persona[key]);
+        Object.keys(persona.estudiantes[0]).forEach((key) =>{
+            let contentLi = document.createTextNode(key + " : "+ persona.estudiantes[0][key]+"\t");
             console.log(contentLi);
             elementLi.appendChild(contentLi);
             let elementUl = document.getElementById("ul").appendChild(elementLi);
         })
+        */
 
+        let elementLi = document.createElement("li");
+        let contentLi = document.createTextNode("Nombre: " + persona.estudiantes[0].nombre + " " + persona.estudiantes[0].apellido + 
+        "\nEdad: " + persona.estudiantes[0].edad + "\nEstado Civil: " + persona.estudiantes[0].estadoCivil + "\nTeléfono: " + 
+        persona.estudiantes[0].telefono + "\nDirección: " + persona.estudiantes[0].direccion + "\n");
+        
 
+        // Crear un nodo div para contener el contenido de cursos y asignaturas
+        let divContainer = document.createElement("div");
+        persona.estudiantes[0].cursos.forEach(function (curso) {
+            divContainer.appendChild(document.createTextNode("\nCurso: " + curso.nombre+"Asignaturas y Notas:"+"\n"));
+
+            curso.asignaturas.forEach(function (asignatura) {
+                divContainer.appendChild(document.createTextNode("- " + asignatura.nombre + ": " + asignatura.nota+"\n"));
+            });
+        });
+        elementLi.appendChild(contentLi);
+        elementLi.appendChild(divContainer);
+        let elementUl = document.getElementById("ul").appendChild(elementLi);
     }
 
 
 </script>
+
 </html>

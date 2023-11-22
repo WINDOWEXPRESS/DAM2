@@ -27,8 +27,18 @@
         let infor = document.getElementById("Texto").value;
         let liTextContenido = document.createTextNode(infor);
         
-        //let opcionActivo = document.querySelector('input[name="Radio"]:checked').value;   
-        
+        let opcionActivo1; 
+        let radios = document.querySelectorAll('input[name="Radio"]');
+        /*
+        // Iterar sobre los elementos de radio para verificar si alguno está seleccionado
+        for (let i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                // El radio está seleccionado
+                opcionActivo1 = radios[i].id;
+            }
+        }  
+        console.log("OOO"+opcionActivo1)
+        */
         let opcionActivo = document.getElementsByName("Radio");
         if(opcionActivo[0].checked){
 

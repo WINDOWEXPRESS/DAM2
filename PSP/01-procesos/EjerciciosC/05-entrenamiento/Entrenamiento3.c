@@ -1,15 +1,53 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#define LONGITUD_MINIMO_ARGC  1
-#define POSICION_NUMERO_HILO  1
-
-int main(int argc, char const *argv[])
-{
-    int numerohilo ;
-    if(argc>LONGITUD_MINIMO_ARGC){
-        numerohilo = argv[POSICION_NUMERO_HILO];
+// Función para generar combinaciones de caracteres
+void generarCombinaciones(int longitud, char *cadena, int indice, FILE *archivo) {
+    if (indice == longitud) {
+        fprintf(archivo, "%s\n", cadena);
+        return;
     }
-    printf("NUMero %d",numerohilo);
-    printf("\nNombre %s",argv[POSICION_NUMERO_HILO]);
+
+    for (char letra = 'a'; letra <= 'z'; letra++) {
+        cadena[indice] = letra;
+        generarCombinaciones(longitud, cadena, indice + 1, archivo);
+    }
+}
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Falta parametro por comando : %s <numero_hijos>\n", argv[0]);
+        return 1;
+    }
+
+    int n = atoi(argv[1]);
+
+    if (n <= 0) {
+        fprintf(stderr, "El número de hijos debe ser un entero positivo.\n");
+        return 1;
+    }
+
+    for (int i = 1; i <= n; i++) {
+        char nombreArchivo[20]; // Suficientemente grande para "datos" + número + ".txt"
+        sprintf(nombreArchivo, "datos%d.txt", i);
+
+        FILE *archivo = fopen(nombreArchivo, "w");
+
+        if (archivo == NULL) {
+            perror("Error al abrir el archivo");
+            return 1;
+        }
+
+        char cadena[i]; // La cadena tendrá longitud i
+        memset(cadena, 0, sizeof(cadena)); // Inicializar la cadena con caracteres nulos
+
+        generarCombinaciones(i, cadena, 0, archivo);
+
+        fclose(archivo);
+    }
+
+    printf("Archivos generados exitosamente.\n");
+
     return 0;
 }
