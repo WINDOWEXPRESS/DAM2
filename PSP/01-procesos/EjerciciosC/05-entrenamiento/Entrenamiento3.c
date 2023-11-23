@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Falta parametro por comando : %s <numero_hijos>\n", argv[0]);
         return 1;
     }
-
+    //atoi metodo para pasar un string a int
     int n = atoi(argv[1]);
 
     if (n <= 0) {
@@ -30,6 +30,8 @@ int main(int argc, char *argv[]) {
 
     for (int i = 1; i <= n; i++) {
         char nombreArchivo[20]; // Suficientemente grande para "datos" + número + ".txt"
+
+        //sprintf Parámetros: La cadena de destino, la cadena de formato y los datos a guardar
         sprintf(nombreArchivo, "datos%d.txt", i);
 
         FILE *archivo = fopen(nombreArchivo, "w");
@@ -40,6 +42,8 @@ int main(int argc, char *argv[]) {
         }
 
         char cadena[i]; // La cadena tendrá longitud i
+        //memset(void *str, int c, size_t n).
+        //copia el caracter c (un char sin signo) a los primeros n caracteres de str.
         memset(cadena, 0, sizeof(cadena)); // Inicializar la cadena con caracteres nulos
 
         generarCombinaciones(i, cadena, 0, archivo);
