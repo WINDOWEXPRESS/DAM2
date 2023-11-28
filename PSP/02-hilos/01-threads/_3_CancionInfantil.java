@@ -29,5 +29,34 @@ public class _3_CancionInfantil implements Runnable{
         _3_CancionInfantil estrofa = new _3_CancionInfantil("elefante","se balanceaba",5);
         Thread hiloElefante = new Thread(estrofa,"elefante");
         hiloElefante.start();
+
+
+        _3_CancionInfantil cancion = new _3_CancionInfantil("perro","se ladraba",5);
+        Thread hiloPerro = new Thread(cancion,"perro");
+        //la prioridad no garantiza que un hilo de mayor prioridad siempre
+        // se ejecute antes que un hilo de menor prioridad.
+        hiloPerro.setPriority(3);
+
+        _3_CancionInfantil cancion1 = new _3_CancionInfantil("gato","se maullaba",5);
+        Thread hiloGato = new Thread(cancion1);
+        hiloGato.setPriority(7);
+
+
+        _3_CancionInfantil cancion2 = new _3_CancionInfantil("loro","se tuturuaba",5);
+        Thread hiloLoro = new Thread(cancion2);
+        hiloLoro.setPriority(10);
+
+        hiloPerro.start();
+        hiloGato.start();
+        hiloLoro.start();
+
+        try {
+            hiloElefante.join();
+            hiloPerro.join();
+            hiloGato.join();
+            hiloLoro.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
