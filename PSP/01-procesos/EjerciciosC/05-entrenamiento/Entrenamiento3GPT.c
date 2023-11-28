@@ -1,14 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/types.h>
-#include <unistd.h>
 
 // Función para generar combinaciones de caracteres
 void generarCombinaciones(int longitud, char *cadena, int indice, FILE *archivo) {
     if (indice == longitud) {
-        //fprintf(FILE *stream, const char *format, ...);
-        //utiliza para imprimir texto formateado en un archivo
         fprintf(archivo, "%s\n", cadena);
         return;
     }
@@ -31,10 +27,8 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "El número de hijos debe ser un entero positivo.\n");
         return 1;
     }
-    
-    pid_t pid;
+
     for (int i = 1; i <= n; i++) {
-        pid = fork();
         char nombreArchivo[20]; // Suficientemente grande para "datos" + número + ".txt"
 
         //sprintf Parámetros: La cadena de destino, la cadena de formato y los datos a guardar
@@ -55,17 +49,8 @@ int main(int argc, char *argv[]) {
         generarCombinaciones(i, cadena, 0, archivo);
 
         fclose(archivo);
-        if (pid == 0)
-        {
-            exit(EXIT_SUCCESS);
-        }
+    }
 
-    }
-    for (size_t i = 0; i <=n  ; i++)
-    {
-        wait(NULL);
-    }
-    
     printf("Archivos generados exitosamente.\n");
 
     return 0;

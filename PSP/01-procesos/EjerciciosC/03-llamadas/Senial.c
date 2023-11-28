@@ -12,7 +12,8 @@ void sigint_handler(int signo) {
 
 int main() {
     // Registrar un manejador de señales para SIGINT usando la función signal
-    signal(sigint_handler(2));
+    //con kill -l en terminal se puede visualizar todas las seniales
+    signal(SIGINT,&sigint_handler);
 
     printf("Ejecuta este programa y presiona Ctrl + C para generar una señal SIGINT.\n");
 

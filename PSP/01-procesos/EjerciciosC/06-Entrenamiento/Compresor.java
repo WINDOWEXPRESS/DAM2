@@ -4,41 +4,59 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class Compresor{
+public class Compresor {
+
     public static void main(String[] args) {
-        
-        if(args.length != 0){
+
+        // Verificar si se proporcionan argumentos
+        if (args.length == 1) {
+
+            // Obtener el separador de ruta del sistema operativo
             String separatorSO = File.separator;
-            System.out.println("separatorSO : "+separatorSO);
+
+            // Imprimir el separador de ruta del sistema operativo
+            System.out.println("separatorSO : " + separatorSO);
+
+            // Crear una lista para almacenar los comandos
             ArrayList<String> comandos = new ArrayList<>();
+
+            // Agregar el comando principal y el nombre del programa "GeneradorGZ"
             comandos.add("java");
             comandos.add("GeneradorGZ");
 
-
+            // Recorrer los argumentos proporcionados
             for (int i = 0; i < args.length; i++) {
+
+                // Reemplazar las barras invertidas en las rutas por el separador del sistema operativo
                 String ruta = args[i].replace("\\", separatorSO);
-                comandos.add(ruta) ;
 
+                // Agregar la ruta a la lista de comandos
+                comandos.add(ruta);
+
+                // Crear un constructor de procesos con los comandos
                 ProcessBuilder pb = new ProcessBuilder(comandos);
-                try {
-                    Process p = pb.start();
-                    
-                    BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                    String cadena ;
 
+                try {
+                    // Iniciar el proceso
+                    Process p = pb.start();
+
+                    // Leer la salida del proceso
+                    BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+                    // Hacer algo con la salida del proceso si es necesario
+                    System.out.println("Operacion exitosa!");
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
+                    // Manejar cualquier excepción de entrada/salida
                     e.printStackTrace();
                 }
-                
             }
+
+            // Imprimir los comandos para verificar
             comandos.forEach((x) ->
                 System.out.println(x)
             );
-            
+        }else{
+            System.out.println("Sin parametro o hay varios por comando! : fichero <ruta>");
         }
-
-        
     }
-
 }
