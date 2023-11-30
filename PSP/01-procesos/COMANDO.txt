@@ -4,7 +4,7 @@ usermod -a -G vboxsf big-boss           compatibilidad con WINDOW
 echo "Contenido" > nombre.extencion     crear archivo
 cp archivo /url                         copiar un archivo a una ruta
 
-
+apt-get install libssl-dev		Comando C para instalar todas las librerias
 
 big-boss@bigboss-VirtualBox:~/Desktop$ ps   
    PID TTY          TIME CMD                                                                                    

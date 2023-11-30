@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "wait.h": "c",
+        "evp.h": "c"
+    }
+}
