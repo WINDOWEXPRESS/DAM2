@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn -->
+<html lang="zh-CN" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="google-signin-client-id" content="721724668570-nbkv1cfusk7kk4eni4pjvepaus73b13t.apps.googleusercontent.com">
+    <meta name="google-signin-scope" content="profile email https://www.googleapis.com/auth/developerprofiles https://www.googleapis.com/auth/developerprofiles.award">
+    <meta property="og:site_name" content="Android Developers">
+    <meta property="og:type" content="website"><meta name="theme-color" content="#34a853">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link rel="manifest" href="https://developer.android.com/_pwa/android/manifest.json" crossorigin="use-credentials">
+    <link rel="preconnect" href="https://www.gstatic.com/" crossorigin="">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="">
+    <link rel="preconnect" href="https://apis.google.com/" crossorigin="">
+    <link rel="preconnect" href="https://www.google-analytics.com/" crossorigin=""><link rel="stylesheet" href="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/css">
+      <link rel="stylesheet" href="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/css2"><link rel="stylesheet" href="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/rebrand-app.css">
+      <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/prod/vb1ced391297bc14a319144801f3973a5566f797b5e6e07559760dc67c81bd3d3/android/images/rebrand/favicon.svg">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/prod/vb1ced391297bc14a319144801f3973a5566f797b5e6e07559760dc67c81bd3d3/android/images/rebrand/touchicon-180.png"><link rel="canonical" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn"><link rel="search" type="application/opensearchdescription+xml" title="Android Developers" href="https://developer.android.com/s/opensearch.xml?hl=zh-cn">
+      <link rel="alternate" hreflang="zh-Hans" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn"><link rel="alternate" hreflang="id" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=id"><link rel="alternate" hreflang="ja" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=ja"><link rel="alternate" hreflang="ko" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=ko"><link rel="alternate" hreflang="pt-BR" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=pt-br"><link rel="alternate" hreflang="es-419" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=es-419"><title>在 Fragment 之间传递数据 &nbsp;|&nbsp; Android 开发者 &nbsp;|&nbsp; Android Developers</title>
+
+<meta property="og:title" content="在 Fragment 之间传递数据  |  Android 开发者  |  Android Developers"><meta property="og:url" content="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn"><meta property="og:image" content="https://developer.android.com/static/images/social/android-developers.png?hl=zh-cn">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675"><meta property="og:locale" content="zh_cn"><meta name="twitter:card" content="summary_large_image"><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/cb=gapi.loaded_0" nonce="" async=""></script><script type="text/javascript" async="" src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/js(1)" nonce=""></script><script type="text/javascript" async="" src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/linkid.js.descarga" nonce=""></script><script async="" src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/gtm(1).js.descarga" nonce=""></script><script async="" src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/app_loader.js.descarga"></script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    
+    "headline": "在 Fragment 之间传递数据"
+  }
+</script>
+  <meta name="xsrf_token" content="ZMS6vht6LoxbHUPWTG6vhE4kzPOgHUlljEpnE27BK9g6MTcwMTY0Njk4OTcyMzI0OA">
+  
+
+  <meta name="session_expiry" content="1701649461">
+  <meta name="uid" content="104416704395844875715">
+  
+    
+    
+    
+  
+
+    
+      <link rel="stylesheet" href="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/extras.css"><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_app_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_app_custom_elements_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_a11y_announce_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_analytics_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_badger_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_book_nav_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_bookmark_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_code_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_content_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_feature_tooltip_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_footer_linkboxes_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_footer_promos_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_footer_utility_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_header_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_heading_link_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_language_selector_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_notification_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_panel_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_progress_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_recommendations_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_recommendations_dropdown_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_recommendations_sidebar_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_search_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_selector_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_sitemask_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_snackbar_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_tabs_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_thumb_rating_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_toc_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_tooltip_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_user_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_android_fully_clickable_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/analytics.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_badge_awarded_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_dialog_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_fast_track_profile_creator_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_feedback_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_spinner_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_mwc_module__zh_cn.js.descarga" nonce=""></script><style type="text/css"></style><script type="text/javascript" charset="UTF-8" nonce="" src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/api.js.descarga" gapi_processed="true"></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_dropdown_list_module__zh_cn.js.descarga" nonce=""></script><script src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/devsite_devsite_checkbox_module__zh_cn.js.descarga" nonce=""></script></head>
+  <body class="" template="page" theme="android-theme" type="article" layout="docs" display-toc="" style="--devsite-js-header-height: 49px; --devsite-panel-height: 0px;" ready="" signed-in="">
+    <devsite-progress id="app-progress"></devsite-progress>
+  
+    <section class="devsite-wrapper"><devsite-header role="banner" no-lower-row="" top-row--height="49" bottom-row--height="0" bottom-tabs--height="0" bottom-row--hidden="" style="--devsite-js-top-row--height: 49px; --devsite-js-bottom-row--height: 0px; --devsite-js-bottom-tabs--height: 0px;" fixed="">
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner nocontent">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu" class="devsite-header-icon-button button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Navigation menu button" aria-label="打开菜单">
+        </button>
+        <div class="devsite-product-name-wrapper">
+
+  <a href="https://developer.android.com/" class="devsite-site-logo-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Site logo" track-type="globalNav" track-name="androidDevelopers" track-metadata-position="nav" track-metadata-eventdetail="nav">
+
+  
+    <img src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/lockup.svg" class="devsite-site-logo" alt="Android Developers">
+  
+
+</a>
+
+
+
+  
+  
+  <span class="devsite-product-name">
+    <ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+      
+    
+  </li>
+  
+</ul>
+  </span>
+
+</div>
+        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+            
+              
+              
+  <devsite-tabs class="upper-tabs" connected="">
+
+    
+
+  <nav class="devsite-tabs-wrapper" aria-label="上面的标签页">
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    <tab overflow-tab=""><a aria-label="Extended Navigation" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#" class="devsite-icon devsite-icon-arrow-drop-down">更多</a><div class="devsite-tabs-overflow-menu" scrollbars="" hidden=""><tab>
+            
+    <a href="https://developer.android.com/about?hl=zh-cn" track-metadata-eventdetail="https://developer.android.com/about?hl=zh-cn" class="devsite-tabs-content gc-analytics-event " track-type="nav" track-metadata-position="nav - 平台" track-metadata-module="primary nav" data-category="Site-Wide Custom Events" data-label="Tab: 平台" track-name="平台">
+    平台
+  
+    </a>
+  
+  
+          </tab><tab>
+            
+    <a href="https://developer.android.com/distribute?hl=zh-cn" track-metadata-eventdetail="https://developer.android.com/distribute?hl=zh-cn" class="devsite-tabs-content gc-analytics-event " track-type="nav" track-metadata-position="nav - google play" track-metadata-module="primary nav" data-category="Site-Wide Custom Events" data-label="Tab: Google Play" track-name="google play">
+    Google Play
+  
+    </a>
+  
+  
+          </tab><tab>
+            
+    <a href="https://developer.android.com/jetpack?hl=zh-cn" track-metadata-eventdetail="https://developer.android.com/jetpack?hl=zh-cn" class="devsite-tabs-content gc-analytics-event " track-type="nav" track-metadata-position="nav - jetpack" track-metadata-module="primary nav" data-category="Site-Wide Custom Events" data-label="Tab: Jetpack" track-name="jetpack">
+    Jetpack
+  
+    </a>
+  
+  
+          </tab><tab>
+            
+    <a href="https://developer.android.com/kotlin?hl=zh-cn" track-metadata-eventdetail="https://developer.android.com/kotlin?hl=zh-cn" class="devsite-tabs-content gc-analytics-event " track-type="nav" track-metadata-position="nav - kotlin" track-metadata-module="primary nav" data-category="Site-Wide Custom Events" data-label="Tab: Kotlin" track-name="kotlin">
+    Kotlin
+  
+    </a>
+  
+  
+          </tab><tab>
+            
+    <a href="https://developer.android.com/docs?hl=zh-cn" track-metadata-eventdetail="https://developer.android.com/docs?hl=zh-cn" class="devsite-tabs-content gc-analytics-event " track-type="nav" track-metadata-position="nav - 文档" track-metadata-module="primary nav" data-category="Site-Wide Custom Events" data-label="Tab: 文档" track-name="文档">
+    文档
+  
+    </a>
+  
+  
+          </tab><tab>
+            
+    <a href="https://developer.android.com/games?hl=zh-cn" track-metadata-eventdetail="https://developer.android.com/games?hl=zh-cn" class="devsite-tabs-content gc-analytics-event " track-type="nav" track-metadata-position="nav - 游戏" track-metadata-module="primary nav" data-category="Site-Wide Custom Events" data-label="Tab: 游戏" track-name="游戏">
+    游戏
+  
+    </a>
+  
+  
+          </tab></div></tab></nav></devsite-tabs>
+
+            
+           </div>
+          
+<devsite-search aria-expanded="false" aria-haspopup="listbox" enable-signin="" enable-search="" enable-suggestions="" enable-query-completion="" project-name="Android 开发者" tenant-name="Android Developers" role="combobox">
+  <form class="devsite-search-form" action="https://developer.android.com/s/results?hl=zh-cn" method="GET">
+    <div class="devsite-search-container">
+      <button type="button" search-open="" class="devsite-search-button devsite-header-icon-button button-flat material-icons" aria-label="打开搜索框"></button>
+      <div class="devsite-searchbox">
+        <input aria-activedescendant="" aria-autocomplete="list" aria-label="搜索" aria-haspopup="false" aria-multiline="false" autocomplete="off" class="devsite-search-field devsite-search-query" name="q" placeholder="搜索" role="searchbox" type="text" value="" aria-controls="devsite-search-popout-container-id-1">
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
+      </div>
+    </div>
+  <div class="devsite-popout" id="devsite-search-popout-container-id-1"><div class="devsite-popout-result devsite-suggest-results-container" devsite-hide=""></div></div></form>
+  <button type="button" search-close="" class="devsite-search-button devsite-header-icon-button button-flat material-icons" aria-label="关闭搜索框"></button>
+</devsite-search>
+
+        <div class="devsite-search-background" style="opacity: 1;"></div></div>
+
+        
+
+        
+
+        
+
+        
+<devsite-language-selector aria-label="选择您的语言偏好设置。"><template shadowrootmode="open"><!---->
+      <button type="button" aria-controls="language-menu" aria-haspopup="true">
+        <svg aria-hidden="true" class="icon-language" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22q-2.05 0-3.875-.788-1.825-.787-3.187-2.15-1.363-1.362-2.15-3.187Q2 14.05 2 12q0-2.075.788-3.887.787-1.813 2.15-3.175Q6.3 3.575 8.125 2.787 9.95 2 12 2q2.075 0 3.887.787 1.813.788 3.175 2.151 1.363 1.362 2.15 3.175Q22 9.925 22 12q0 2.05-.788 3.875-.787 1.825-2.15 3.187-1.362 1.363-3.175 2.15Q14.075 22 12 22Zm0-2.05q.65-.9 1.125-1.875T13.9 16h-3.8q.3 1.1.775 2.075.475.975 1.125 1.875Zm-2.6-.4q-.45-.825-.787-1.713Q8.275 16.95 8.05 16H5.1q.725 1.25 1.812 2.175Q8 19.1 9.4 19.55Zm5.2 0q1.4-.45 2.487-1.375Q18.175 17.25 18.9 16h-2.95q-.225.95-.562 1.837-.338.888-.788 1.713ZM4.25 14h3.4q-.075-.5-.113-.988Q7.5 12.525 7.5 12t.037-1.012q.038-.488.113-.988h-3.4q-.125.5-.188.988Q4 11.475 4 12t.062 1.012q.063.488.188.988Zm5.4 0h4.7q.075-.5.113-.988.037-.487.037-1.012t-.037-1.012q-.038-.488-.113-.988h-4.7q-.075.5-.112.988Q9.5 11.475 9.5 12t.038 1.012q.037.488.112.988Zm6.7 0h3.4q.125-.5.188-.988Q20 12.525 20 12t-.062-1.012q-.063-.488-.188-.988h-3.4q.075.5.112.988.038.487.038 1.012t-.038 1.012q-.037.488-.112.988Zm-.4-6h2.95q-.725-1.25-1.813-2.175Q16 4.9 14.6 4.45q.45.825.788 1.712.337.888.562 1.838ZM10.1 8h3.8q-.3-1.1-.775-2.075Q12.65 4.95 12 4.05q-.65.9-1.125 1.875T10.1 8Zm-5 0h2.95q.225-.95.563-1.838.337-.887.787-1.712Q8 4.9 6.912 5.825 5.825 6.75 5.1 8Z"></path>
+        </svg>
+        <span class="label"><!--?lit$71798476$-->中文 – 简体</span>
+        <svg aria-hidden="true" class="icon-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="m12 15-5-5h10Z"></path>
+        </svg>
+      </button>
+      <div id="language-menu" role="menu" hidden="">
+        <slot></slot>
+      </div></template>
+  <ul role="presentation">
+    
+    
+    <li role="presentation">
+      <a role="menuitem" lang="en" href="https://developer.android.com/training/basics/fragments/pass-data-between">English</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es-419" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=es-419">Español – América Latina</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="id" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=id">Indonesia</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pt-br" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=pt-br">Português – Brasil</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh-cn" aria-current="true" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn">中文 – 简体</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ja" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=ja">日本語</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ko" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=ko">한국어</a>
+    </li>
+    
+  </ul>
+</devsite-language-selector>
+
+
+        
+          
+  <a class="devsite-header-link devsite-top-button button gc-analytics-event" href="https://developer.android.com/studio?hl=zh-cn" data-category="Site-Wide Custom Events" data-label="Site header link">
+    Android Studio
+  </a>
+  
+        
+
+        
+          
+          
+          <devsite-user signed-in="" enable-profiles="" id="devsite-user" sign-in-url="https://developer.android.com/_d/signin?continue=https%3A%2F%2Fdeveloper.android.com%2Ftraining%2Fbasics%2Ffragments%2Fpass-data-between%3Fhl%3Dzh-cn&amp;prompt=select_account" sign-out-url="https://developer.android.com/_d/signout?continue=https%3A%2F%2Fdeveloper.android.com%2Ftraining%2Fbasics%2Ffragments%2Fpass-data-between%3Fhl%3Dzh-cn" url="https://developer.android.com/_d/signin?continue=https%3A%2F%2Fdeveloper.android.com%2Ftraining%2Fbasics%2Ffragments%2Fpass-data-between%3Fhl%3Dzh-cn&amp;prompt=select_account"><div class="ogb-wrapper ogb-si"><div class="devsite-devprofile-wrapper show"><devsite-feature-tooltip ack-key="AckViewSavedPagesPopoutDismiss" id="devsite-view-saved-pages" close-button-href="https://developers.google.com/profile/u/112391163494072040612/saved-pages?hl=zh-cn" close-button-text="查看" dismiss-button="" managed="" ready="" current-step="0" style="--devsite-popout-offset-x: 32px;"><template shadowrootmode="open"><!---->
+      <!--?lit$71798476$-->
+      <slot></slot>
+      <div class="parent" hidden="">
+          <div class="popout">
+            <slot name="popout-heading"></slot>
+            <slot name="popout-contents"></slot>
+            <div class="controls">
+              <!--?lit$71798476$-->
+              <!--?lit$71798476$-->
+                <div class="buttons-container">
+                  <!--?lit$71798476$-->
+                      <button class="dismiss-button button button-flat">
+                        <!--?lit$71798476$-->关闭
+                      </button>
+                  <!--?lit$71798476$-->
+                      <!--?lit$71798476$-->
+                            <a href="https://developers.google.com/profile/u/112391163494072040612/saved-pages?hl=zh-cn" class="close-button button button-white">
+                              <!--?lit$71798476$-->查看
+                            </a>
+                    
+                </div>
+            </div>
+          </div>
+          <svg class="notch" width="18" height="14" viewBox="0 0 18 14" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.15882 1.3085C8.55246 0.696177 9.44754 0.696177 9.84118 1.3085L18 14L0 14L8.15882 1.3085Z"></path>
+          </svg>
+      </div></template><button class="devsite-devprofile-button" aria-controls="devsite-devprofile-popout" aria-expanded="false" aria-haspopup="true" aria-label="打开 Google 开发者资料" data-tooltip="Google Developer Profile"><svg width="4" height="16" viewBox="0 0 4 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 4C3.1 4 4 3.1 4 2C4 0.9 3.1 0 2 0C0.9 0 0 0.9 0 2C0 3.1 0.9 4 2 4ZM2 6C0.9 6 0 6.9 0 8C0 9.1 0.9 10 2 10C3.1 10 4 9.1 4 8C4 6.9 3.1 6 2 6ZM0 14C0 12.9 0.9 12 2 12C3.1 12 4 12.9 4 14C4 15.1 3.1 16 2 16C0.9 16 0 15.1 0 14Z" fill="#5F6368"></path></svg></button><span slot="popout-heading">Google 开发者资料</span><span slot="popout-contents">在此处查看您保存的页面并完成您的 Google 开发者资料设置。</span></devsite-feature-tooltip><div class="devsite-devprofile-popout" role="menu"></div></div><div class="devsite-user-dialog-signin">
+  <a href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#" class="devsite-user-dialog-toggle devsite-top-button" role="button" aria-label="打开账号对话框">
+  
+    <img class="devsite-user-dialog-photo-thumbnail" src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/unnamed.jpg" srcset="https://lh3.googleusercontent.com/a/ACg8ocJOwuo2REcp2MuuRVu-x_j36SjJd_sLYa3VxE2VfTf_Whs=s96-c 1x, https://lh3.googleusercontent.com/a/ACg8ocJOwuo2REcp2MuuRVu-x_j36SjJd_sLYa3VxE2VfTf_Whs=s96-c 2x" loading="lazy" alt="Piupiupiu">
+  
+  </a>
+</div>
+
+<div class="devsite-user-dialog" role="dialog" aria-modal="true" aria-label="Account Information" aria-hidden="true">
+  <button class="devsite-user-dialog-exit" aria-label="Close menu">
+    <svg width="22" height="22" viewBox="1 1 22 22">
+      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z">
+      </path>
+    </svg>
+  </button>
+  <div class="devsite-user-dialog-email">zhouyichen1998@gmail.com</div>
+  
+  <div class="devsite-user-dialog-photo">
+  
+    <img class="devsite-user-dialog-photo-portrait" src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/unnamed.jpg" srcset="https://lh3.googleusercontent.com/a/ACg8ocJOwuo2REcp2MuuRVu-x_j36SjJd_sLYa3VxE2VfTf_Whs=s96-c 1x, https://lh3.googleusercontent.com/a/ACg8ocJOwuo2REcp2MuuRVu-x_j36SjJd_sLYa3VxE2VfTf_Whs=s96-c 2x" loading="lazy" alt="Piupiupiu">
+  
+  </div>
+  <div class="devsite-user-dialog-details">
+    
+    <div class="devsite-user-dialog-name">
+      
+       您好！ Piupiupiu!</div>
+    
+    <a class="devsite-user-manage" href="https://myaccount.google.com/?utm_source=OGB&amp;amp;utm_medium=act" target="_blank" aria-label="管理您的 Google 账号（打开新标签页）">
+      
+      管理您的 Google 账号
+    </a>
+  </div>
+  <div class="devsite-user-dialog-buttons">
+    <a class="devsite-user-signin" href="https://developer.android.com/_d/signin?continue=https%3A%2F%2Fdeveloper.android.com%2Ftraining%2Fbasics%2Ffragments%2Fpass-data-between%3Fhl%3Dzh-cn&amp;prompt=select_account" target="_top">
+      <svg width="21" height="21" viewBox="0 0 24 24">
+        <path d="M20 13h-7v7h-2v-7H4v-2h7V4h2v7h7v2z"></path>
+      </svg>
+      
+      切换账号
+    </a>
+
+    <a class="devsite-user-signout" href="https://developer.android.com/_d/signout?continue=https%3A%2F%2Fdeveloper.android.com%2Ftraining%2Fbasics%2Ffragments%2Fpass-data-between%3Fhl%3Dzh-cn" target="_top">
+      <svg height="24" viewBox="0 0 24 24" width="24">
+        <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z">
+        </path><path d="M0 0h24v24H0z" fill="none"></path>
+      </svg>
+      
+      退出
+    </a>
+  </div>
+
+  <div class="devsite-user-dialog-footer">
+    <div class="devsite-user-dialog-footer-link">
+      <a href="https://myaccount.google.com/privacypolicy" target="_blank">
+        
+        隐私权政策
+      </a>
+    </div>
+
+    <div class="devsite-user-dialog-footer-link">
+      <a href="https://myaccount.google.com/termsofservice" target="_blank">
+        
+        服务条款
+      </a>
+    </div>
+  </div>
+</div></div></devsite-user>
+           
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="devsite-collapsible-section
+    
+      devsite-header-no-lower-tabs
+    " style="transform: translate3d(0px, 0px, 0px);">
+    <div class="devsite-header-background">
+      
+        
+      
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+  
+</devsite-header>
+      <div class="devsite-book-nav-bg" fixed="" hidden=""></div><devsite-book-nav scrollbars="" hidden="" fixed="" style="top: 49px; max-height: 917px;" top-level-nav="">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-book-nav-filter
+            hidden">
+  <span class="filter-list-icon material-icons" aria-hidden="true"></span>
+  <input type="text" placeholder="过滤条件" aria-label="输入文本以进行过滤" role="searchbox">
+  
+  <span class="filter-clear-button hidden" data-title="清除过滤条件" aria-label="清除过滤条件" role="button" tabindex="0"></span>
+</div>
+
+<nav class="devsite-book-nav devsite-nav nocontent" aria-label="侧边菜单">
+  <div class="devsite-mobile-header">
+    <button type="button" id="devsite-close-nav" class="devsite-header-icon-button button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Close navigation" aria-label="关闭导航栏">
+    </button>
+    <div class="devsite-product-name-wrapper">
+
+  <a href="https://developer.android.com/" class="devsite-site-logo-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Site logo" track-type="globalNav" track-name="androidDevelopers" track-metadata-position="nav" track-metadata-eventdetail="nav">
+
+  
+    <img src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/lockup.svg" class="devsite-site-logo" alt="Android Developers">
+  
+
+</a>
+
+
+  
+      <span class="devsite-product-name">
+        
+        
+        <ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+      
+    
+  </li>
+  
+</ul>
+      </span>
+    
+
+</div>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+      
+        <ul class="devsite-nav-list">
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://developer.android.com/about" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Tab: 平台" track-name="平台" track-type="globalNav" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      平台
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://developer.android.com/distribute" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Tab: Google Play" track-name="google play" track-type="globalNav" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      Google Play
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://developer.android.com/jetpack" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Tab: Jetpack" track-name="jetpack" track-type="globalNav" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      Jetpack
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://developer.android.com/kotlin" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Tab: Kotlin" track-name="kotlin" track-type="globalNav" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      Kotlin
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://developer.android.com/docs" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Tab: 文档" track-name="文档" track-type="globalNav" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      文档
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://developer.android.com/games" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Tab: 游戏" track-name="游戏" track-type="globalNav" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      游戏
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+          
+    
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developer.android.com/studio" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Android Studio" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      Android Studio
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+  
+          
+        </ul>
+      
+    </div>
+    
+  </div>
+</nav>
+        
+      </devsite-book-nav><div class="devsite-book-nav-blur" hidden="" fixed="" style="--devsite-js-book-nav-scrollbar-width: 0px;"></div><button class="devsite-book-nav-toggle" aria-haspopup="menu" hidden="" fixed="" aria-label="隐藏侧边导航栏" data-title="隐藏侧边导航栏" aria-expanded="true"><span class="material-icons devsite-book-nav-toggle-icon"></span></button>
+      <section id="gc-wrapper" style="margin-top: 49px;">
+        <main role="main" class="devsite-main-content" has-sidebar="">
+          
+          
+          <div class="devsite-sidebar" fixed="" style="--devsite-js-sidebar-max-height: 869px; --devsite-js-sidebar-offset: 0;">
+            <div class="devsite-sidebar-content">
+                
+                <devsite-toc class="devsite-nav devsite-toc" role="navigation" aria-label="本页内容" depth="2" scrollbars="" visible=""><ul class="devsite-nav-list"><li class="devsite-nav-item devsite-nav-heading devsite-toc-toggle"><span class="devsite-nav-title" role="heading" aria-level="2"><span class="devsite-nav-text">本页内容</span></span></li><li class="devsite-nav-item"><a href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#child" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="0" track-type="navigation" track-name="rightNav" track-metadata-position="0" track-metadata-link-destination="#child"><span class="devsite-nav-text" tooltip="">在父级 Fragment 和子级 Fragment 之间传递结果</span></a></li><li class="devsite-nav-item"><a href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#test" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="1" track-type="navigation" track-name="rightNav" track-metadata-position="1" track-metadata-link-destination="#test"><span class="devsite-nav-text" tooltip="">测试 Fragment 结果</span></a></li></ul></devsite-toc>
+                <devsite-recommendations-sidebar class="nocontent devsite-nav"></devsite-recommendations-sidebar>
+            </div>
+          </div>
+          
+          <devsite-content>
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+<article class="devsite-article" has-bookmark="">
+  
+  
+  
+  
+
+  <div class="devsite-article-meta nocontent" role="navigation">
+    
+    
+    <ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+  <a href="https://developer.android.com/?hl=zh-cn" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="1" track-type="globalNav" track-name="breadcrumb" track-metadata-position="1" track-metadata-eventdetail="Android 开发者">
+    
+        Android 开发者
+      
+  </a>
+  
+    
+  </li>
+  
+</ul>
+    
+      
+    <devsite-thumb-rating position="header"><div class="devsite-thumb-rating" role="form" aria-labelledby="devsite-thumb-label-header"><div class="devsite-thumb-label" id="devsite-thumb-label-header">该内容对您有帮助吗？</div><div class="devsite-thumbs"><button class="devsite-thumb devsite-thumb-up" data-title="有帮助" aria-label="有帮助"><svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21,7h-6.31l0.95-4.57l0.03-0.32c0-0.41-0.17-0.79-0.44-1.06L14.17,0c0,0-7.09,6.85-7.17,7H2v13h16 c0.83,0,1.54-0.5,1.84-1.22l3.02-7.05C22.95,11.5,23,11.26,23,11V9C23,7.9,22.1,7,21,7z M7,18H4V9h3V18z M21,11l-3,7H9V8l4.34-4.34 L12,9h9V11z"></path></svg></button><button class="devsite-thumb devsite-thumb-down" data-title="没有帮助" aria-label="没有帮助"><svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3,17h6.31l-0.95,4.57l-0.03,0.32c0,0.41,0.17,0.79,0.44,1.06L9.83,24c0,0,7.09-6.85,7.17-7h5V4H6 C5.17,4,4.46,4.5,4.16,5.22l-3.02,7.05C1.05,12.5,1,12.74,1,13v2C1,16.1,1.9,17,3,17z M17,6h3v9h-3V6z M3,13l3-7h9v10l-4.34,4.34 L12,15H3V13z"></path></svg></button></div></div></devsite-thumb-rating>
+  
+    
+  </div>
+  <h1 class="devsite-page-title" tabindex="-1">在 Fragment 之间传递数据</h1><devsite-feature-tooltip ack-key="AckCollectionsBookmarkTooltipDismiss" analytics-category="Site-Wide Custom Events" analytics-action-show="Callout Profile displayed" analytics-action-close="Callout Profile dismissed" analytics-label="Create Collection Callout" class="devsite-page-bookmark-tooltip nocontent inline-block" dismiss-button="true" id="devsite-collections-dropdown" dismiss-button-text="关闭" close-button-text="知道了" ready="" current-step="0" style="--devsite-popout-offset-x: 32px;"><template shadowrootmode="open"><!---->
+      <!--?lit$71798476$-->
+      <slot></slot>
+      <div class="parent" hidden="">
+          <div class="popout">
+            <slot name="popout-heading"></slot>
+            <slot name="popout-contents"></slot>
+            <div class="controls">
+              <!--?lit$71798476$-->
+              <!--?lit$71798476$-->
+                <div class="buttons-container">
+                  <!--?lit$71798476$-->
+                      <button class="dismiss-button button button-flat">
+                        <!--?lit$71798476$-->关闭
+                      </button>
+                  <!--?lit$71798476$-->
+                      <!--?lit$71798476$-->
+                            <button class="close-button button button-white">
+                              <!--?lit$71798476$-->知道了
+                            </button>
+                    
+                </div>
+            </div>
+          </div>
+          <svg class="notch" width="18" height="14" viewBox="0 0 18 14" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.15882 1.3085C8.55246 0.696177 9.44754 0.696177 9.84118 1.3085L18 14L0 14L8.15882 1.3085Z"></path>
+          </svg>
+      </div></template>
+
+        
+        <devsite-bookmark class="show"><devsite-dropdown-list ellipsis="" checkboxes="" fetchingitems="true" writable="" additemtext="新集合" ready="" style="--devsite-popout-offset-x: 0px;"><template shadowrootmode="open"><!---->
+        <button class="toggle-button button" aria-haspopup="listbox" id="dropdown-list-0-toggle" aria-controls="dropdown-list-0-dropdown" aria-expanded="false" aria-label="打开下拉菜单">
+          <slot name="toggle"></slot>
+        </button>
+        <!--?lit$71798476$--><!--?--></template><span class="material-icons bookmark-icon" slot="toggle">bookmark_border</span></devsite-dropdown-list></devsite-bookmark>
+
+        <span slot="popout-heading">
+          
+          使用集合让一切井井有条
+        </span>
+        <span slot="popout-contents">
+          
+          根据您的偏好保存内容并对其进行分类。
+        </span>
+      </devsite-feature-tooltip>
+    
+  
+
+  <devsite-toc class="devsite-nav devsite-toc-embedded" depth="2" devsite-toc-embedded="" visible=""><ul class="devsite-nav-list"><li class="devsite-nav-item devsite-nav-heading devsite-toc-toggle"><span class="devsite-nav-title" role="heading" aria-level="2"><span class="devsite-nav-text">本页内容</span></span><button type="button" title="展开/收起内容" class="devsite-nav-show-all button-transparent material-icons"></button></li><li class="devsite-nav-item" visible=""><a href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#child" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="0" track-type="navigation" track-name="embeddedNav" track-metadata-position="0" track-metadata-link-destination="#child"><span class="devsite-nav-text" tooltip="">在父级 Fragment 和子级 Fragment 之间传递结果</span></a></li><li class="devsite-nav-item" visible=""><a href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#test" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="1" track-type="navigation" track-name="embeddedNav" track-metadata-position="1" track-metadata-link-destination="#test"><span class="devsite-nav-text" tooltip="">测试 Fragment 结果</span></a></li><li class="devsite-toc-toggle"><button type="button" class="button-flat devsite-nav-more-items material-icons" track-type="navigation" track-name="embeddedNavExpand" title="展开/收起内容"></button></li></ul></devsite-toc>
+  
+    
+    <devsite-recommendations-dropdown class="nocontent"></devsite-recommendations-dropdown>
+    
+  
+
+  
+
+
+
+
+
+
+<div class="devsite-article-body clearfix
+  ">
+
+  
+    
+
+<p>从 <a href="https://developer.android.com/jetpack/androidx/releases/fragment?hl=zh-cn#1.3.0-alpha04">Fragment <code translate="no" dir="ltr">1.3.0-alpha04</code></a> 开始，每个 <a href="https://developer.android.com/reference/androidx/fragment/app/FragmentManager?hl=zh-cn"><code translate="no" dir="ltr">FragmentManager</code></a> 都会实现 <a href="https://developer.android.com/reference/androidx/fragment/app/FragmentResultOwner?hl=zh-cn"><code translate="no" dir="ltr">FragmentResultOwner</code></a>。这意味着 <code translate="no" dir="ltr">FragmentManager</code> 可以充当 Fragment 结果的集中存储区。此更改通过设置 Fragment 结果并监听这些结果，而不要求 Fragment 直接引用彼此，让单独的 Fragment 相互通信。</p>
+
+<p>如需将数据从 Fragment B 传回到 Fragment A，请先在接收结果的 Fragment A 上设置结果监听器。在 Fragment A 的 <code translate="no" dir="ltr">FragmentManager</code> 上调用 <a href="https://developer.android.com/reference/androidx/fragment/app/FragmentManager?hl=zh-cn#setfragmentresultlistener"><code translate="no" dir="ltr">setFragmentResultListener()</code></a> API，如以下示例所示：</p>
+
+<div>
+<devsite-selector scope="auto" active="java" ready=""><devsite-tabs data-is-tablist="" role="tablist" connected=""><div class="devsite-tabs-wrapper"><tab aria-selected="false" aria-controls="tabpanel-kotlin" tab="kotlin" id="kotlin" role="tab"><a id="aria-tab-kotlin" role="button" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#kotlin">Kotlin</a></tab><tab aria-selected="true" aria-controls="tabpanel-java" tab="java" id="java" active="" role="tab"><a id="aria-tab-java" role="button" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#java" aria-expanded="true">Java</a></tab><tab overflow-tab="" role="tab" hidden=""><a aria-label="More Options" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#" class="devsite-icon devsite-icon-arrow-drop-down">更多</a><div class="devsite-tabs-overflow-menu" scrollbars="" hidden=""></div></tab></div></devsite-tabs><section tab="kotlin" role="tabpanel" aria-labelledby="aria-tab-kotlin" tabindex="0" id="tabpanel-kotlin">
+<devsite-code data-copy-event-label=""><pre class="lang-kotlin" translate="no" dir="ltr" is-upgraded=""><span class="kwd">override</span><span class="pln"> </span><span class="kwd">fun</span><span class="pln"> onCreate</span><span class="pun">(</span><span class="pln">savedInstanceState</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pun">?)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">onCreate</span><span class="pun">(</span><span class="pln">savedInstanceState</span><span class="pun">)</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="com">// Use the Kotlin extension in the fragment-ktx artifact</span><span class="pln"><br>&nbsp; &nbsp; setResultListener</span><span class="pun">(</span><span class="str">"requestKey"</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> key</span><span class="pun">,</span><span class="pln"> bundle </span><span class="pun">-&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// We use a String here, but any type that can be put in a Bundle is supported</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">val</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> bundle</span><span class="pun">.</span><span class="pln">getString</span><span class="pun">(</span><span class="str">"bundleKey"</span><span class="pun">)</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Do something with the result...</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br></span></pre></devsite-code>
+</section><section tab="java" role="tabpanel" aria-labelledby="aria-tab-java" tabindex="0" id="tabpanel-java" active="">
+<devsite-code data-copy-event-label=""><div class="devsite-code-buttons-container" role="group" aria-label="操作按钮"><button type="button" class="gc-analytics-event material-icons devsite-icon-code-dark devsite-toggle-dark" data-category="Site-Wide Custom Events" data-label="Dark Code Toggle" track-type="exampleCode" track-name="darkCodeToggle" aria-label="深色代码主题背景" data-title="深色代码主题背景"></button><button type="button" class="gc-analytics-event material-icons devsite-icon-code-light devsite-toggle-light" data-category="Site-Wide Custom Events" data-label="Light Code Toggle" track-type="exampleCode" track-name="lightCodeToggle" aria-label="浅色代码主题背景" data-title="浅色代码主题背景"></button><button type="button" class="gc-analytics-event material-icons devsite-icon-copy" data-category="Site-Wide Custom Events" data-label="Click To Copy" track-type="exampleCode" track-name="clickToCopy" aria-label="复制代码示例" data-title="复制代码示例"></button></div><pre class="lang-java" translate="no" dir="ltr" is-upgraded=""><span class="lit">@Override</span><span class="pln"><br></span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onCreate</span><span class="pun">(</span><span class="lit">@Nullable</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pln"> savedInstanceState</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">onCreate</span><span class="pun">(</span><span class="pln">savedInstanceState</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; getParentFragmentManager</span><span class="pun">().</span><span class="pln">setFragmentResultListener</span><span class="pun">(</span><span class="str">"key"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FragmentResultListener</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="lit">@Override</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onFragmentResult</span><span class="pun">(</span><span class="lit">@NonNull</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> key</span><span class="pun">,</span><span class="pln"> </span><span class="lit">@NonNull</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pln"> bundle</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// We use a String here, but any type that can be put in a Bundle is supported</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ">String</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> bundle</span><span class="pun">.</span><span class="pln">getString</span><span class="pun">(</span><span class="str">"bundleKey"</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Do something with the result...</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">});</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br></span></pre></devsite-code>
+</section></devsite-selector>
+</div>
+
+<figure>
+  <img src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/fragment-b-to-a.png" width="600px" alt="Fragment B 使用 Fragment 管理器将数据发送到 Fragment A">
+  <figcaption><b>图 1.</b> Fragment B 使用 <code translate="no" dir="ltr">FragmentManager</code> 将数据发送到 Fragment A。</figcaption>
+</figure>
+
+<p>在生成结果的 Fragment B 中，您必须使用相同的 <code translate="no" dir="ltr">requestKey</code> 在同一 <code translate="no" dir="ltr">FragmentManager</code> 上设置结果。您可以使用 <a href="https://developer.android.com/reference/androidx/fragment/app/FragmentManager?hl=zh-cn#setfragmentresult"><code translate="no" dir="ltr">setFragmentResult()</code></a> API 来完成此操作：</p>
+
+<div>
+<devsite-selector scope="auto" active="java" ready=""><devsite-tabs data-is-tablist="" role="tablist" connected=""><div class="devsite-tabs-wrapper"><tab aria-selected="false" aria-controls="tabpanel-kotlin" tab="kotlin" id="kotlin" role="tab"><a id="aria-tab-kotlin" role="button" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#kotlin">Kotlin</a></tab><tab aria-selected="true" aria-controls="tabpanel-java" tab="java" id="java" active="" role="tab"><a id="aria-tab-java" role="button" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#java" aria-expanded="true">Java</a></tab><tab overflow-tab="" role="tab" hidden=""><a aria-label="More Options" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#" class="devsite-icon devsite-icon-arrow-drop-down">更多</a><div class="devsite-tabs-overflow-menu" scrollbars="" hidden=""></div></tab></div></devsite-tabs><section tab="kotlin" role="tabpanel" aria-labelledby="aria-tab-kotlin" tabindex="0" id="tabpanel-kotlin">
+<devsite-code data-copy-event-label=""><pre class="lang-kotlin" translate="no" dir="ltr" is-upgraded=""><span class="pln">button</span><span class="pun">.</span><span class="pln">setOnClickListener </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">val</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> </span><span class="str">"result"</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="com">// Use the Kotlin extension in the fragment-ktx artifact</span><span class="pln"><br>&nbsp; &nbsp; setResult</span><span class="pun">(</span><span class="str">"requestKey"</span><span class="pun">,</span><span class="pln"> bundleOf</span><span class="pun">(</span><span class="str">"bundleKey"</span><span class="pln"> to result</span><span class="pun">))</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br></span></pre></devsite-code>
+</section><section tab="java" role="tabpanel" aria-labelledby="aria-tab-java" tabindex="0" id="tabpanel-java" active="">
+<devsite-code data-copy-event-label=""><pre class="lang-java" translate="no" dir="ltr" is-upgraded=""><span class="pln">button</span><span class="pun">.</span><span class="pln">setOnClickListener</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">View</span><span class="pun">.</span><span class="typ">OnClickListener</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="lit">@Override</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onClick</span><span class="pun">(</span><span class="typ">View</span><span class="pln"> v</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ">Bundle</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; result</span><span class="pun">.</span><span class="pln">putString</span><span class="pun">(</span><span class="str">"bundleKey"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"result"</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; getParentFragmentManager</span><span class="pun">().</span><span class="pln">setFragmentResult</span><span class="pun">(</span><span class="str">"requestKey"</span><span class="pun">,</span><span class="pln"> result</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">});</span><span class="pln"><br></span></pre></devsite-code>
+</section></devsite-selector>
+</div>
+
+<p>然后，在值为 <a href="https://developer.android.com/reference/androidx/lifecycle/Lifecycle.State?hl=zh-cn#ENUM_VALUE:STARTED"><code translate="no" dir="ltr">STARTED</code></a> 后，Fragment A 便会收到结果并执行监听器回调。</p>
+
+<p>对于一个指定键，您只能有一个监听器和一个结果。如果您对同一个键多次调用 <code translate="no" dir="ltr">setResult()</code>，则系统会将 Fragment B 从返回堆栈退出之前的最近结果发送给 Fragment A。如果您设置的结果没有相应的监听器来接收，则结果会存储在 <code translate="no" dir="ltr">FragmentManager</code> 中，直到您设置一个具有相同键的监听器。请注意，监听器的 Fragment 必须为 <code translate="no" dir="ltr">STARTED</code>，然后该 Fragment 才能收到结果。监听器收到结果并触发 <code translate="no" dir="ltr">onFragmentResult()</code> 回调后，结果会被清除。这种行为有两个主要影响：</p>
+
+<ul>
+<li>返回堆栈上的 Fragment 只有在被弹出栈顶且为 <code translate="no" dir="ltr">STARTED</code> 之后才会收到结果。</li>
+<li>如果在设置结果时监听结果的 Fragment 为 <code translate="no" dir="ltr">STARTED</code>，则系统会立即触发监听器的回调。</li>
+</ul>
+<aside class="note"><strong>注意</strong><span>：某个 Fragment 为 <code translate="no" dir="ltr">DESTROYED</code> 后，您就无法再对该 Fragment 设置监听器。</span></aside>
+<h2 id="child" data-text="在父级 Fragment 和子级 Fragment 之间传递结果" tabindex="-1">在父级 Fragment 和子级 Fragment 之间传递结果</h2>
+
+<p>如需将结果从子级 Fragment 传递到父级 Fragment，父级 Fragment 在调用 <code translate="no" dir="ltr">setFragmentResultListener()</code> 时应使用 <code translate="no" dir="ltr">getChildFragmentManager()</code> 而不是 <code translate="no" dir="ltr">getParentFragmentManager()</code>。</p>
+
+<div>
+<devsite-selector scope="auto" active="java" ready=""><devsite-tabs data-is-tablist="" role="tablist" connected=""><div class="devsite-tabs-wrapper"><tab aria-selected="false" aria-controls="tabpanel-kotlin" tab="kotlin" id="kotlin" role="tab"><a id="aria-tab-kotlin" role="button" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#kotlin">Kotlin</a></tab><tab aria-selected="true" aria-controls="tabpanel-java" tab="java" id="java" active="" role="tab"><a id="aria-tab-java" role="button" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#java" aria-expanded="true">Java</a></tab><tab overflow-tab="" role="tab" hidden=""><a aria-label="More Options" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#" class="devsite-icon devsite-icon-arrow-drop-down">更多</a><div class="devsite-tabs-overflow-menu" scrollbars="" hidden=""></div></tab></div></devsite-tabs><section tab="kotlin" role="tabpanel" aria-labelledby="aria-tab-kotlin" tabindex="0" id="tabpanel-kotlin">
+<devsite-code data-copy-event-label=""><pre class="lang-kotlin" translate="no" dir="ltr" is-upgraded=""><span class="kwd">override</span><span class="pln"> </span><span class="kwd">fun</span><span class="pln"> onCreate</span><span class="pun">(</span><span class="pln">savedInstanceState</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pun">?)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">onCreate</span><span class="pun">(</span><span class="pln">savedInstanceState</span><span class="pun">)</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="com">// We set the listener on the child fragmentManager</span><span class="pln"><br>&nbsp; &nbsp; childFragmentManager</span><span class="pun">.</span><span class="pln">setResultListener</span><span class="pun">(</span><span class="str">"requestKey"</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> key</span><span class="pun">,</span><span class="pln"> bundle </span><span class="pun">-&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">val</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> bundle</span><span class="pun">.</span><span class="pln">getString</span><span class="pun">(</span><span class="str">"bundleKey"</span><span class="pun">)</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Do something with the result..</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br></span></pre></devsite-code>
+</section><section tab="java" role="tabpanel" aria-labelledby="aria-tab-java" tabindex="0" id="tabpanel-java" active="">
+<devsite-code data-copy-event-label=""><pre class="lang-java" translate="no" dir="ltr" is-upgraded=""><span class="lit">@Override</span><span class="pln"><br></span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onCreate</span><span class="pun">(</span><span class="lit">@Nullable</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pln"> savedInstanceState</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">onCreate</span><span class="pun">(</span><span class="pln">savedInstanceState</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="com">// We set the listener on the child fragmentManager</span><span class="pln"><br>&nbsp; &nbsp; getChildFragmentManager</span><span class="pun">().</span><span class="pln">setFragmentResultListener</span><span class="pun">(</span><span class="str">"key"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FragmentResultListener</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="lit">@Override</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onFragmentResult</span><span class="pun">(</span><span class="lit">@NonNull</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> key</span><span class="pun">,</span><span class="pln"> </span><span class="lit">@NonNull</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pln"> bundle</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ">String</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> bundle</span><span class="pun">.</span><span class="pln">getString</span><span class="pun">(</span><span class="str">"bundleKey"</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Do something with the result..</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">});</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br></span></pre></devsite-code>
+</section></devsite-selector>
+</div>
+
+<figure>
+  <img src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/parent-to-child.png" width="400" alt="子级 Fragment 可以使用 Fragment 管理器将结果发送到其父级 Fragment">
+  <figcaption><b>图 2.</b> 子级 Fragment 可以使用 <code translate="no" dir="ltr">FragmentManager</code> 将结果发送到其父级 Fragment。</figcaption>
+</figure>
+
+<p>子级 Fragment 在其 <code translate="no" dir="ltr">FragmentManager</code> 上设置结果。然后，当父级 Fragment 为 <code translate="no" dir="ltr">STARTED</code> 时便会收到结果：</p>
+
+<div>
+<devsite-selector scope="auto" active="java" ready=""><devsite-tabs data-is-tablist="" role="tablist" connected=""><div class="devsite-tabs-wrapper"><tab aria-selected="false" aria-controls="tabpanel-kotlin" tab="kotlin" id="kotlin" role="tab"><a id="aria-tab-kotlin" role="button" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#kotlin">Kotlin</a></tab><tab aria-selected="true" aria-controls="tabpanel-java" tab="java" id="java" active="" role="tab"><a id="aria-tab-java" role="button" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#java" aria-expanded="true">Java</a></tab><tab overflow-tab="" role="tab" hidden=""><a aria-label="More Options" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn#" class="devsite-icon devsite-icon-arrow-drop-down">更多</a><div class="devsite-tabs-overflow-menu" scrollbars="" hidden=""></div></tab></div></devsite-tabs><section tab="kotlin" role="tabpanel" aria-labelledby="aria-tab-kotlin" tabindex="0" id="tabpanel-kotlin">
+<devsite-code data-copy-event-label=""><pre class="lang-kotlin" translate="no" dir="ltr" is-upgraded=""><span class="pln">button</span><span class="pun">.</span><span class="pln">setOnClickListener </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">val</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> </span><span class="str">"result"</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="com">// Use the Kotlin extension in the fragment-ktx artifact</span><span class="pln"><br>&nbsp; &nbsp; setResult</span><span class="pun">(</span><span class="str">"requestKey"</span><span class="pun">,</span><span class="pln"> bundleOf</span><span class="pun">(</span><span class="str">"bundleKey"</span><span class="pln"> to result</span><span class="pun">))</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br></span></pre></devsite-code>
+</section><section tab="java" role="tabpanel" aria-labelledby="aria-tab-java" tabindex="0" id="tabpanel-java" active="">
+<devsite-code data-copy-event-label=""><pre class="lang-java" translate="no" dir="ltr" is-upgraded=""><span class="pln">button</span><span class="pun">.</span><span class="pln">setOnClickListener</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">View</span><span class="pun">.</span><span class="typ">OnClickListener</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="lit">@Override</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onClick</span><span class="pun">(</span><span class="typ">View</span><span class="pln"> v</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ">Bundle</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; result</span><span class="pun">.</span><span class="pln">putString</span><span class="pun">(</span><span class="str">"bundleKey"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"result"</span><span class="pun">);</span><span class="pln"><br><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// The child fragment needs to still set the result on its parent fragment manager</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; getParentFragmentManager</span><span class="pun">().</span><span class="pln">setFragmentResult</span><span class="pun">(</span><span class="str">"requestKey"</span><span class="pun">,</span><span class="pln"> result</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">});</span><span class="pln"><br></span></pre></devsite-code>
+</section></devsite-selector>
+</div>
+
+<h2 id="test" data-text="测试 Fragment 结果" tabindex="-1">测试 Fragment 结果</h2>
+
+<p>使用 <a href="https://developer.android.com/reference/androidx/fragment/app/testing/FragmentScenario?hl=zh-cn"><code translate="no" dir="ltr">FragmentScenario</code></a> 测试对 <code translate="no" dir="ltr">setFragmentResult()</code> 和 <code translate="no" dir="ltr">setFragmentResultListener()</code> 的调用。使用 <a href="https://developer.android.com/reference/androidx/fragment/app/testing/package-summary?hl=zh-cn#launchfragmentincontainer"><code translate="no" dir="ltr">launchFragmentInContainer</code></a> 或 <a href="https://developer.android.com/reference/androidx/fragment/app/testing/package-summary?hl=zh-cn#top-level-functions"><code translate="no" dir="ltr">launchFragment</code></a> 为被测 Fragment 创建场景，然后手动调用目前未测试的方法。</p>
+
+<p>如需测试 <code translate="no" dir="ltr">setResultListener()</code>，请使用调用 <code translate="no" dir="ltr">setResultListener()</code> 的 Fragment 创建一个场景。接下来，直接调用 <code translate="no" dir="ltr">setResult()</code> 并验证结果：</p>
+<devsite-code data-copy-event-label=""><pre class="lang-kotlin" translate="no" dir="ltr" is-upgraded=""><code dir="ltr"><span class="lit">@Test</span><span class="pln"><br></span><span class="kwd">fun</span><span class="pln"> testFragmentResultListener</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">val</span><span class="pln"> scenario </span><span class="pun">=</span><span class="pln"> launchFragmentInContainer</span><span class="pun">&lt;</span><span class="typ">ResultListenerFragment</span><span class="pun">&gt;()</span><span class="pln"><br>&nbsp; &nbsp; scenario</span><span class="pun">.</span><span class="pln">onFragment </span><span class="pun">{</span><span class="pln"> fragment </span><span class="pun">-&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">val</span><span class="pln"> expectedResult </span><span class="pun">=</span><span class="pln"> </span><span class="str">"result"</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; fragment</span><span class="pun">.</span><span class="pln">parentFragmentManagager</span><span class="pun">.</span><span class="pln">setResult</span><span class="pun">(</span><span class="str">"requestKey"</span><span class="pun">,</span><span class="pln"> bundleOf</span><span class="pun">(</span><span class="str">"bundleKey"</span><span class="pln"> to expectedResult</span><span class="pun">))</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; assertThat</span><span class="pun">(</span><span class="pln">fragment</span><span class="pun">.</span><span class="pln">result</span><span class="pun">).</span><span class="pln">isEqualTo</span><span class="pun">(</span><span class="pln">expectedResult</span><span class="pun">)</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ResultListenerFragment</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="typ">Fragment</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">var</span><span class="pln"> result </span><span class="pun">:</span><span class="pln"> </span><span class="typ">String</span><span class="pun">?</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="lit">null</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">override</span><span class="pln"> </span><span class="kwd">fun</span><span class="pln"> onCreate</span><span class="pun">(</span><span class="pln">savedInstanceState</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pun">?)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">onCreate</span><span class="pun">(</span><span class="pln">savedInstanceState</span><span class="pun">)</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Use the Kotlin extension in the fragment-ktx artifact</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; setResultListener</span><span class="pun">(</span><span class="str">"requestKey"</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> key</span><span class="pun">,</span><span class="pln"> bundle </span><span class="pun">-&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; result </span><span class="pun">=</span><span class="pln"> bundle</span><span class="pun">.</span><span class="pln">getString</span><span class="pun">(</span><span class="str">"bundleKey"</span><span class="pun">)</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br></span></code></pre></devsite-code>
+<p>如需测试 <code translate="no" dir="ltr">setResult()</code>，请使用调用 <code translate="no" dir="ltr">setResult()</code> 的 Fragment 创建一个场景。接下来，直接调用 <code translate="no" dir="ltr">setResultListener()</code> 并验证结果：</p>
+<devsite-code data-copy-event-label=""><pre class="lang-kotlin" translate="no" dir="ltr" is-upgraded=""><code dir="ltr"><span class="lit">@Test</span><span class="pln"><br></span><span class="kwd">fun</span><span class="pln"> testFragmentResult</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">val</span><span class="pln"> scenario </span><span class="pun">=</span><span class="pln"> launchFragmentInContainer</span><span class="pun">&lt;</span><span class="typ">ResultFragment</span><span class="pun">&gt;()</span><span class="pln"><br>&nbsp; &nbsp; lateinit </span><span class="kwd">var</span><span class="pln"> actualResult</span><span class="pun">:</span><span class="pln"> </span><span class="typ">String</span><span class="pun">?</span><span class="pln"><br>&nbsp; &nbsp; scenario</span><span class="pun">.</span><span class="pln">onFragment </span><span class="pun">{</span><span class="pln"> fragment </span><span class="pun">-&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; fragment</span><span class="pun">.</span><span class="pln">parentFragmentManagager</span><span class="pun">.</span><span class="pln">setResultListener</span><span class="pun">(</span><span class="str">"requestKey"</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> key</span><span class="pun">,</span><span class="pln"> bundle </span><span class="pun">-&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; actualResult </span><span class="pun">=</span><span class="pln"> bundle</span><span class="pun">.</span><span class="pln">getString</span><span class="pun">(</span><span class="str">"bundleKey"</span><span class="pun">)</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; &nbsp; onView</span><span class="pun">(</span><span class="pln">withId</span><span class="pun">(</span><span class="pln">R</span><span class="pun">.</span><span class="pln">id</span><span class="pun">.</span><span class="pln">result</span><span class="lit">_</span><span class="pln">button</span><span class="pun">)).</span><span class="pln">perform</span><span class="pun">(</span><span class="pln">click</span><span class="pun">())</span><span class="pln"><br>&nbsp; &nbsp; assertThat</span><span class="pun">(</span><span class="pln">actualResult</span><span class="pun">).</span><span class="pln">isEqualTo</span><span class="pun">(</span><span class="str">"result"</span><span class="pun">)</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ResultFragment</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="typ">Fragment</span><span class="pun">(</span><span class="pln">R</span><span class="pun">.</span><span class="pln">layout</span><span class="pun">.</span><span class="pln">fragment</span><span class="lit">_</span><span class="pln">result</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">override</span><span class="pln"> </span><span class="kwd">fun</span><span class="pln"> onViewCreated</span><span class="pun">(</span><span class="pln">view</span><span class="pun">:</span><span class="pln"> </span><span class="typ">View</span><span class="pun">,</span><span class="pln"> savedInstanceState</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Bundle</span><span class="pun">?)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; view</span><span class="pun">.</span><span class="pln">findViewById</span><span class="pun">(</span><span class="pln">R</span><span class="pun">.</span><span class="pln">id</span><span class="pun">.</span><span class="pln">result</span><span class="lit">_</span><span class="pln">button</span><span class="pun">).</span><span class="pln">setOnClickListener </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">val</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> </span><span class="str">"result"</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Use the Kotlin extension in the fragment-ktx artifact</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; setResult</span><span class="pun">(</span><span class="str">"requestKey"</span><span class="pun">,</span><span class="pln"> bundleOf</span><span class="pun">(</span><span class="str">"bundleKey"</span><span class="pln"> to result</span><span class="pun">))</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br></span></code></pre></devsite-code>
+
+
+  
+
+  
+</div>
+
+  
+
+  
+    
+      <devsite-recommendations display="in-page" hidden="" yield="">
+      </devsite-recommendations>
+    
+    
+      
+    <devsite-thumb-rating position="footer"><div class="devsite-thumb-rating" role="form" aria-labelledby="devsite-thumb-label-footer"><div class="devsite-thumb-label" id="devsite-thumb-label-footer">该内容对您有帮助吗？</div><div class="devsite-thumbs"><button class="devsite-thumb devsite-thumb-up" data-title="有帮助" aria-label="有帮助"><svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21,7h-6.31l0.95-4.57l0.03-0.32c0-0.41-0.17-0.79-0.44-1.06L14.17,0c0,0-7.09,6.85-7.17,7H2v13h16 c0.83,0,1.54-0.5,1.84-1.22l3.02-7.05C22.95,11.5,23,11.26,23,11V9C23,7.9,22.1,7,21,7z M7,18H4V9h3V18z M21,11l-3,7H9V8l4.34-4.34 L12,9h9V11z"></path></svg></button><button class="devsite-thumb devsite-thumb-down" data-title="没有帮助" aria-label="没有帮助"><svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3,17h6.31l-0.95,4.57l-0.03,0.32c0,0.41,0.17,0.79,0.44,1.06L9.83,24c0,0,7.09-6.85,7.17-7h5V4H6 C5.17,4,4.46,4.5,4.16,5.22l-3.02,7.05C1.05,12.5,1,12.74,1,13v2C1,16.1,1.9,17,3,17z M17,6h3v9h-3V6z M3,13l3-7h9v10l-4.34,4.34 L12,15H3V13z"></path></svg></button></div></div></devsite-thumb-rating>
+  
+       
+    
+    
+      
+    
+  
+
+  
+  
+</article>
+
+
+<devsite-content-footer class="nocontent">
+  <p>本页面上的内容和代码示例受<a href="https://developer.android.com/license?hl=zh-cn">内容许可</a>部分所述许可的限制。Java 和 OpenJDK 是 Oracle 和/或其关联公司的注册商标。</p>
+  <p>最后更新时间 (UTC)：2020-05-15。</p>
+</devsite-content-footer>
+
+
+<devsite-notification>
+</devsite-notification>
+
+
+  
+<div class="devsite-content-data">
+  <template class="devsite-thumb-rating-down-categories"></template>
+  <template class="devsite-thumb-rating-up-categories"></template>
+  
+</div>
+            
+          </devsite-content>
+        </main>
+        <devsite-footer-promos class="devsite-footer">
+          
+            
+
+<nav class="devsite-footer-promos nocontent" aria-label="促销活动">
+  <ul class="devsite-footer-promos-list">
+    
+    <li class="devsite-footer-promo">
+      <a href="https://x.com/AndroidDev" class="devsite-footer-promo-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer X Promo">
+        
+        
+          
+            <img class="devsite-footer-promo-icon" src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/logo-x.svg" loading="lazy" alt="X">
+          
+        
+        X
+      </a>
+      <div class="devsite-footer-promo-description">在 X 上关注 @AndroidDev</div>
+    </li>
+    
+    <li class="devsite-footer-promo">
+      <a href="https://www.youtube.com/user/androiddevelopers?hl=zh-cn" class="devsite-footer-promo-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer YouTube Promo">
+        
+        
+          
+            <img class="devsite-footer-promo-icon" src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/youtube_48dp.png" loading="lazy" alt="YouTube">
+          
+        
+        YouTube
+      </a>
+      <div class="devsite-footer-promo-description">在 YouTube 上访问“Android Developers”频道</div>
+    </li>
+    
+    <li class="devsite-footer-promo">
+      <a href="https://www.linkedin.com/showcase/androiddev" class="devsite-footer-promo-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer LinkedIn Promo">
+        
+        
+          
+            <img class="devsite-footer-promo-icon" src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/logo-linkedin.svg" loading="lazy" alt="LinkedIn">
+          
+        
+        LinkedIn
+      </a>
+      <div class="devsite-footer-promo-description">在 LinkedIn 上与 Android 开发者社区交流沟通</div>
+    </li>
+    
+  </ul>
+</nav>
+
+          
+        </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+          
+            
+<nav class="devsite-footer-linkboxes nocontent" aria-label="页脚链接">
+  
+  <ul class="devsite-footer-linkboxes-list">
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">关于 Android</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://www.android.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 1)">
+            
+          
+            Android
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://www.android.com/enterprise/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 2)">
+            
+          
+            适用于企业的 Android
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://www.android.com/security-center/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 3)">
+            
+          
+            安全
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://source.android.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 4)">
+            
+          
+            源代码
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/news" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 5)">
+            
+          
+            新闻
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://android-developers.googleblog.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 6)">
+            
+          
+            博客
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/podcasts" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 7)">
+            
+              
+              
+            
+          
+            播客
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">发现</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/games" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 1)">
+            
+          
+            游戏
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/ml" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 2)">
+            
+          
+            机器学习
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/privacy" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 3)">
+            
+          
+            隐私权政策
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/training/connectivity/5g" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 4)">
+            
+              
+              
+            
+          
+            5G
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Android 设备</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/large-screens" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 1)">
+            
+          
+            大屏幕
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/wear" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 2)">
+            
+          
+            Wear OS
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/chrome-os" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 3)">
+            
+          
+            ChromeOS 设备
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/cars" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 4)">
+            
+          
+            Android for Cars
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/things" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 5)">
+            
+          
+            Android Things
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/tv" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 6)">
+            
+              
+              
+            
+          
+            Android TV
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">版本</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/13" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 1)">
+            
+          
+            Android 13
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/12" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 2)">
+            
+          
+            Android 12
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/11" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 3)">
+            
+          
+            Android 11
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/10" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 4)">
+            
+          
+            Android 10
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/pie" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 5)">
+            
+          
+            Pie
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/oreo" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 6)">
+            
+          
+            Oreo
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/nougat" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 7)">
+            
+              
+              
+            
+          
+            Nougat
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">文档和下载</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/studio/intro" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 1)">
+            
+          
+            Android Studio 指南
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/guide" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 2)">
+            
+          
+            开发者指南
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/reference" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 3)">
+            
+          
+            API 参考
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/studio" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 4)">
+            
+          
+            下载 Studio
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/ndk" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 5)">
+            
+              
+              
+            
+          
+            Android NDK
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">支持</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://issuetracker.google.com/issues/new?component=190923&amp;template=841312" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 1)">
+            
+          
+            报告平台错误
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://issuetracker.google.com/issues/new?component=192697" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 2)">
+            
+          
+            报告文档错误
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://support.google.com/googleplay/android-developer" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 3)">
+            
+          
+            Google Play support
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://g.co/userresearch/androiddeveloperfooter" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 4)">
+            
+              
+              
+            
+          
+            参加调查研究
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+  </ul>
+  
+</nav>
+          
+        </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+          
+            
+
+<div class="devsite-footer-utility nocontent">
+  
+  
+  <nav class="devsite-footer-sites" aria-label="其他 Google Developers 网站">
+    <a href="https://developers.google.com/?hl=zh-cn" class="devsite-footer-sites-logo-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link">
+      <picture>
+        <source srcset="https://www.gstatic.com/devrel-devsite/prod/vb1ced391297bc14a319144801f3973a5566f797b5e6e07559760dc67c81bd3d3/android/images/lockup-google-for-developers-dark-theme.svg" media="(prefers-color-scheme: none)" class="devsite-dark-theme" loading="lazy" alt="Google Developers">
+        <img class="devsite-footer-sites-logo" src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/lockup-google-for-developers.svg" loading="lazy" alt="Google Developers">
+      </picture>
+    </a>
+    <ul class="devsite-footer-sites-list">
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://developer.android.com/?hl=zh-cn" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Android Link">
+          Android
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://developer.chrome.com/home?hl=zh-cn" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Chrome Link">
+          Chrome
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://firebase.google.com/?hl=zh-cn" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Firebase Link">
+          Firebase
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://cloud.google.com/?hl=zh-cn" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Google Cloud Platform Link">
+          Google Cloud Platform
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://developers.google.com/products/?hl=zh-cn" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer All products Link">
+          所有产品
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+  
+
+  
+  <nav class="devsite-footer-utility-links" aria-label="实用程序链接">
+    
+    <ul class="devsite-footer-utility-list">
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event" href="https://policies.google.com/privacy?hl=zh-cn" data-category="Site-Wide Custom Events" data-label="Footer Privacy link">
+          隐私权政策
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event" href="https://developer.android.com/license?hl=zh-cn" data-category="Site-Wide Custom Events" data-label="Footer License link">
+          许可
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event" href="https://developer.android.com/distribute/marketing-tools/brand-guidelines?hl=zh-cn" data-category="Site-Wide Custom Events" data-label="Footer Brand guidelines link">
+          品牌指南
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 devsite-footer-utility-button">
+        
+        <span class="devsite-footer-utility-description">通过电子邮件接收资讯和提示</span>
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event" href="https://developer.android.com/updates?hl=zh-cn" data-category="Site-Wide Custom Events" data-label="Footer Subscribe link">
+          订阅
+        </a>
+        
+      </li>
+      
+    </ul>
+    
+    
+<devsite-language-selector aria-label="选择您的语言偏好设置。"><template shadowrootmode="open"><!---->
+      <button type="button" aria-controls="language-menu" aria-haspopup="true">
+        <svg aria-hidden="true" class="icon-language" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22q-2.05 0-3.875-.788-1.825-.787-3.187-2.15-1.363-1.362-2.15-3.187Q2 14.05 2 12q0-2.075.788-3.887.787-1.813 2.15-3.175Q6.3 3.575 8.125 2.787 9.95 2 12 2q2.075 0 3.887.787 1.813.788 3.175 2.151 1.363 1.362 2.15 3.175Q22 9.925 22 12q0 2.05-.788 3.875-.787 1.825-2.15 3.187-1.362 1.363-3.175 2.15Q14.075 22 12 22Zm0-2.05q.65-.9 1.125-1.875T13.9 16h-3.8q.3 1.1.775 2.075.475.975 1.125 1.875Zm-2.6-.4q-.45-.825-.787-1.713Q8.275 16.95 8.05 16H5.1q.725 1.25 1.812 2.175Q8 19.1 9.4 19.55Zm5.2 0q1.4-.45 2.487-1.375Q18.175 17.25 18.9 16h-2.95q-.225.95-.562 1.837-.338.888-.788 1.713ZM4.25 14h3.4q-.075-.5-.113-.988Q7.5 12.525 7.5 12t.037-1.012q.038-.488.113-.988h-3.4q-.125.5-.188.988Q4 11.475 4 12t.062 1.012q.063.488.188.988Zm5.4 0h4.7q.075-.5.113-.988.037-.487.037-1.012t-.037-1.012q-.038-.488-.113-.988h-4.7q-.075.5-.112.988Q9.5 11.475 9.5 12t.038 1.012q.037.488.112.988Zm6.7 0h3.4q.125-.5.188-.988Q20 12.525 20 12t-.062-1.012q-.063-.488-.188-.988h-3.4q.075.5.112.988.038.487.038 1.012t-.038 1.012q-.037.488-.112.988Zm-.4-6h2.95q-.725-1.25-1.813-2.175Q16 4.9 14.6 4.45q.45.825.788 1.712.337.888.562 1.838ZM10.1 8h3.8q-.3-1.1-.775-2.075Q12.65 4.95 12 4.05q-.65.9-1.125 1.875T10.1 8Zm-5 0h2.95q.225-.95.563-1.838.337-.887.787-1.712Q8 4.9 6.912 5.825 5.825 6.75 5.1 8Z"></path>
+        </svg>
+        <span class="label"><!--?lit$71798476$-->中文 – 简体</span>
+        <svg aria-hidden="true" class="icon-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="m12 15-5-5h10Z"></path>
+        </svg>
+      </button>
+      <div id="language-menu" role="menu" hidden="">
+        <slot></slot>
+      </div></template>
+  <ul role="presentation">
+    
+    
+    <li role="presentation">
+      <a role="menuitem" lang="en" href="https://developer.android.com/training/basics/fragments/pass-data-between">English</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es-419" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=es-419">Español – América Latina</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="id" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=id">Indonesia</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pt-br" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=pt-br">Português – Brasil</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh-cn" aria-current="true" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=zh-cn">中文 – 简体</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ja" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=ja">日本語</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ko" href="https://developer.android.com/training/basics/fragments/pass-data-between?hl=ko">한국어</a>
+    </li>
+    
+  </ul>
+</devsite-language-selector>
+
+  </nav>
+</div>
+          
+        </devsite-footer-utility>
+        <devsite-panel style="height: auto;"></devsite-panel>
+        
+      </section></section>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar type="cookie-notification" data-cookie-notice="2" style="bottom: 0px;">
+</devsite-snackbar>
+    <devsite-tooltip></devsite-tooltip>
+    <devsite-heading-link></devsite-heading-link>
+    <devsite-analytics analytics-iframe="">
+      
+        <script type="application/json" analytics="">[{&#34;dimensions&#34;: {&#34;dimension11&#34;: false, &#34;dimension6&#34;: &#34;zh-cn&#34;, &#34;dimension1&#34;: &#34;Signed In&#34;, &#34;dimension5&#34;: &#34;zh-cn&#34;, &#34;dimension3&#34;: false, &#34;dimension4&#34;: &#34;Android \u5f00\u53d1\u8005&#34;}, &#34;gaid&#34;: &#34;UA-5831155-1&#34;, &#34;metrics&#34;: {&#34;ratings_value&#34;: &#34;metric1&#34;, &#34;ratings_count&#34;: &#34;metric2&#34;}}]</script>
+<script type="application/json" tag-management="">{&#34;ga4&#34;: [], &#34;ga4p&#34;: [], &#34;gtm&#34;: [&#34;GTM-KMSWPCJ&#34;], &#34;parameters&#34;: {&#34;internalUser&#34;: &#34;False&#34;, &#34;language&#34;: {&#34;machineTranslated&#34;: &#34;False&#34;, &#34;requested&#34;: &#34;zh-cn&#34;, &#34;served&#34;: &#34;zh-cn&#34;}, &#34;pageType&#34;: &#34;article&#34;, &#34;projectName&#34;: &#34;Android \u5f00\u53d1\u8005&#34;, &#34;signedIn&#34;: &#34;True&#34;, &#34;tenant&#34;: &#34;android&#34;, &#34;recommendations&#34;: {&#34;sourcePage&#34;: &#34;&#34;, &#34;sourceType&#34;: 0, &#34;sourceRank&#34;: 0, &#34;sourceIdenticalDescriptions&#34;: 0, &#34;sourceTitleWords&#34;: 0, &#34;sourceDescriptionWords&#34;: 0, &#34;experiment&#34;: &#34;&#34;}, &#34;experiment&#34;: {&#34;ids&#34;: &#34;&#34;}}}</script>
+      
+    <iframe sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="./在 Fragment 之间传递数据  _  Android 开发者  _  Android Developers_files/analytics-iframe.html"></iframe></devsite-analytics>
+    
+      <devsite-badger></devsite-badger>
+    
+    
+<android-fully-clickable target="
+        .android-case-study .devsite-landing-row-item,
+        .android-grouped-resources .devsite-landing-row-item,
+        .android-grouped-resources-primary .devsite-landing-row-item,
+        .android-grouped-resources-secondary .devsite-landing-row-item,
+        .android-illustrated-resources-index .devsite-landing-row-item,
+        .android-illustrated-resources-primary .devsite-landing-row-item,
+        .android-illustrated-resources-secondary .devsite-landing-row-item,
+        .android-illustrated-resources-secondary-small .devsite-landing-row-item,
+        .android-illustrated-resources-tertiary .devsite-landing-row-item,
+        .android-illustrated-resources-tertiary-small .devsite-landing-row-item,
+        .android-promo .devsite-landing-row-item,
+        .android-quick-link,
+        .android-samples .devsite-card-wrapper,
+        .fully-clickable" watch=".android-samples, devsite-content"></android-fully-clickable>
+    <script nonce="">
+  
+  (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/prod/vb1ced391297bc14a319144801f3973a5566f797b5e6e07559760dc67c81bd3d3/android/js/app_loader.js', '[3,"zh_cn",null,"/js/devsite_app_module.js","https://www.gstatic.com/devrel-devsite/prod/vb1ced391297bc14a319144801f3973a5566f797b5e6e07559760dc67c81bd3d3","https://www.gstatic.com/devrel-devsite/prod/vb1ced391297bc14a319144801f3973a5566f797b5e6e07559760dc67c81bd3d3/android","https://android-dot-devsite-v2-prod.appspot.com",null,null,["/_pwa/android/manifest.json","https://www.gstatic.com/devrel-devsite/prod/vb1ced391297bc14a319144801f3973a5566f797b5e6e07559760dc67c81bd3d3/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/prod/vb1ced391297bc14a319144801f3973a5566f797b5e6e07559760dc67c81bd3d3/android/images/rebrand/favicon.svg","https://www.gstatic.com/devrel-devsite/prod/vb1ced391297bc14a319144801f3973a5566f797b5e6e07559760dc67c81bd3d3/android/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Google+Sans:400,500,600,700|Google+Sans+Text:400,400italic,500,500italic,600,600italic,700,700italic|Roboto+Mono:400,500,700&display=swap"],1,null,[1,6,8,12,14,17,21,25,40,50,52,63,70,75,76,80,87,91,92,93,97,98,100,101,102,103,104,105,107,108,109,110,111,112,113,115,117,118,120,122,124,125,126,127,129,130,131,132,133,134,135,136,138,140,141,144,147,148,149,150,151,152,154,155,156,157,158,159,161,163,164,165,168,169,170,172,173,179,180,182,183,186,190,191,193,196],"AIzaSyAP-jjEJBzmIyKR4F-3XITp8yM9T1gEEI8","AIzaSyB6xiKGDR5O3Ak2okS4rLkauxGUG7XP0hg","developer.android.com","AIzaSyAQk0fBONSGUqCNznf6Krs82Ap1-NV6J4o","AIzaSyCCxcqdrZ_7QMeLCRY20bh_SXdAYqy70KY",null,null,null,["Cloud__enable_free_trial_server_call","Profiles__enable_profile_collections","Badges__enable_delete_badges","Concierge__enable_pushui","Significatio__enable_experiment_id_caching","Cloud__enable_cloudx_experiment_ids","MiscFeatureFlags__enable_tls_version_for_gaia_calls","Search__enable_page_map","BookNav__enable_tenant_cache_key","Cloud__enable_cloud_dlp_service","Profiles__require_profile_eligibility_for_signin","MiscFeatureFlags__developers_footer_dark_image","Significatio__enable_by_tenant","Search__enable_devsite_serp","AuthorPageInsights__enable_author_page_insights","Experiments__enable_experiments","Profiles__enable_searchable_interests","Localization__enable_locale_redirects","Profiles__enable_profile_notifications_ui","Profiles__enable_awarding_url","MiscFeatureFlags__enable_explain_this_code","Search__enable_dynamic_content_confidential_banner","BookNav__enable_collapsible_book_nav","Profiles__enable_suggested_interests","Search__enable_acl_suggestions","MiscFeatureFlags__enable_keyword_inheritance","Experiments__reqs_query_experiments","Profiles__enable_inferred_interests","MiscFeatureFlags__emergency_css","Profiles__enable_developer_profiles_interests","Badges__enable_hide_badges","Cloud__enable_cloud_facet_chat","Cloud__enable_cloud_shell","Profiles__enable_public_developer_profiles","Rebranding__enable_rebranding","Profiles__enable_developer_profiles_dashboard_recommendations","Profiles__enable_page_saving","Significatio__enable_footprints","MiscFeatureFlags__content_publisher_push_queue","Cloud__enable_cloudx_ping","SignIn__enable_auto_signin_oauth","Search__enable_suggestions_from_borg","Cloud__enable_cloud_shell_fte_user_flow","MiscFeatureFlags__enable_firebase_utm","BookNav__enable_book_nav_filtering","Badges__enable_drag_and_drop_badges","OpenInReplit__enable_replit","ContentExcellence__enable_googler_button","MiscFeatureFlags__enable_project_variables","Profiles__enable_profile_communities","ContentExcellence__enable_verified_date","MiscFeatureFlags__developers_footer_image","Profiles__enable_developer_profiles_callout","Search__enable_faceted_search"],null,null,"AIzaSyBLEMok-5suZ67qRPzx0qUtbnLmyT_kCVE","https://developerscontentserving-pa.googleapis.com","AIzaSyCM4QpTRSqP5qI4Dvjt4OAScIN8sOUlO-k","https://developerscontentsearch-pa.googleapis.com",2,2]')
+  
+</script>
+    <devsite-a11y-announce aria-live="assertive" aria-atomic="true"></devsite-a11y-announce>
+  
+</body></html>
