@@ -1,0 +1,11 @@
+1. idea 1 parrafo              	idea principal
+2. historia de usuario 		encuesta 
+3. mockup / wireframe    	diseño , boceto de la UI
+distribuir parte (Un remix) 
+analiss datos E-R
+
+acceso api 
+3,4 actividades
+algun permiso
+algun curioso como redireccion a algo
+usuario
