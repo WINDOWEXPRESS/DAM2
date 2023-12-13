@@ -1,6 +1,6 @@
 sudo su -                               para ser administrador
 apt install                             instalar app
-usermod -a -G vboxsf big-boss           compatibilidad con WINDOW
+usermod -a -G vboxsf big-boss           compatibilidad con WINDOW 	añadir a un grupo
 echo "Contenido" > nombre.extencion     crear archivo
 cp archivo /url                         copiar un archivo a una ruta
 
