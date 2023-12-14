@@ -27,8 +27,13 @@
     if (count($_POST) == 2) {
         echo "<br>Mi nombre es " . $_POST["nombre"] . " y tengo ". $_POST["anios"] . " años";
     }
-
+	$pasw = "madrid";
     //var_dump($_POST);
-    
+    if (isset($_POST["pass"])) {
+		if ($pw = $_POST["pass"]) {
+			header("Location: index.php");
+			die();
+		}
+    }
     
 ?>
