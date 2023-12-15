@@ -1,4 +1,9 @@
 <?php
+
+require("requere_login.php");
+
+?>
+<?php
 $edad = 18;
 $altura = 195.5;
 $nombre = "David";
@@ -44,3 +49,5 @@ $colores = array("verde","azul","amarillo");
 var_dump($colores);
 
 ?>
+<br>
+<h1><a href="http://localhost/sge/cerrar_sesion.php">Cerrar sesion</a></h1>

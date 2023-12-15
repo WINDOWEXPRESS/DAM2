@@ -28,11 +28,13 @@
 	</body>
 </html>
 <?php
+    session_start();
 
     $account = "madrid@gmail.com";
     $pasw = "madrid";
     if (isset($_POST["pass"])) {
 		if ($pasw == $_POST["pass"] && $account == $_POST["account"]) {
+            $_SESSION["login"] = "ok";
 			header("Location: index.php");
 			die();
 		}
@@ -40,3 +42,5 @@
     echo $_POST["pass"] . $_POST["account"];
 
 ?>
+<br>
+<h1><a href="http://localhost/sge/index.php">Index</a></h1>
