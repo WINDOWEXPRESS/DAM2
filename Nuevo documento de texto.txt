@@ -5,10 +5,6 @@
 
 \\192.168.20.99
 
-4 N pmdm 
-7 N INGLES 
-13 N INGLES
-29 D psp 
-15 N ID		JAVA
-22 N SGE	JS
-1 D AD
+17 E PSP recuperacion C
+23 E Fol
+30 E Fol

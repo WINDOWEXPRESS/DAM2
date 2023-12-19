@@ -1,0 +1,7 @@
+Activity
+	RecyclerView : componente de andrioid
+	|->	establecer forma de presentacion - lineal
+	|->	establece el adpter --- >  Adapter
+					*futuro - tendra observer
+					*ViewHold (pinta la forma)
+					*contenido de datos

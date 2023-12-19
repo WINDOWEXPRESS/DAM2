@@ -11,8 +11,8 @@ public class UDPClientScanner {
         datos.nextLine();
             try {
                 DatagramSocket socket = new DatagramSocket();
-                InetAddress IPAddress = InetAddress.getByName("localhost"); // Dirección del servidor
-                //InetAddress IPAddress = InetAddress.getByName("192.168.20.119"); // Dirección del servidor
+                //InetAddress IPAddress = InetAddress.getByName("localhost"); // Dirección del servidor
+                InetAddress IPAddress = InetAddress.getByName("192.168.20.119"); // Dirección del servidor
                 String sentence;
                 do{
                     byte[] sendData = new byte[1024];
