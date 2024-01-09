@@ -25,7 +25,7 @@ int main(void)
         notaMedia +=  notas[i];
     }
     int meid = strlen(notas);
-    notaMedia = (notaMedia/sizeof(notas));
+    notaMedia = (notaMedia/(sizeof(notas)/8));
     printf("La nota mas alta es : %lf\t",notaMasAlta);
     printf("La nota mas baja es : %lf\t",notaMasBaja);
     printf("La media es : %lf\t",notaMedia);
