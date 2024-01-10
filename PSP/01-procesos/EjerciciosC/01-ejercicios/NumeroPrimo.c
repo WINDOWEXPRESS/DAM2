@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdbool.h>
+<<<<<<< HEAD
 int main(void)
 {   
     
@@ -7,18 +8,31 @@ int main(void)
     int num;
     printf("ingresar un número entero positivo y determine si es un número primo o no.\n");
     scanf("%d",&num);
+=======
+bool isPrimo(int num){
+    if(num <= 1){
+        return false;
+    }
+>>>>>>> refs/remotes/origin/main
     for (size_t i = 2; i < num; i++)
     {
         if(num % i == 0){
-            printf("Numero introducido es no primo.\n");
-            primo = false;
-            break;
+            return false;
         }
     }
+    return true;
+}
+int main(void)
+{   
+    int num;
+    printf("ingresar un número entero positivo y determine si es un número primo o no.\n");
+    scanf("%d",&num);
 
-    if (primo == true)
+    if (isPrimo(num))
     {
         printf("Numero introducido es primo.\n");
+    }else{
+        printf("Numero introducido no es primo.\n");
     }
     
     return 0;

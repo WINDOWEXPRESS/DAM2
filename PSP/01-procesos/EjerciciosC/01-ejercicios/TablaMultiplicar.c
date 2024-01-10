@@ -23,6 +23,7 @@ int main(int argc, char const *argv[])
         child_pids[i] = idHijo = fork();
         if (idHijo == 0)
         {
+ 
             imprimirTabla(i);
             exit(42 + i);
         }
@@ -36,6 +37,5 @@ int main(int argc, char const *argv[])
             }
         }
     }
-
     return 0;
 }
