@@ -1,7 +1,10 @@
-import java.util.concurrent.locks.Lock;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 public class Ascensor implements AscensorInterface, Runnable {
     public static final Object Lock = new Object();
+    private static final int MAX_BYTE = 1024;
     final int TIEMPO_ESPERA = 100;
     final int UN_SEGUNDO = 1000;
     int id = 0;
@@ -9,7 +12,7 @@ public class Ascensor implements AscensorInterface, Runnable {
     int puerto = 0;
     int planta = 0;
     char direccion = ' ';
-
+    DatagramSocket  Socket ;
     @Override
     public synchronized void subir() {
         direccion = 'U';
@@ -36,27 +39,35 @@ public class Ascensor implements AscensorInterface, Runnable {
 
     @Override
     public void run() {
-
+        String informacion;
         while (true) {
+            informacion = String.format("[%02d;%2s;%c]\t", id, getPlanta(), direccion);
             if (direccion == ' ') {
-                esperar();
-            }
-            try {
-                for (int i = TIEMPO_ESPERA; i < UN_SEGUNDO; i += TIEMPO_ESPERA) {
-                    System.out.printf("[%02d;%2s;%c]\t", id, getPlanta(), direccion);
-                    Thread.sleep(TIEMPO_ESPERA);
+                try {
+                    Thread.sleep(UN_SEGUNDO);
+                    enviarInfoUDP(informacion);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
-                if (direccion == 'U') {
-                    planta += 1;
-                } else {
-                    planta -= 1;
+            }else{
+                try {
+                    for (int i = TIEMPO_ESPERA; i < UN_SEGUNDO; i += TIEMPO_ESPERA) {
+                        enviarInfoUDP(informacion);
+                        Thread.sleep(TIEMPO_ESPERA);
+                    }
+                    if (direccion == 'U') {
+                        planta += 1;
+                    } else {
+                        planta -= 1;
+                    }
+                    enviarInfoUDP("DIN!!! Has llegado a la planta "+getPlanta());
+                    direccion = ' ';
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                System.out.println("DIN!!! Has llegado a la planta "+getPlanta());
-            } catch (InterruptedException e) {
 
-                e.printStackTrace();
             }
-            esperar();
         }
 
     }
@@ -68,14 +79,22 @@ public class Ascensor implements AscensorInterface, Runnable {
         this.puerto = puerto;
     }
 
-    // Método para esperar en la línea de salida
-    public void esperar() {
-        synchronized (Ascensor.Lock) {
-            try {
-                Ascensor.Lock.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+    public void enviarInfoUDP(String informacion){
+        try{
+            this.Socket = new DatagramSocket();
+
+            InetAddress ipAddress = InetAddress.getByName(ip);
+            byte[] Data = null;
+            DatagramPacket Packet = null;
+
+                    Data = new byte[MAX_BYTE];
+                    Data = informacion.getBytes();
+                    Packet = new DatagramPacket(Data,Data.length,ipAddress,puerto);
+                    Socket.send(Packet);
+
+            this.Socket.close();
+        }catch(Exception e){
+                System.out.println(e.getMessage());
         }
     }
 }
