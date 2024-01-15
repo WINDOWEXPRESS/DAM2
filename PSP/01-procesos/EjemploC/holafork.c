@@ -11,7 +11,7 @@ int main(void) {
     id_mi_hijo = fork();
     que_pasa_si = fork();
 
-    fprintf(stdout,"Hola soy el proceso %d mi hijo es %d y que pasa es %d\n", getpid(), id_mi_hijo, que_pasa_si);
+    fprintf(stdout,"Hola soy el proceso %d mi hijo es %d y que pasa es %d y mi proceso padre es %d\n", getpid(), id_mi_hijo, que_pasa_si,getppid());
 
     return 0;
 }

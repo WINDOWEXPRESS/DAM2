@@ -1,0 +1,2 @@
+Proceso hijo recibió el número: 0
+Mensaje : El numero 0 al cubo es 0

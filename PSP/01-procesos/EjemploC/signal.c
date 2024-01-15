@@ -19,7 +19,7 @@ int main(int argc, char **argv)
         printf("Soy hijo y espero una señal de mi padre\n");
         printf("mi pid es: %d\n", getpid());
         signal(SIGUSR1, manejador);
-        
+        sleep(11);
         kill(getppid(), SIGUSR2);
     }
     else

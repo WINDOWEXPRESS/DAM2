@@ -29,9 +29,11 @@ int main(int argc, char *argv[])
         fprintf(stderr, "El número de hijos debe ser un entero positivo.\n");
         return 1;
     }
-    pid_t pid;
+
     // Registrar un manejador de señales para SIGINT usando la función signal
     signal(SIGINT, sigint_handler);
+    
+    pid_t pid;    
     for (int i = 0; i < n; i++)
     {
         pid = fork();

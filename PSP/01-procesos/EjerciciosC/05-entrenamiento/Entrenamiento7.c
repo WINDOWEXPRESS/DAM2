@@ -15,13 +15,7 @@ int main(int argc, char const *argv[])
     pid_t pid;
 
     // Crear un pipe
-    if (pipe(pipePadreEscribir) == -1)
-    {
-        perror("pipe");
-        exit(EXIT_FAILURE);
-    }
-    // Crear un pipe
-    if (pipe(pipeHijoEscribir) == -1)
+    if (pipe(pipePadreEscribir) == -1 || pipe(pipeHijoEscribir) == -1)
     {
         perror("pipe");
         exit(EXIT_FAILURE);

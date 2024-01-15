@@ -18,9 +18,9 @@ int main() {
 
     start = clock();  // Guardamos el tiempo de inicio
 
+    sleep(2);
     // Ejecutamos la tarea cuyo tiempo de ejecución queremos medir
     long long result = factorial(num);
-
     end = clock();  // Guardamos el tiempo de finalización
 
     // Calculamos el tiempo de ejecución en segundos
@@ -30,6 +30,7 @@ int main() {
 
     printf("Factorial de %d es %lld\n", num, result);
     printf("Tiempo de ejecución: %f segundos\n", cpu_time_used);
-
+    printf("Tiempo de ejecución start: %f segundos\n", start);
+    printf("Tiempo de ejecución end: %f segundos\n", end);
     return 0;
 }

@@ -37,27 +37,32 @@ int main(int argc, char *argv[])
             sleep(1);
         }
     }
-    else
+    else if (pid > 0)
     { // padre
-
-        // ESpera 5s para  ver si funciona
+        // Espera 5s para ver si funciona
         sleep(5);
+
+        // Argumentos para el programa: el nombre del programa, "SIGUSR1", fork_id y NULL al final
+        char idHijoStr[20]; // Suficientemente grande para contener el número como cadena
+        sprintf(idHijoStr, "%d", pid);
 
         // El nombre del programa a ejecutar
         char *program = "kill";
 
-        char idHijoStr[20]; // Suficientemente grande para contener el número como cadena
-        // snprintf se utiliza para convertir idHijo a una cadena de caracteres (idHijoStr),
-        // que luego se incluye en el array de argumentos.
-        snprintf(idHijoStr, sizeof(idHijoStr), "%d", pid);
-
-        // Argumentos para el programa: el nombre del programa, "SIGINT", fork_id y NULL al final
+        // Argumentos para el programa: el nombre del programa, "SIGUSR1", fork_id y NULL al final
         char *arguments[] = {"kill", "-SIGUSR1", idHijoStr, NULL};
 
         // Llamar a execvp para ejecutar el comando kill con argumentos
         execvp(program, arguments);
+        
         // Si execvp falla, imprimirá un error
         perror("execvp");
+        return 1;
+    }
+    else
+    {
+        // Manejar error al crear el proceso hijo
+        perror("fork");
         return 1;
     }
 

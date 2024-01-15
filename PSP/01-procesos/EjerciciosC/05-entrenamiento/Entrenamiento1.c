@@ -66,7 +66,7 @@ void ordenarNumeros(int *a, int *b, int *c) {
         printf("Número aleatorio: %d\n", numeroAleatorio3_recibido);
 */
         int file_descriptor = open ("salida.txt", O_WRONLY | O_CREAT | O_TRUNC, 0666); 
-        dup2(file_descriptor,stdout);
+        dup2(file_descriptor,STDOUT_FILENO);
         printf("%d < %d < %d\n",numeroAleatorio1_recibido,numeroAleatorio2_recibido,numeroAleatorio3_recibido);
         close(file_descriptor);
         exit(0);
