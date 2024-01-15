@@ -1,19 +1,9 @@
 #include<stdio.h>
 #include<stdbool.h>
-<<<<<<< HEAD
-int main(void)
-{   
-    
-    bool primo = true;
-    int num;
-    printf("ingresar un número entero positivo y determine si es un número primo o no.\n");
-    scanf("%d",&num);
-=======
 bool isPrimo(int num){
     if(num <= 1){
         return false;
     }
->>>>>>> refs/remotes/origin/main
     for (size_t i = 2; i < num; i++)
     {
         if(num % i == 0){

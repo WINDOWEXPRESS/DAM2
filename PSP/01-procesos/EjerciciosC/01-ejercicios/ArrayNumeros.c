@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<string.h>
-
+#define TAMANIO_DOUBLE_BYTE 8
 int main(void)
 {   //declara arrays de notas con 5 de tamanio
     double notas[5]; 
@@ -25,7 +25,7 @@ int main(void)
         notaMedia +=  notas[i];
     }
     int meid = strlen(notas);
-    notaMedia = (notaMedia/(sizeof(notas)/8));
+    notaMedia = (notaMedia/(sizeof(notas)/TAMANIO_DOUBLE_BYTE));
     printf("La nota mas alta es : %lf\t",notaMasAlta);
     printf("La nota mas baja es : %lf\t",notaMasBaja);
     printf("La media es : %lf\t",notaMedia);

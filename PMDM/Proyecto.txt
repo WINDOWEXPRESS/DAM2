@@ -1,6 +1,6 @@
-1. idea 1 parrafo              	idea principal
+﻿1. idea 1 parrafo              	idea principal
 2. historia de usuario 		encuesta 
-3. mockup / wireframe    	dise�o , boceto de la UI
+3. mockup / wireframe    	diseño , boceto de la UI
 distribuir parte (Un remix) 
 analiss datos E-R
 
@@ -9,3 +9,5 @@ acceso api
 algun permiso
 algun curioso como redireccion a algo
 usuario
+
+https://www.youtube.com/watch?v=0x5kmLY16qE
