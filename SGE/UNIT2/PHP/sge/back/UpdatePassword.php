@@ -8,13 +8,13 @@
         $result = $stmt->fetchAll();
 
         if($stmt->rowCount() == 1){
-            header("Location: login.php");
+            header("Location: ../front/login.php");
         }else{
-            header("Location: cambiarContrasenia.php");
+            header("Location: ../front/cambiarContrasenia.php");
         }
         
         print_r($result);
-        
+        $_SESSION["acount"] = $_POST['account'];
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

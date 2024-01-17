@@ -11,3 +11,11 @@ algun curioso como redireccion a algo
 usuario
 
 https://www.youtube.com/watch?v=0x5kmLY16qE
+
+
+
+NOMENCRATURA PARA ID ejem: asdhsad_adssad_ssdsad
+principal_
+lFragment_
+lVMFactory_textV_
+principal_floatingAB_aniadir
