@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 
 public class cliente {
-    public static final int PUERTO = 8880;
+    public static final int PUERTO = 8080;
     private static final int MAX_BYTE = 66535;
     private static final String OUT = "salir";
     public static void main(String[] args) {

@@ -7,7 +7,7 @@ public class UDPServer {
             DatagramSocket socket = new DatagramSocket(9876); // Abre el socket en el puerto 9876
             byte[] receivedData = new byte[1024];
 
-            while(true) {
+            while (true) {
                 DatagramPacket receivedPacket = new DatagramPacket(receivedData, receivedData.length);
                 socket.receive(receivedPacket); // Espera y recibe el paquete
 
@@ -15,7 +15,7 @@ public class UDPServer {
                 String message = new String(receivedPacket.getData(), 0, receivedPacket.getLength());
                 System.out.println("Mensaje recibido: " + message);
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
