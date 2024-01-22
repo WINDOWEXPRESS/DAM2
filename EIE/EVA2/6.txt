@@ -1,20 +1,27 @@
-1. La cuentas contables. el debe (SI ENTRA 80%)
-3. El an·lisis del balance. las ratios.(NO ENTRA)
-5. La rentabilidad de las inversiones.(NO ENTRA)
+Ôªø1.La cuentas contables, el debe (SI ENTRA 80%).
+
+3. El an√°lisis del balance, las ratios. (NO ENTRA)
+
+5. La rentabilidad de las inversiones. (NO ENTRA)
+
 6. Los tributos.
-	Impuesto sobre Sociedades (IS):(SI ENTRA 80%)
+	Impuesto sobre Sociedades (IS): (SI ENTRA 80%)
+
+	[A partir del 1 de enero de 2023 se introduce un tipo de gravamen reducido del 23%
+	para las entidades cuyo importe neto de la cifra de negocios del per√≠odo
+	impositivo inmediato anterior sea inferior a 1 mill√≥n de euros.
+
+	A estos efectos, el importe neto de la cifra de negocios se determinar√° con
+	arreglo a lo dispuesto en los apartados 2 y 3 del art√≠culo 101 de la LIS.
+
+	Las empresas emergentes, de conformidad con la Ley 28/2022, de 21 de diciembre,
+	de fomento del ecosistema de las empresas emergentes, tributar√°n al tipo del 15%
+	en los t√©rminos establecidos en el apartado 1 del art√≠culo 29 de la LIS en el
+	primer per√≠odo impositivo en que, teniendo la condici√≥n de empresa emergente,
+	la base imponible resulte positiva y en los tres siguientes,
+	siempre que mantengan dicha condici√≥n.] NO ENTRA
 
 
-	[A partir del 1 de enero de 2023 se introduce un tipo de gravamen reducido del 23% 
-	para las entidades cuyo importe neto de la cifra de negocios del perÌodo
-	impositivo inmediato anterior sea inferior a 1 millÛn de euros.
 
-	A estos efectos, el importe neto de la cifra de negocios se determinar· con a
-	rreglo a lo dispuesto en los apartados 2 y 3 del artÌculo 101 de la LIS.
 
-	Las empresas emergentes, de conformidad con la Ley 28/2022, de 21 de diciembre, 
-	de fomento del ecosistema de las empresas emergentes, tributar·n al tipo del 15% 
-	en los tÈrminos establecidos en el apartado 1 del artÌculo 29 de la LIS en el 
-	primer perÌodo impositivo en que, teniendo la condiciÛn de empresa emergente, 
-	la base imponible resulte positiva y en los tres siguientes, 
-	siempre que mantengan dicha condiciÛn.]  NO ENTRA
+
