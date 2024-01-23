@@ -1,0 +1,10 @@
+		thing		body/one	where
+some(+)		something	somebody/one	somewhere
+any(-?)		anything	anybody/one	anywhere
+no(+)		nothing		nobody/one	nowhere
+
+SB P.133	4C A
+   P.34		1C
+	
+WB P.30		2A
+   P.31		2C
