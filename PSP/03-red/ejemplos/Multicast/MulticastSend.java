@@ -19,33 +19,34 @@ public class MulticastSend {
 			}
 			Scanner in = new Scanner(System.in);
 			System.out.println("Especifica el nombre del interfaz");
-			String iName = in.nextLine();
+			// String iName = in.nextLine();
+			String iName = "enp0s3";
 			NetworkInterface netIf = NetworkInterface.getByName(iName);
 			System.out.println(netIf);
 
-			String msg = "Hello";
 			int port = 1234;
 
-			InetAddress mcastaddr = InetAddress.getByName("230.0.0.0");
+			InetAddress mcastaddr = InetAddress.getByName("230.0.0.1");
 			InetSocketAddress group = new InetSocketAddress(mcastaddr, port);
 			MulticastSocket s = new MulticastSocket(port);
 
 			s.joinGroup(group, netIf);
 
-			/*
-			 * byte[] msgBytes = msg.getBytes(); DatagramPacket hi = new
-			 * DatagramPacket(msgBytes, msgBytes.length, group); s.send(hi);
-			 */
+			String msg = "Hello desde ordenador 4";
+			byte[] msgBytes = msg.getBytes();
+			DatagramPacket hi = new DatagramPacket(msgBytes, msgBytes.length, group);
+			s.send(hi);
 
 			// get their responses!
-			byte[] buf = new byte[1000];
-			DatagramPacket recv = new DatagramPacket(buf, buf.length);
-			s.receive(recv);
 
-			System.out.println(new String(recv.getData(), 0, recv.getLength()));
+			// byte[] buf = new byte[1000];
+			// DatagramPacket recv = new DatagramPacket(buf, buf.length);
+			// s.receive(recv);
 
-			// OK, I'm done talking - leave the group...
-			s.leaveGroup(group, netIf);
+			// System.out.println(new String(recv.getData(), 0, recv.getLength()));
+
+			// // OK, I'm done talking - leave the group...
+			// s.leaveGroup(group, netIf);
 
 		} catch (IOException e) {
 			e.printStackTrace();
