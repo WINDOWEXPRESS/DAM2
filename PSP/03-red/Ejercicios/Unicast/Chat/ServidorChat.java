@@ -4,32 +4,38 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketException;
 import java.util.Scanner;
 
 public class ServidorChat {
     private static final int MAX_BYTE = 66535;
-    public static final int NUMERO_PARAMETRO = 1;
-    private static final String OUT = "salir";
-    private String ip;
+
+    private DatagramSocket serverSocket;
+    private DatagramPacket paqRecibido;
+    private InetAddress ipOrigen;
+    private DatagramPacket paqEnviado;
     private int puerto;
-    private String mensaje;
-    private static Scanner scanner;
+
+    public ServidorChat(int puerto ){
+        try {
+            serverSocket = new DatagramSocket(puerto);
+        } catch (SocketException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
     public void enviarUDP() {
 
         try {
-            InetAddress ipAddress = InetAddress.getByName(ip);
-            DatagramSocket enviarSocket = new DatagramSocket();
-            byte[] datosParaEnviar = null;
-            DatagramPacket enviarPaquete = null;
+            System.out.println("Mensaje para enviar : ");
 
-            System.out.println("Mensaje para enviar: ");
-            mensaje = scanner.nextLine();
-            datosParaEnviar = new byte[MAX_BYTE];
-            datosParaEnviar = mensaje.getBytes();
-            enviarPaquete = new DatagramPacket(datosParaEnviar, datosParaEnviar.length, ipAddress,
-                    puerto);
-            enviarSocket.send(enviarPaquete);
+            Scanner scanner = new Scanner(System.in);
+            String mensaje = scanner.nextLine();
+            byte[] datos = mensaje.getBytes();
+
+            DatagramPacket paqEnviado = new DatagramPacket(datos, datos.length, ipOrigen, puerto);
+            serverSocket.send(paqEnviado);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -37,18 +43,20 @@ public class ServidorChat {
 
     }
 
-    public void recibirUDP(int puerto) {
+    public void recibirUDP() {
         try {
-            DatagramSocket rSocket = new DatagramSocket(puerto);
-            byte[] rData = null;
-            DatagramPacket rPacket = null;
-            mensaje = "";
+            byte[] datosRecibidos = new byte[MAX_BYTE];
+            //RECIBO DATAGRAMA
+            paqRecibido = new DatagramPacket(datosRecibidos, datosRecibidos.length);
+            serverSocket.receive(paqRecibido);
 
-            rData = new byte[MAX_BYTE];
-            rPacket = new DatagramPacket(rData, rData.length);
-            rSocket.receive(rPacket);
+            //DIRECCION ORIGEN
+            ipOrigen = paqRecibido .getAddress();
+            puerto = paqRecibido .getPort();
+            
+            System.out.println("\tOrigen: " + ipOrigen + ":" + puerto);
             System.out.println(
-                    "Mensaje recibido : " + new String(rPacket.getData(), 0, rPacket.getLength()));
+                    "\tMensaje recibido : " + new String(paqRecibido .getData(), 0, paqRecibido .getLength()));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -56,44 +64,10 @@ public class ServidorChat {
     }
 
     public static void main(String[] args) {
-
-        if (args.length != 1) {
-            System.err.println("Error falta parámetro: <PUERTO>");
-        } else {
-            try {
-                final int PUERTO = Integer.parseInt(args[NUMERO_PARAMETRO - 1]);
-                DatagramSocket socketRecibir = new DatagramSocket(PUERTO);
-                DatagramPacket packetRecibir = null;
-                byte[] dataRecibir = new byte[MAX_BYTE];
-
-                DatagramSocket socketEnviar = new DatagramSocket();
-                DatagramPacket packetEnviar = null;
-                byte[] dataEnviar = new byte[MAX_BYTE];
-                InetAddress ipAddress = null;
-
-                Scanner sc = new Scanner(System.in);
-                String mensaje = "";
-                while (true) {
-                    packetRecibir = new DatagramPacket(dataRecibir, dataRecibir.length);
-                    socketRecibir.receive(packetRecibir);
-                    System.out.println(
-                            "Mensaje recibido : " + new String(packetRecibir.getData(), 0, packetRecibir.getLength()));
-
-                    System.out.println("Mensaje para enviar: ");
-                    mensaje = sc.nextLine();
-
-                    ipAddress = InetAddress.getByName(packetRecibir.getAddress().getHostAddress());
-                    dataEnviar = mensaje.getBytes();
-                    packetEnviar = new DatagramPacket(dataEnviar, dataEnviar.length, ipAddress,
-                            PUERTO);
-                    socketEnviar.send(packetEnviar);
-                }
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-
+        ServidorChat servidorChat = new ServidorChat(8888);
+        while (true) {
+            servidorChat.recibirUDP();
+            servidorChat.enviarUDP();
         }
-
     }
-
 }

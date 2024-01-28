@@ -4,39 +4,41 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class ClienteChat {
     // Ocupa cliente este puerto para enviar
     private static final int MAX_BYTE = 66535;
-    private static final String OUT = "salir";
-    private String ip;
+    private InetAddress ipEnviar;
     private int puerto;
     private String mensaje;
-    private static Scanner scanner;
+    private DatagramSocket clientSocket;
+    private byte[] datosParaEnviar;
 
     public ClienteChat(String ip, int puerto) {
-        this.ip = ip;
+        try {
+            this.ipEnviar = InetAddress.getByName(ip);
+            this.clientSocket = new DatagramSocket();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         this.puerto = puerto;
-        mensaje = "";
-        scanner = new Scanner(System.in);
+        this.mensaje = "";
     }
 
     public void enviarUDP() {
-
         try {
-            InetAddress ipAddress = InetAddress.getByName(ip);
-            DatagramSocket enviarSocket = new DatagramSocket();
-            byte[] datosParaEnviar = null;
-            DatagramPacket enviarPaquete = null;
-
+             // INTRODUCIR DATOS POR TECLADO
             System.out.println("Mensaje para enviar: ");
+            Scanner scanner = new Scanner(System.in);
             mensaje = scanner.nextLine();
-            datosParaEnviar = new byte[MAX_BYTE];
             datosParaEnviar = mensaje.getBytes();
-            enviarPaquete = new DatagramPacket(datosParaEnviar, datosParaEnviar.length, ipAddress,
-                    puerto);
-            enviarSocket.send(enviarPaquete);
+
+            // ENVIANDO DATAGRAMA AL SERVIDOR
+            DatagramPacket enviarPaquete = new DatagramPacket(datosParaEnviar, datosParaEnviar.length, ipEnviar, puerto);
+            clientSocket.send(enviarPaquete);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -44,22 +46,24 @@ public class ClienteChat {
 
     }
 
-    public void recibirUDP(int puerto) {
+    public void recibirUDP() {
         try {
-            DatagramSocket rSocket = new DatagramSocket(puerto);
-            byte[] rData = null;
-            DatagramPacket rPacket = null;
-            mensaje = "";
+            byte[] datosRecibidos = new byte[MAX_BYTE];
+            DatagramPacket recibirPaquete = new DatagramPacket(datosRecibidos, datosRecibidos.length);
+            clientSocket.receive(recibirPaquete);
 
-            rData = new byte[MAX_BYTE];
-            rPacket = new DatagramPacket(rData, rData.length);
-            rSocket.receive(rPacket);
-            System.out.println(
-                    "Mensaje recibido : " + new String(rPacket.getData(), 0, rPacket.getLength()));
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Mensaje recibido : " + new String(recibirPaquete.getData(), 0, recibirPaquete.getLength()));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
+    public static void main(String[] args) {
+        ClienteChat clienteChat = new ClienteChat("localhost",8888);
+        while (true) {
+            clienteChat.enviarUDP();
+            clienteChat.recibirUDP();
+
+        }
+    }
 }
