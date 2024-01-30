@@ -5,8 +5,7 @@
 
 \\192.168.20.99
 
-17 E PSP recuperacion C
-23 E Fol
-30 E Fol
-
-25 E PRESENTAR PROYECTO
+12 F gramatica vocabulario y reading
+13 F writting y listening
+19-20 F speaking
+26-29 F examen PSP PMDM

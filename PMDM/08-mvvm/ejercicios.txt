@@ -1,0 +1,15 @@
+﻿pares o nones
+o par  o nones
+[numero]
+[jugar]
+con mvvm 
+
+devuelve el resultado de la suma de numero de jugador y la maquina  con un objeto
+
+
+
+
+
+
+
+recycle con Viewmodel
