@@ -16,7 +16,7 @@ public class ServidorChat {
     private DatagramPacket paqEnviado;
     private int puerto;
 
-    public ServidorChat(int puerto ){
+    public ServidorChat(int puerto) {
         try {
             serverSocket = new DatagramSocket(puerto);
         } catch (SocketException e) {
@@ -28,13 +28,13 @@ public class ServidorChat {
     public void enviarUDP() {
 
         try {
-            System.out.println("Mensaje para enviar : ");
+            System.out.print("Mensaje para enviar : ");
 
             Scanner scanner = new Scanner(System.in);
             String mensaje = scanner.nextLine();
             byte[] datos = mensaje.getBytes();
 
-            DatagramPacket paqEnviado = new DatagramPacket(datos, datos.length, ipOrigen, puerto);
+            paqEnviado = new DatagramPacket(datos, datos.length, ipOrigen, puerto);
             serverSocket.send(paqEnviado);
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -46,17 +46,17 @@ public class ServidorChat {
     public void recibirUDP() {
         try {
             byte[] datosRecibidos = new byte[MAX_BYTE];
-            //RECIBO DATAGRAMA
+            // RECIBO DATAGRAMA
             paqRecibido = new DatagramPacket(datosRecibidos, datosRecibidos.length);
             serverSocket.receive(paqRecibido);
 
-            //DIRECCION ORIGEN
-            ipOrigen = paqRecibido .getAddress();
-            puerto = paqRecibido .getPort();
-            
-            System.out.println("\tOrigen: " + ipOrigen + ":" + puerto);
+            // DIRECCION ORIGEN
+            ipOrigen = paqRecibido.getAddress();
+            puerto = paqRecibido.getPort();
+
+            System.out.println("Origen: " + ipOrigen + ":" + puerto);
             System.out.println(
-                    "\tMensaje recibido : " + new String(paqRecibido .getData(), 0, paqRecibido .getLength()));
+                    "Mensaje recibido : \n\t" + new String(paqRecibido.getData(), 0, paqRecibido.getLength()));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

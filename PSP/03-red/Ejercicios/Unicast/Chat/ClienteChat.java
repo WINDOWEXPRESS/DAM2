@@ -30,14 +30,15 @@ public class ClienteChat {
 
     public void enviarUDP() {
         try {
-             // INTRODUCIR DATOS POR TECLADO
-            System.out.println("Mensaje para enviar: ");
+            // INTRODUCIR DATOS POR TECLADO
+            System.out.print("Mensaje para enviar: ");
             Scanner scanner = new Scanner(System.in);
             mensaje = scanner.nextLine();
             datosParaEnviar = mensaje.getBytes();
 
             // ENVIANDO DATAGRAMA AL SERVIDOR
-            DatagramPacket enviarPaquete = new DatagramPacket(datosParaEnviar, datosParaEnviar.length, ipEnviar, puerto);
+            DatagramPacket enviarPaquete = new DatagramPacket(datosParaEnviar, datosParaEnviar.length, ipEnviar,
+                    puerto);
             clientSocket.send(enviarPaquete);
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -52,14 +53,15 @@ public class ClienteChat {
             DatagramPacket recibirPaquete = new DatagramPacket(datosRecibidos, datosRecibidos.length);
             clientSocket.receive(recibirPaquete);
 
-            System.out.println("Mensaje recibido : " + new String(recibirPaquete.getData(), 0, recibirPaquete.getLength()));
+            System.out.println(
+                    "Mensaje recibido : " + new String(recibirPaquete.getData(), 0, recibirPaquete.getLength()));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
-        ClienteChat clienteChat = new ClienteChat("localhost",8888);
+        ClienteChat clienteChat = new ClienteChat("localhost", 8888);
         while (true) {
             clienteChat.enviarUDP();
             clienteChat.recibirUDP();
