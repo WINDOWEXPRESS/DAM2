@@ -1,10 +1,12 @@
-package Unicast.Chat;
+package Unicast.ChatEnvioAOtrosClientes;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ServidorChat {
@@ -17,6 +19,8 @@ public class ServidorChat {
     private int puerto;
     private String mensaje;
 
+    private List<DatagramPacket> listaClientes;
+
     public ServidorChat(int puerto) {
         try {
             serverSocket = new DatagramSocket(puerto);
@@ -24,6 +28,7 @@ public class ServidorChat {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        listaClientes = new ArrayList<>();
         mensaje = "inicia el mensaje";
     }
 
@@ -32,19 +37,22 @@ public class ServidorChat {
     }
 
     public void enviarUDP() {
+        for (DatagramPacket datagramPacket : listaClientes) {
+            if (mensaje == new String(datagramPacket.getData(), 0, paqRecibido.getLength()))
+                continue;
 
-        try {
-            System.out.print("Mensaje para enviar : ");
+            try {
+                System.out.println("Mensaje para enviar a cliente: " + datagramPacket.getAddress());
 
-            Scanner scanner = new Scanner(System.in);
-            mensaje = scanner.nextLine();
-            byte[] datos = mensaje.getBytes();
+                byte[] datos = mensaje.getBytes();
 
-            paqEnviado = new DatagramPacket(datos, datos.length, ipOrigen, puerto);
-            serverSocket.send(paqEnviado);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+                paqEnviado = new DatagramPacket(datos, datos.length, datagramPacket.getAddress(),
+                        datagramPacket.getPort());
+                serverSocket.send(paqEnviado);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
 
     }
@@ -61,36 +69,36 @@ public class ServidorChat {
             // DIRECCION ORIGEN
             ipOrigen = paqRecibido.getAddress();
             puerto = paqRecibido.getPort();
-<<<<<<< HEAD
-
-            System.out.println("Origen: " + ipOrigen + ":" + puerto);
-            System.out.println(
-                    "Mensaje recibido : \n\t" + new String(paqRecibido.getData(), 0, paqRecibido.getLength()));
-=======
             mensaje = new String(paqRecibido.getData(), 0, paqRecibido.getLength());
-            System.out.println("\tOrigen: " + ipOrigen + ":" + puerto);
-            System.out.println(
-                    "\tMensaje recibido : " + mensaje);
->>>>>>> 0485c22cd8d6910d59d878fddd807127c0899a0d
+            if (mensaje.equals("inicia conexion")) {
+                aniadirCliente();
+            } else {
+                System.out.println("\tOrigen: " + ipOrigen + ":" + puerto);
+                System.out.println(
+                        "\tMensaje recibido : " + mensaje);
+            }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
+    public void aniadirCliente() {
+        listaClientes.add(paqEnviado);
+    }
+
+    public void borrarCliente() {
+        listaClientes.remove(paqEnviado);
+    }
+
     public static void main(String[] args) {
         ServidorChat servidorChat = new ServidorChat(8888);
-        while (!(servidorChat.getMensaje().equalsIgnoreCase("salir") || servidorChat.getMensaje().isBlank())) {
-            if (servidorChat.getMensaje().equalsIgnoreCase("salir") || servidorChat.getMensaje().isBlank()) {
-                System.out.println("\tAlguien ha salido de chat. ");
-            } else {
-                servidorChat.recibirUDP();
-            }
-            if (servidorChat.getMensaje().equalsIgnoreCase("salir") || servidorChat.getMensaje().isBlank()) {
-                System.out.println("\tAlguien ha salido de chat. ");
-            } else {
-                servidorChat.enviarUDP();
-            }
+        while (true) {
+
+            servidorChat.recibirUDP();
+
+            servidorChat.enviarUDP();
+
         }
     }
 
