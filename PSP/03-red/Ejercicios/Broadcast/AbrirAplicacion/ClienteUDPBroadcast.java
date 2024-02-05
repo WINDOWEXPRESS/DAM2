@@ -1,3 +1,4 @@
+package Broadcast.AbrirAplicacion;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -11,7 +12,7 @@ public class ClienteUDPBroadcast {
 	public static void main(String[] args) {
 		try {
 			DatagramSocket ds = new DatagramSocket();
-			byte buffer[] = "Mensaje enviado con Broadcast Zhouyi\n".getBytes();
+			byte buffer[] = "editor".getBytes();
 			// String ip = "192.168.20.200";
 			String ip = "192.168.1.255";
 			ds.setBroadcast(true);

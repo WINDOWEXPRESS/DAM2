@@ -3,23 +3,24 @@ import java.net.DatagramSocket;
 
 public class UDPServerSocketPorParametro {
     public static void main(String[] args) {
-        if(args.length != 1){
+        if (args.length != 1) {
             System.out.println("Error de parametros!");
-        }else{
+        } else {
             final int SOCKET = Integer.parseInt(args[0]);
             try {
-                DatagramSocket socket = new DatagramSocket(SOCKET); // Abre el socket en el puerto 9876
-                byte[] receivedData = new byte[1024];
+                try (DatagramSocket socket = new DatagramSocket(SOCKET)) {
+                    byte[] receivedData = new byte[1024];
 
-                while(true) {
-                    DatagramPacket receivedPacket = new DatagramPacket(receivedData, receivedData.length);
-                    socket.receive(receivedPacket); // Espera y recibe el paquete
+                    while (true) {
+                        DatagramPacket receivedPacket = new DatagramPacket(receivedData, receivedData.length);
+                        socket.receive(receivedPacket); // Espera y recibe el paquete
 
-                    // Extrae la información del paquete
-                    String message = new String(receivedPacket.getData(), 0, receivedPacket.getLength());
-                    System.out.println("Mensaje recibido: " + message);
+                        // Extrae la información del paquete
+                        String message = new String(receivedPacket.getData(), 0, receivedPacket.getLength());
+                        System.out.println("Mensaje recibido: " + message);
+                    }
                 }
-            } catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

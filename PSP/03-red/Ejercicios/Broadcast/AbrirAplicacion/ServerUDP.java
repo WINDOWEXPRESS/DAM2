@@ -1,3 +1,5 @@
+package Broadcast.AbrirAplicacion;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -18,9 +20,15 @@ public class ServerUDP {
 							MAX_LENGTH);
 
 					ds.receive(p);
+
 					System.out
 							.println(p.getSocketAddress().toString());
 					System.out.println(new String(p.getData(), 0, p.getLength()));
+
+					// ejecuta el programa si el mensaje es "editor"
+					if (new String(p.getData(), 0, p.getLength()).equals("editor")) {
+						Runtime.getRuntime().exec("notepad.exe");
+					}
 				}
 			}
 		} catch (SocketException e) {

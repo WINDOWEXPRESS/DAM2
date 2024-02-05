@@ -61,17 +61,10 @@ public class ServidorChat {
             // DIRECCION ORIGEN
             ipOrigen = paqRecibido.getAddress();
             puerto = paqRecibido.getPort();
-<<<<<<< HEAD
 
             System.out.println("Origen: " + ipOrigen + ":" + puerto);
             System.out.println(
                     "Mensaje recibido : \n\t" + new String(paqRecibido.getData(), 0, paqRecibido.getLength()));
-=======
-            mensaje = new String(paqRecibido.getData(), 0, paqRecibido.getLength());
-            System.out.println("\tOrigen: " + ipOrigen + ":" + puerto);
-            System.out.println(
-                    "\tMensaje recibido : " + mensaje);
->>>>>>> 0485c22cd8d6910d59d878fddd807127c0899a0d
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
