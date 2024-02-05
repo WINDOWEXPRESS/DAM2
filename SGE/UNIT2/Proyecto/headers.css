@@ -1,0 +1,90 @@
+
+
+/* -----------HEADER-LOGO----------- */
+.header{
+	width:1920px;
+	height:100px;
+	position:fixed;
+	z-index:10;
+	background-color:#b4cca2;
+	}
+.Bienvenido{
+	position:absolute;
+	width:550px;
+	top:25px;
+	left:50px;
+	font-size:40px;
+	color:white;
+	font-family:fantasy;
+}
+.Favicon32x32{
+	width:60px;
+}
+.Dest{
+	font-size:40px;
+	color:white;
+	font-family:fantasy;
+	position:relative;
+	height:0px; 
+	top:25px;
+	left:700px;
+}
+
+/* -----------CURSOR------------ */
+body{
+	cursor:url(../Imagenes/CURSOR/unavailable.cur),auto;
+}
+a{
+	cursor:url(../Imagenes/CURSOR/alt.cur),pointer
+}
+/* -----------GENERAL-CUERPO------------ */
+*{
+	/*border-style:outset;*/
+	box-sizing:border-box;
+	margin:0px;
+	padding:0px;
+	}
+
+/* -----------MENU------------ */
+
+.Menu{
+	position:relative;
+	background-color:#b4cca2;
+	width:680px;
+	height:70px; 
+	text-align:center;
+	font-family:fantasy;
+	float:right;
+	top:30px;
+}
+
+.Nav-Menu nav ul li{
+	position:relative;
+	display:inline-block;
+	width:160px;
+	padding:10px;
+	top:0px;
+}
+.Nav-Menu nav ul li > ul{
+	display:none;
+}
+.Nav-Menu nav ul li:hover ul{
+	position:absolute;
+	display:block;
+	top:40px;
+	left:0;
+}
+.Nav-Menu nav ul li:hover {
+	background-color:#78ad7c;
+	border-radius:5px;
+}
+a {
+	font-size:20px;
+	text-decoration:none;
+	color:white;
+}
+
+
+li > ul {
+	background-color:#b4cca2;
+}
