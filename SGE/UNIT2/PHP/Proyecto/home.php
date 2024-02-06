@@ -40,6 +40,7 @@
     <div class="cuerpo">
       <div class="titulo">
         <h1>Consulta de libros</h1>
+
       </div>
     </div>
   </body>

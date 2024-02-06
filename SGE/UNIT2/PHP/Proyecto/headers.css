@@ -1,42 +1,35 @@
 
 
 /* -----------HEADER-LOGO----------- */
-.header{
-	width:1920px;
-	height:100px;
-	position:fixed;
-	z-index:10;
-	background-color:#b4cca2;
-	}
-.Bienvenido{
-	position:absolute;
-	width:550px;
-	top:25px;
-	left:50px;
-	font-size:40px;
-	color:white;
-	font-family:fantasy;
+.header {
+    width: 100%;
+    max-width: 1920px; /* O cualquier otro valor máximo que desees */
+    height: 100px;
+    position: fixed;
+    z-index: 10;
+    background-color: #b4cca2;
 }
+.Bienvenido, .Dest {
+    font-size: 40px;
+    color: white;
+    font-family: fantasy;
+    position: absolute;
+    top: 25px;
+}
+
+.Bienvenido {
+    left: 50px;
+    width: 550px;
+}
+
+.Dest {
+    left: 700px;
+}
+
 .Favicon32x32{
 	width:60px;
 }
-.Dest{
-	font-size:40px;
-	color:white;
-	font-family:fantasy;
-	position:relative;
-	height:0px; 
-	top:25px;
-	left:700px;
-}
 
-/* -----------CURSOR------------ */
-body{
-	cursor:url(../Imagenes/CURSOR/unavailable.cur),auto;
-}
-a{
-	cursor:url(../Imagenes/CURSOR/alt.cur),pointer
-}
 /* -----------GENERAL-CUERPO------------ */
 *{
 	/*border-style:outset;*/
@@ -87,4 +80,12 @@ a {
 
 li > ul {
 	background-color:#b4cca2;
+}
+
+/* Estilos para el cuerpo */
+.cuerpo {
+    margin-top: 0px; /* Ajusta el valor según tus necesidades */
+    padding: 100px;
+    background-color: #f0f0f0;
+    text-align: center;
 }
