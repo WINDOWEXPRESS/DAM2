@@ -40,7 +40,7 @@ public class ServidorChat {
             mensaje = scanner.nextLine();
             byte[] datos = mensaje.getBytes();
 
-            DatagramPacket paqEnviado = new DatagramPacket(datos, datos.length, ipOrigen, puerto);
+            paqEnviado = new DatagramPacket(datos, datos.length, ipOrigen, puerto);
             serverSocket.send(paqEnviado);
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -61,10 +61,10 @@ public class ServidorChat {
             // DIRECCION ORIGEN
             ipOrigen = paqRecibido.getAddress();
             puerto = paqRecibido.getPort();
-            mensaje = new String(paqRecibido.getData(), 0, paqRecibido.getLength());
-            System.out.println("\tOrigen: " + ipOrigen + ":" + puerto);
+
+            System.out.println("Origen: " + ipOrigen + ":" + puerto);
             System.out.println(
-                    "\tMensaje recibido : " + mensaje);
+                    "Mensaje recibido : \n\t" + new String(paqRecibido.getData(), 0, paqRecibido.getLength()));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

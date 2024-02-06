@@ -20,7 +20,8 @@ public class MulticastSend {
 			Scanner in = new Scanner(System.in);
 			System.out.println("Especifica el nombre del interfaz");
 			// String iName = in.nextLine();
-			String iName = "enp0s3";
+			// String iName = "enp0s3";
+			String iName = "wlan0";
 			NetworkInterface netIf = NetworkInterface.getByName(iName);
 			System.out.println(netIf);
 
@@ -45,8 +46,8 @@ public class MulticastSend {
 
 			// System.out.println(new String(recv.getData(), 0, recv.getLength()));
 
-			// // OK, I'm done talking - leave the group...
-			// s.leaveGroup(group, netIf);
+			// OK, I'm done talking - leave the group...
+			s.leaveGroup(group, netIf);
 
 		} catch (IOException e) {
 			e.printStackTrace();

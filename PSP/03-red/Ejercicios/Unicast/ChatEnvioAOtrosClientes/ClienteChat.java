@@ -6,9 +6,11 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.Scanner;
 
-public class ClienteChat {
+public class ClienteChat implements Runnable {
     // Ocupa cliente este puerto para enviar
     private static final int MAX_BYTE = 66535;
+    public static final String CONEXION = "inicia conexion";
+    public static final String DESCONEXION = "fin conexion";
     private InetAddress ipEnviar;
     private int puerto;
     private String mensaje;
@@ -25,7 +27,7 @@ public class ClienteChat {
             e.printStackTrace();
         }
         this.puerto = puerto;
-        this.mensaje = "inicia conexion";
+        this.mensaje = "";
     }
 
     public String getMensaje() {
@@ -53,14 +55,14 @@ public class ClienteChat {
 
     public void recibirUDP() {
         try {
-            System.out.println(
-                    "Esperando mensaje... ");
             byte[] datosRecibidos = new byte[MAX_BYTE];
             recibirPaquete = new DatagramPacket(datosRecibidos, datosRecibidos.length);
             clientSocket.receive(recibirPaquete);
             mensaje = new String(recibirPaquete.getData(), 0, recibirPaquete.getLength());
+
+            //Imprimir el mensaje 
             System.out.println(
-                    "Mensaje recibido : " + mensaje);
+                    "\tMensaje recibido : " + mensaje);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,9 +70,9 @@ public class ClienteChat {
 
     public void conexion() {
         try {
-            datosParaEnviar = mensaje.getBytes();
+            datosParaEnviar = CONEXION.getBytes();
 
-            // ENVIANDO DATAGRAMA AL SERVIDOR
+            // ENVIANDO DATAGRAMA AL SERVIDOR para conectar
             enviarPaquete = new DatagramPacket(datosParaEnviar, datosParaEnviar.length, ipEnviar,
                     puerto);
             clientSocket.send(enviarPaquete);
@@ -82,7 +84,7 @@ public class ClienteChat {
 
     public void desconexion() {
         try {
-            byte[] datos = "desconexion".getBytes(mensaje);
+            byte[] datos = DESCONEXION.getBytes();
             enviarPaquete = new DatagramPacket(datos, datos.length, ipEnviar, puerto);
             clientSocket.send(enviarPaquete);
         } catch (IOException e) {
@@ -93,20 +95,30 @@ public class ClienteChat {
 
     public static void main(String[] args) {
         ClienteChat clienteChat = new ClienteChat("localhost", 8888);
-        while (!(clienteChat.getMensaje().equalsIgnoreCase("salir") || clienteChat.getMensaje().isBlank())) {
+        clienteChat.conexion();
+        System.out.println("\tHas entrado a chat.");
 
-            clienteChat.conexion();
+        Thread hiloRecibir = new Thread(clienteChat);
+        hiloRecibir.start();
+        try {
+            while (!(clienteChat.getMensaje().equalsIgnoreCase("salir"))) {
 
-            clienteChat.enviarUDP();
+                clienteChat.enviarUDP();
 
-            if (clienteChat.getMensaje().equalsIgnoreCase("salir") || clienteChat.getMensaje().isBlank()) {
-                System.out
-                        .println("\tAlguien ha salido de chat.");
-            } else {
-                clienteChat.recibirUDP();
             }
-
+        } finally {
+            // Cerrar el Scanner al salir
+            System.out.println("\tHas salido del chat.");
+            clienteChat.desconexion();
+            // Cerrar el socket al salir
+            if (clienteChat.clientSocket != null && !clienteChat.clientSocket.isClosed()) {
+                clienteChat.clientSocket.close();
+            }
         }
+    }
 
+    @Override
+    public void run() {
+        recibirUDP();
     }
 }

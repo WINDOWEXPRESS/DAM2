@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class ClienteChat {
@@ -36,8 +34,9 @@ public class ClienteChat {
         try {
             // INTRODUCIR DATOS POR TECLADO
             System.out.print("Mensaje para enviar: ");
-            Scanner scanner = new Scanner(System.in);
-            mensaje = scanner.nextLine();
+            try (Scanner scanner = new Scanner(System.in)) {
+                mensaje = scanner.nextLine();
+            }
             datosParaEnviar = mensaje.getBytes();
 
             // ENVIANDO DATAGRAMA AL SERVIDOR
@@ -45,7 +44,6 @@ public class ClienteChat {
                     puerto);
             clientSocket.send(enviarPaquete);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -58,9 +56,9 @@ public class ClienteChat {
             byte[] datosRecibidos = new byte[MAX_BYTE];
             DatagramPacket recibirPaquete = new DatagramPacket(datosRecibidos, datosRecibidos.length);
             clientSocket.receive(recibirPaquete);
-            mensaje = new String(recibirPaquete.getData(), 0, recibirPaquete.getLength());
+
             System.out.println(
-                    "Mensaje recibido : " + mensaje);
+                    "Mensaje recibido : " + new String(recibirPaquete.getData(), 0, recibirPaquete.getLength()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,20 +66,26 @@ public class ClienteChat {
 
     public static void main(String[] args) {
         ClienteChat clienteChat = new ClienteChat("localhost", 8888);
-        while (!(clienteChat.getMensaje().equalsIgnoreCase("salir") || clienteChat.getMensaje().isBlank())) {
+        while (true) {
+            clienteChat.enviarUDP();
+            clienteChat.recibirUDP();
+            // while (!(clienteChat.getMensaje().equalsIgnoreCase("salir") ||
+            // clienteChat.getMensaje().isBlank())) {
 
-            if (clienteChat.getMensaje().equalsIgnoreCase("salir") || clienteChat.getMensaje().isBlank()) {
-                System.out
-                        .println("\tAlguien ha salido de chat.");
-            } else {
-                clienteChat.enviarUDP();
-            }
-            if (clienteChat.getMensaje().equalsIgnoreCase("salir") || clienteChat.getMensaje().isBlank()) {
-                System.out
-                        .println("\tAlguien ha salido de chat.");
-            } else {
-                clienteChat.recibirUDP();
-            }
+            // if (clienteChat.getMensaje().equalsIgnoreCase("salir") ||
+            // clienteChat.getMensaje().isBlank()) {
+            // System.out
+            // .println("\tAlguien ha salido de chat.");
+            // } else {
+            // clienteChat.enviarUDP();
+            // }
+            // if (clienteChat.getMensaje().equalsIgnoreCase("salir") ||
+            // clienteChat.getMensaje().isBlank()) {
+            // System.out
+            // .println("\tAlguien ha salido de chat.");
+            // } else {
+            // clienteChat.recibirUDP();
+            // }
 
         }
 

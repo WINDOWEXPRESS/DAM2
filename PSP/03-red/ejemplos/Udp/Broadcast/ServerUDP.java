@@ -10,17 +10,18 @@ public class ServerUDP {
 	public static void main(String args[]) {
 
 		try {
-			DatagramSocket ds = new DatagramSocket(8000, InetAddress.getByName("0.0.0.0"));
-			byte[] buffer = new byte[MAX_LENGTH];
-			while (true) {
-				DatagramPacket p = new DatagramPacket(
-						buffer,
-						MAX_LENGTH);
+			try (DatagramSocket ds = new DatagramSocket(8000, InetAddress.getByName("0.0.0.0"))) {
+				byte[] buffer = new byte[MAX_LENGTH];
+				while (true) {
+					DatagramPacket p = new DatagramPacket(
+							buffer,
+							MAX_LENGTH);
 
-				ds.receive(p);
-				System.out
-						.println(p.getSocketAddress().toString() + " " + p.getAddress().toString() + " " + p.getPort());
-				System.out.println(new String(p.getData(), 0, p.getLength()));
+					ds.receive(p);
+					System.out
+							.println(p.getSocketAddress().toString());
+					System.out.println(new String(p.getData(), 0, p.getLength()));
+				}
 			}
 		} catch (SocketException e) {
 			e.printStackTrace();
