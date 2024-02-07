@@ -20,3 +20,7 @@ TCP
 1. MENSAJE SERVER DEVUELVE Nº VOCALES Y CONSONANTES
 2.CONECTA AL SERVER RECIBE UN LISTADO DE FICHEROS EN /VAR/FILES/
 3.CLIENTE SE CONECTA Y RECIBE UN PDF CON LAS REGLAS DEL EXAMEN ENVIO DE BYTES
+
+Si estás trabajando principalmente con tipos de datos primitivos o con cadenas codificadas en UTF-8,
+ DataInputStream podría ser más adecuado. Si estás leyendo principalmente texto línea por línea,
+ entonces BufferedReader podría ser la mejor opción.
