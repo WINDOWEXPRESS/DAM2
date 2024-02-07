@@ -24,3 +24,4 @@ TCP
 Si estás trabajando principalmente con tipos de datos primitivos o con cadenas codificadas en UTF-8,
  DataInputStream podría ser más adecuado. Si estás leyendo principalmente texto línea por línea,
  entonces BufferedReader podría ser la mejor opción.
+ 这是中文例子

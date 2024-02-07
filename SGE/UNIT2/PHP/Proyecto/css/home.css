@@ -1,0 +1,195 @@
+/* -----------HEADER-LOGO----------- */
+.header {
+	width: 100%;
+	max-width: 1920px;
+	/* O cualquier otro valor máximo que desees */
+	height: 100px;
+	position: fixed;
+	z-index: 10;
+	background-color: #b4cca2;
+}
+
+.Bienvenido,
+.Dest {
+	font-size: 40px;
+	color: white;
+	font-family: fantasy;
+	position: absolute;
+	top: 25px;
+}
+
+.Bienvenido {
+	left: 50px;
+	width: 550px;
+}
+.Favicon32x32{
+	float: left;
+	
+}
+.Dest {
+	left: 700px;
+}
+
+.Favicon32x32 {
+	width: 60px;
+}
+
+/* -----------GENERAL-CUERPO------------ */
+* {
+	/*border-style:outset;*/
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+/* -----------MENU------------ */
+
+.Menu {
+	position: relative;
+	background-color: #b4cca2;
+	width: 680px;
+	height: 70px;
+	text-align: center;
+	font-family: fantasy;
+	float: right;
+	top: 30px;
+}
+
+.Nav-Menu nav ul li {
+	position: relative;
+	display: inline-block;
+	width: 160px;
+	padding: 10px;
+	top: 0px;
+}
+
+.Nav-Menu nav ul li>ul {
+	display: none;
+}
+
+.Nav-Menu nav ul li:hover ul {
+	position: absolute;
+	display: block;
+	top: 40px;
+	left: 0;
+}
+
+.Nav-Menu nav ul li:hover {
+	background-color: #78ad7c;
+	border-radius: 5px;
+}
+
+li a {
+	font-size: 20px;
+	text-decoration: none;
+	color: white;
+}
+
+
+li>ul {
+	background-color: #b4cca2;
+}
+
+/* Estilos para el cuerpo */
+.cuerpo {
+	margin-top: 0px;
+	/* Ajusta el valor según tus necesidades */
+	padding: 100px;
+	background-color: #f0f0f0;
+	text-align: center;
+	
+}
+
+table {
+	border-collapse: collapse;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/*ESTILOS PARA TABLA*/
+table td,
+table th {
+	border: 1px solid #cad9ea;
+	color: #666;
+	height: 30px;
+}
+
+table thead th {
+	background-color: #CCE8EB;
+	width: 100px;
+}
+
+table tr:nth-child(odd) {
+	background: #fff;
+}
+
+table tr:nth-child(even) {
+	background: #F5FAFA;
+}
+/*boton <a> Borrar y editar de la tabla*/
+a {
+	font-size: 20px;
+	text-decoration: none;
+	color: rgb(80, 169, 228);
+}
+/*Buscador*/
+div.search {
+	padding: 30px 0;
+}
+
+form {
+	position: relative;
+	width: 300px;
+	margin: 0 auto ;
+	padding-bottom: 10px;
+}
+
+input,
+button {
+	border: none;
+	outline: none;
+}
+
+input {
+	width: 100%;
+	height: 42px;
+	padding-left: 13px;
+}
+
+button {
+	height: 42px;
+	width: 42px;
+	cursor: pointer;
+	position: absolute;
+}
+
+.bar1 {
+	background: #A3D0C3;
+}
+
+.bar1 input {
+	border: 2px solid #7BA7AB;
+	border-radius: 5px;
+	background: #F9F0DA;
+	color: #9E9C9C;
+}
+
+.bar1 button {
+	top: 0;
+	right: 0;
+	background: #7BA7AB;
+	border-radius: 0 5px 5px 0;
+}
+
+.bar1 button:before {
+	content: "";
+	font-family: FontAwesome;
+	font-size: 16px;
+	color: #F9F0DA;
+}
+
+table {
+	border-collapse: collapse;
+	margin: 0 auto;
+	text-align: center;
+}

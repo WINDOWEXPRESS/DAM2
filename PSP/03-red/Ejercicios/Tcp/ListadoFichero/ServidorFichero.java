@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 public class ServidorFichero {
     private static final int PUERTO = 8888;
     // Ruta del directorio a leer
+    // private static final String RUTA = "03-red\\Ejercicios";
     private static final String RUTA = "03-red\\Ejercicios\\EJERCICIO 4.txt";
     // private static final String RUTA = "/usr/games";
 
@@ -25,8 +26,8 @@ public class ServidorFichero {
             servidorSocket = new ServerSocket(PUERTO);
             while (true) {
                 Socket socket = servidorSocket.accept();
-                DataOutputStream enviar = new DataOutputStream(socket.getOutputStream());
-                var writer = new BufferedWriter(new OutputStreamWriter(enviar, StandardCharsets.UTF_8));
+
+                var writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
                 // Crear un objeto File para el directorio
                 File directorio = new File(RUTA);
@@ -48,18 +49,16 @@ public class ServidorFichero {
                     BufferedReader lector = new BufferedReader(new FileReader(RUTA));
                     String linea;
 
-                    enviar = new DataOutputStream(socket.getOutputStream());
                     // Leer el archivo línea por línea
                     while ((linea = lector.readLine()) != null) {
                         System.out.println(linea); // Imprimir la línea en la consola
-                        enviar.writeUTF(linea + "\n");
-                        enviar.flush();
+                        writer.write(linea + "\n");
+                        writer.flush();
                     }
 
-                    System.out.println("No es un directorio válido.");
+                    // System.out.println("No es un directorio válido.");
                 }
                 writer.close();
-                enviar.close();
                 socket.close();
             }
 
