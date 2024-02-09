@@ -1,0 +1,5 @@
+prestacionLibro.php  
+    //falta obtener el id de usuaio para guardar en la tabla prestamo
+
+    $_SESSION["mensajeErrorPrestacion"] no funciona en homeUsuario
+

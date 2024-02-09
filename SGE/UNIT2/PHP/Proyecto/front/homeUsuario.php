@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Prestacion de libros</title>
+	<script src="js/confirmarPrestacion.js" defer></script>
 	<link rel="stylesheet" href=".././css/home.css" type="text/css">
 	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
 </head>
@@ -33,7 +34,7 @@
 						<a href="#">Mis datos</a>
 					</li>
 					<li>
-						<a href="#">Logout</a>
+						<a href="#">Salir</a>
 					</li>
 				</ul>
 			</nav>
@@ -42,17 +43,19 @@
 
 	<div class="cuerpo">
 		<div class="search bar1">
-				<h1 style="color: white;">Consulta de libros</h1>
-				<form >
-					<input type="text" placeholder="Introducir el titulo de libro...">
-					<button type="submit" ><img src=".././img/fi-rr-search.svg" width="25" height="25" alt="Icono"></button>
+				<h1 style="color: white;">Introducir el id para prestacion</h1>
+				<form action="./../back/prestacionLibro.php" method="post" id = "formularioEnvioPrestacion" >
+					<input type="text" placeholder="Introducir el id de libro" id="idInputLibro" name="idLibro">
+					<button type="submit" id="botonConfirmar"><img src=".././img/check-circle.svg" width="25" height="25" alt="Icono"></button>
 				</form>
-
-					<div class="titulo">
+				<?php
+					if(isset($_SESSION["mensajeErrorPrestacion"])){
+						echo "<h1 style=\"color: white;\">....	". $_SESSION["mensajeErrorPrestacion"] ."</h1>";
+					}
+				?>
+				
+					<div class="divTable">
 						<table width="90%" class="table">
-							<caption>
-
-							</caption>
 							<thead>
 								<tr>
 									<th>ID</th>
@@ -65,7 +68,7 @@
 							<tbody>
                                 <?php
                                 include(".././back/db.php");
-
+	
                                 try {
                                     $stmt = $conn->prepare("SELECT * FROM libros");
 
@@ -102,11 +105,7 @@
                             </tbody>
 						</table>
 					</div>
-					<h1>Introducir el id para prestacion</h1>
-				<form >
-					<input type="text" placeholder="Introducir el id de libro">
-					<button type="submit" ><img src=".././img/check-circle.svg" width="25" height="25" alt="Icono"></button>
-				</form>
+
 			</div>
 	</div>
 </body>

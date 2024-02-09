@@ -30,14 +30,16 @@
 						</ul>
 					</li>
 					<li>
-                        <a href="#">Opciones</a>
-                            <ul>
-                                <li><a href="#">Usuarios</a></li>
-                                <li><a href="#">Libros</a></li>
-                            </ul>
+						<a href="#">Opciones</a>
+						<ul>
+							<li><a href="#">Usuarios</a></li>
+							<li><a href="#">Libros</a></li>
+							<li><a href="#">Prestacion</a></li>
+
+						</ul>
 					</li>
 					<li>
-						<a href="#">Logout</a>
+						<a href="#">Salir</a>
 					</li>
 				</ul>
 			</nav>
@@ -46,70 +48,78 @@
 
 	<div class="cuerpo">
 		<div class="search bar1">
-					<div class="titulo">
-                        <h1 style="color: white;">Administar libros</h1>
-						<table width="90%" class="table">
-							<caption>
+			<div class="titulo">
+				<h1 style="color: white;">Administar libros</h1>
+				<table width="90%" class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Titulo</th>
+							<th>Autor</th>
+							<th>Isbn</th>
+							<th>Estado</th>
+							<th>Editar</th>
+							<th>Borrar</th>
+						</tr>
+					</thead>
 
-							</caption>
-							<thead>
-								<tr>
-									<th>ID</th>
-									<th>Titulo</th>
-									<th>Autor</th>
-									<th>Isbn</th>
-									<th>Estado</th>
-                                    <th>Editar</th>
-                                    <th>Borrar</th>
-								</tr>
-							</thead>
-	
-                            <tbody>
-                                <?php
-                                include(".././back/db.php");
+					<tbody>
+						<?php
+						include(".././back/db.php");
 
-                                try {
-                                    $stmt = $conn->prepare("SELECT * FROM libros");
+						try {
+							$stmt = $conn->prepare("SELECT * FROM libros");
 
-                                    $stmt->execute();
-                                    $result = $stmt->fetchAll();
-                                    $posicion = 1;
-                                    foreach ($result as $row => $libro) {
+							$stmt->execute();
+							$result = $stmt->fetchAll();
+							$posicion = 1;
+							foreach ($result as $row => $libro) {
 
-                                        echo ("<tr>");
-                                        echo ("<td>" .   $libro["ID"] . "</td> ");
-                                        echo ("<td>" .   $libro["titulo"] . "</td>");
-                                        echo ("<td>" .   $libro["autor"] . "</td>");
-                                        echo ("<td>" .   $libro["isbn"] . "</td>");
+								echo ("<tr>");
+								echo ("<td>" .   $libro["ID"] . "</td> ");
+								echo ("<td>" .   $libro["titulo"] . "</td>");
+								echo ("<td>" .   $libro["autor"] . "</td>");
+								echo ("<td>" .   $libro["isbn"] . "</td>");
 
-                                        switch ($libro["prestado"]) {
-                                            case 1:
-                                                echo ("<td> Prestado </td>");
-                                               break;
-                                            case 0:
-                                                echo ("<td> No prestado </td>");
-                                               break;
-                                            case is_null($libro["prestado"]):
-                                                echo ("<td> Null </td>");
-                                               break; 
-                                          }
-                                        
-                                        echo ("<td> <a href='editarLibro.php?id=" . $libro["ID"] . "'>Editar</a> </td>");
-                                        echo ("<td> <a href='borrarLibro.php?id=" . $libro["ID"] . "'>Borrar</a> </td>");
-                                        echo ("</tr>");
-                                        $posicion += 1;
-                                    }
-                                } catch (PDOException $e) {
-                                    echo "Error: " . $e->getMessage();
-                                }
-                                $conn = null;
+								switch ($libro["prestado"]) {
+									case 1:
+										echo ("<td> Prestado </td>");
+										break;
+									case 0:
+										echo ("<td> No prestado </td>");
+										break;
+									case is_null($libro["prestado"]):
+										echo ("<td> Null </td>");
+										break;
+								}
 
-                                ?>
-                            </tbody>
-						</table>
-					</div>
-					
+								echo ("<td> <a href='editarLibro.php?id=" . $libro["ID"] . "'>Editar</a> </td>");
+								echo ("<td> <a href='borrarLibro.php?id=" . $libro["ID"] . "'>Borrar</a> </td>");
+								echo ("</tr>");
+								$posicion += 1;
+							}
+						} catch (PDOException $e) {
+							echo "Error: " . $e->getMessage();
+						}
+						$conn = null;
+
+						?>
+						
+   					 <form action="insert.php" method="post">
+						<tr>
+							<td></td>
+							<td><input type="text" name="aniadirTituloLibro"></td>
+							<td><input type="text" name="aniadirAutorLibro"></td>
+							<td><input type="text" name="aniadirIsbnLibro"></td>
+							<td></td>
+							<td colspan="2"><input type="submit" value="Aniadir nuevo" name="aniadir" width="200px"></td>
+							
+						</tr>
+					 </form>
+					</tbody>
+				</table>
 			</div>
+		</div>
 	</div>
 </body>
 

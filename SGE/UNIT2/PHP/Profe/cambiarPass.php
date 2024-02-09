@@ -16,7 +16,7 @@
     username <input type="text" name="user"value="<?php echo $_SESSION["name"] ?>" > <br>
     password antiguo <input type="text" name="pwOLD" id="old"><br>
     password nuevo <input type="text" name="pwNEW" id="new"><br>
-    repetir password nuevo <input type="text" name="pwNEW" id="new"><br>
+    repetir password nuevo <input type="text" name="pwNEW" id="new2"><br>
     <div id="error"></div>
     <input type="submit" id="botonCambiarPass" value="Modificar Usuario" class="btn btn-warning">
     </form>
