@@ -1,10 +1,8 @@
 package Tcp.EnvioPdf;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -12,37 +10,33 @@ import java.net.Socket;
 public class ServidorEnvia {
     private static final int PUERTO = 8888;
     private static final String RUTA = "Comandos Linux.pdf";
-    // private static final String RUTA = "/usr/games";
+    private static final int TAMANIO_BUFFER = 1024;
 
-    public static void main(String[] args) throws IOException {
-
-        ServerSocket servidorSocket;
-
-        try {
-            servidorSocket = new ServerSocket(PUERTO);
+    public static void main(String[] args) {
+        try (ServerSocket servidorSocket = new ServerSocket(PUERTO)) {
+            System.out.println("Esperando conexiones en el puerto " + PUERTO + "...");
             while (true) {
                 Socket socket = servidorSocket.accept();
+                System.out.println("Cliente conectado desde " + socket.getInetAddress());
 
-                BufferedInputStream lector = new BufferedInputStream(new FileInputStream(RUTA));
-                byte[] bytesLeidos =  lector.readAllBytes();
+                try (BufferedInputStream lector = new BufferedInputStream(new FileInputStream(RUTA));
+                        DataOutputStream enviar = new DataOutputStream(socket.getOutputStream())) {
 
-                DataOutputStream enviar = new DataOutputStream(socket.getOutputStream());
-                // Leer el archivo línea por línea
-               
-                    System.out.println(bytesLeidos); // Imprimir la línea en la consola
-                    enviar.write(bytesLeidos);
-                    enviar.flush();
-                
+                    byte[] buffer = new byte[TAMANIO_BUFFER];
+                    int bytesRead;
+                    while ((bytesRead = lector.read(buffer)) != -1) {
+                        enviar.write(buffer, 0, bytesRead);
+                    }
 
-                lector.close();
-                // sbufferedReader.close();
-                enviar.close();
-                socket.close();
+                    System.out.println("Archivo enviado con éxito.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    socket.close();
+                }
             }
-
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }

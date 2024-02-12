@@ -9,7 +9,7 @@ public class Servidor {
 
     public static void main(String[] args) {
         try {
-            ServerSocket serverSocket = new ServerSocket(PUERTO); //Escuchar puerto especifico
+            ServerSocket serverSocket = new ServerSocket(PUERTO); // Escuchar puerto especifico
             while (true) {
                 System.out.println("Esperando conexion con el cliente...");
                 Socket socket = serverSocket.accept();
@@ -18,11 +18,11 @@ public class Servidor {
                 ServidorManipulador manipulador = new ServidorManipulador(socket);
                 Thread hilo = new Thread(manipulador);
                 hilo.start();
+                System.out.println("Cliente " + socket.getRemoteSocketAddress() + " desconectado.");
             }
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }   
+    }
 }
