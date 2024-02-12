@@ -2,20 +2,20 @@ package Tcp.ListadoFichero;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 
 public class ServidorFichero {
     private static final int PUERTO = 8888;
     // Ruta del directorio a leer
-    // private static final String RUTA = "03-red\\Ejercicios";
-    private static final String RUTA = "03-red\\Ejercicios\\EJERCICIO 4.txt";
+    private static final String RUTA = "03-red\\Ejercicios";
+    // private static final String RUTA = "03-red\\Ejercicios\\EJERCICIO 4.txt";
     // private static final String RUTA = "/usr/games";
 
     public static void main(String[] args) throws IOException {
@@ -28,7 +28,6 @@ public class ServidorFichero {
                 Socket socket = servidorSocket.accept();
 
                 var writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-
                 // Crear un objeto File para el directorio
                 File directorio = new File(RUTA);
                 // Verificar si es un directorio válido
