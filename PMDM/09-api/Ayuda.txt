@@ -1,0 +1,21 @@
+﻿posibles fallos de pedicion api list
+	internet
+	https
+	mal la ruta
+	mal el POJO
+	mal objeto o array
+
+-path	-query	-body
+
+
+miscosas.es/api/clases/pmwd/tema.do?ut=1
+
+base url: miscosas.es/api/
+repo 	: clases/pmwd/tema.do
+query("ut") String ntema
+
+miscosas.es/api/clases/dudas/1/
+
+base url: miscosas.es/api/
+repo	: /clases/dudas/{tema}/
+Path("tema") String tema
