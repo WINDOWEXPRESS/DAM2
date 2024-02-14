@@ -29,7 +29,6 @@ public class Ejercicio4 {
                 try {
                     cohetes[i].join();
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }

@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.ProcessBuilder.Redirect;
 
 public class Ejercicio3 {
 
@@ -59,7 +58,6 @@ public class Ejercicio3 {
                 }
                 bf.close();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
