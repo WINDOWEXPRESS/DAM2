@@ -20,6 +20,9 @@ lFragment_
 lVMFactory_textV_
 principal_floatingAB_aniadir
 
+https://blog.csdn.net/lxbjkben/article/details/103025207?spm=1001.2101.3001.6650.5&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-5-103025207-blog-49201071.235%5Ev43%5Epc_blog_bottom_relevance_base5&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-5-103025207-blog-49201071.235%5Ev43%5Epc_blog_bottom_relevance_base5&utm_relevant_index=10
+
+
 Claro, aquí tienes una descripción detallada de los procesos de inicio de sesión desde la interfaz de usuario hasta el acceso a los datos y la autenticación:
 
 1. **Interfaz de Usuario (UI)**:
