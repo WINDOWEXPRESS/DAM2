@@ -12,7 +12,7 @@ usuario
 
 https://www.youtube.com/watch?v=0x5kmLY16qE
 https://www.jb51.net/article/127256.htm
-
+https://developer.aliyun.com/article/998677
 
 NOMENCRATURA PARA ID ejem: asdhsad_adssad_ssdsad
 principal_
@@ -22,6 +22,7 @@ principal_floatingAB_aniadir
 
 https://blog.csdn.net/lxbjkben/article/details/103025207?spm=1001.2101.3001.6650.5&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-5-103025207-blog-49201071.235%5Ev43%5Epc_blog_bottom_relevance_base5&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-5-103025207-blog-49201071.235%5Ev43%5Epc_blog_bottom_relevance_base5&utm_relevant_index=10
 
+https://blog.csdn.net/weixin_46713508/article/details/129152215
 
 Claro, aquí tienes una descripción detallada de los procesos de inicio de sesión desde la interfaz de usuario hasta el acceso a los datos y la autenticación:
 
