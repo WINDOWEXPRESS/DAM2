@@ -37,6 +37,7 @@ public class ServidorHTTP {
             // Escribir cabecera
             writer.write("HTTP/1.1 200 OK\n");
             // writer.write("Content-Type: application/json; charset=utf-8\n");
+            //SALTO DE LINEA PARA IR A BODY
             writer.write("\n");
             writer.write(html);
             writer.flush();
