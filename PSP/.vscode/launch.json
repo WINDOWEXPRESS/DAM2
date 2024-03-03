@@ -1,0 +1,219 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "ejercicio3.Main",
+            "projectName": "sf_PSP_e84bccfb",
+            "args": "8888"
+        },
+        {
+            "type": "java",
+            "name": "ServidorHTTP",
+            "request": "launch",
+            "mainClass": "ServidorHTTP",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ServidorHTTP1",
+            "request": "launch",
+            "mainClass": "ServidorHTTP1",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "UDPClient",
+            "request": "launch",
+            "mainClass": "UDPClient",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "UDPServer",
+            "request": "launch",
+            "mainClass": "UDPServer",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "ClienteUDPBroadcast",
+            "request": "launch",
+            "mainClass": "Broadcast.AbrirAplicacion.ClienteUDPBroadcast",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ServerUDP",
+            "request": "launch",
+            "mainClass": "Broadcast.AbrirAplicacion.ServerUDP",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ClienteUDPBroadcast(1)",
+            "request": "launch",
+            "mainClass": "ClienteUDPBroadcast",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "MulticastReceiver",
+            "request": "launch",
+            "mainClass": "MulticastReceiver",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "MulticastSend",
+            "request": "launch",
+            "mainClass": "MulticastSend",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "Principal",
+            "request": "launch",
+            "mainClass": "Principal",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ServerUDP(1)",
+            "request": "launch",
+            "mainClass": "ServerUDP",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "Cliente",
+            "request": "launch",
+            "mainClass": "Tcp.ContarVocalConsonante.Cliente",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "Servidor",
+            "request": "launch",
+            "mainClass": "Tcp.ContarVocalConsonante.Servidor",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ClienteFichero",
+            "request": "launch",
+            "mainClass": "Tcp.ListadoFichero.ClienteFichero",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ServidorFichero",
+            "request": "launch",
+            "mainClass": "Tcp.ListadoFichero.ServidorFichero",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "PrincipalSimulador",
+            "request": "launch",
+            "mainClass": "Unicast.Ascensores.PrincipalSimulador",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "Chat",
+            "request": "launch",
+            "mainClass": "Unicast.Chat.Chat",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ClienteChat",
+            "request": "launch",
+            "mainClass": "Unicast.Chat.ClienteChat",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ServidorChat",
+            "request": "launch",
+            "mainClass": "Unicast.Chat.ServidorChat",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ClienteChat(1)",
+            "request": "launch",
+            "mainClass": "Unicast.ChatEnvioAOtrosClientes.ClienteChat",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ServidorChat(1)",
+            "request": "launch",
+            "mainClass": "Unicast.ChatEnvioAOtrosClientes.ServidorChat",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "UDPClientScannerEco",
+            "request": "launch",
+            "mainClass": "Unicast.Eco.UDPClientScannerEco",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "UDPServerSocketPorParametroEco",
+            "request": "launch",
+            "mainClass": "Unicast.Eco.UDPServerSocketPorParametroEco",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "UDPClientPrimo",
+            "request": "launch",
+            "mainClass": "Unicast.Primo.UDPClientPrimo",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "UDPServerPrimo",
+            "request": "launch",
+            "mainClass": "Unicast.Primo.UDPServerPrimo",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "cliente",
+            "request": "launch",
+            "mainClass": "Unicast.StringReverse.cliente",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "servidor",
+            "request": "launch",
+            "mainClass": "Unicast.StringReverse.servidor",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "main",
+            "request": "launch",
+            "mainClass": "ejercicio1.main",
+            "projectName": "sf_PSP_e84bccfb",
+            "args": "8888 8000"
+        }
+    ]
+}

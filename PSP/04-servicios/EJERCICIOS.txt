@@ -18,4 +18,6 @@ https://www.simplejavamail.org/
 INSTALAR SIMPLE MAIL
 EJECUTA ENVIO DESDE JAVA
 HACER PROGRAMA
-	SPANER.JAVA	DIR.TXT
+	SPAM.JAVA	DIR.TXT
+
+git clone https://github.com/JorgeDuenasLerin/programacion-de-servicios-y-procesos.git

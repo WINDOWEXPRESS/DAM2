@@ -14,3 +14,15 @@ APT INSTALL WIRESHARK
 	NC -U -K 192.168.20.204 4321 
 
 	NC -U  192.168.20.204 4321 		MAS MENSAJE 
+	echo "EXIT" | nc 10.10.8.8 22
+	nc -l -u -p 8765			ESCUCHAR SOLO EL PUERTO SIN IMPORTAR EL IP
+
+Opciones del comando nc
+El comando nc acepta, entre otras, las siguientes opciones básicas:
+
+-l: Sirve para que Netcat abra un puerto y se mantenga ala escucha. Se aceptará una única conexión de un único cliente antes de cerrarse.
+-k: Se usa junto con la opción -l con el objetivo de que el puerto ser mantenga abierto tras recibir una conexión, a la espera de más conexiones.
+-u: Permite abrir puertos con el protocolo UDP en vez de abrirlos mediante el protocolo TCP.
+-p: Esta opción permite especificar el puerto al que conectarse.
+-v: Se usa para mostrar información acerca de la conexión.
+-t:  Respuestas compatibles con sesiones de Telnet.
