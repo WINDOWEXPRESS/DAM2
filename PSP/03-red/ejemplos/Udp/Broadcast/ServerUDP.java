@@ -10,7 +10,7 @@ public class ServerUDP {
 	public static void main(String args[]) {
 
 		try {
-			try (DatagramSocket ds = new DatagramSocket(8000, InetAddress.getByName("0.0.0.0"))) {
+			try (DatagramSocket ds = new DatagramSocket(8765, InetAddress.getByName("0.0.0.0"))) {
 				byte[] buffer = new byte[MAX_LENGTH];
 				while (true) {
 					DatagramPacket p = new DatagramPacket(

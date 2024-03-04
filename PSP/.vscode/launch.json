@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ClienteUDPBroadcast",
+            "request": "launch",
+            "mainClass": "ClienteUDPBroadcast",
+            "projectName": "sf_DAM2_21281a34"
+        },
+        {
+            "type": "java",
+            "name": "ServerUDP",
+            "request": "launch",
+            "mainClass": "ServerUDP",
+            "projectName": "sf_DAM2_21281a34"
+        },
+        {
+            "type": "java",
             "name": "ClienteManda",
             "request": "launch",
             "mainClass": "ClienteManda",
