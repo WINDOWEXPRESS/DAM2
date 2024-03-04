@@ -2,10 +2,12 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
 public class UDPServer {
+    private final static int PUERTO = 9876;
+    private final static int TAMANIO = 1024;
     public static void main(String[] args) {
         try {
-            try (DatagramSocket socket = new DatagramSocket(9876)) {
-                byte[] receivedData = new byte[1024];
+            try (DatagramSocket socket = new DatagramSocket(PUERTO)) {
+                byte[] receivedData = new byte[TAMANIO];
 
                 while (true) {
                     DatagramPacket receivedPacket = new DatagramPacket(receivedData, receivedData.length);

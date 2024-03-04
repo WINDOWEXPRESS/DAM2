@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ClienteManda",
+            "request": "launch",
+            "mainClass": "ClienteManda",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "Server",
+            "request": "launch",
+            "mainClass": "Server",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "ejercicio3.Main",
