@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Ejercicio2.Main",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ClienteUDPBroadcast",
+            "request": "launch",
+            "mainClass": "ClienteUDPBroadcast",
+            "projectName": "PSP_aa74c759"
+        },
+        {
+            "type": "java",
+            "name": "ServerUDP",
+            "request": "launch",
+            "mainClass": "ServerUDP",
+            "projectName": "PSP_aa74c759"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Ejercicio2.Main",
+            "projectName": "PSP_aa74c759"
+        },
+        {
+            "type": "java",
             "name": "ClienteUDPBroadcast",
             "request": "launch",
             "mainClass": "ClienteUDPBroadcast",
