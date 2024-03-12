@@ -1,0 +1,14 @@
+#divFondo{
+    width: 500px;
+    margin: auto;
+    border: 5px double black;
+}
+#imgLogo{
+    width: 60px;
+    height: 60px;
+}
+
+#h1Title{
+    text-align: right;
+    width: 250px;
+}

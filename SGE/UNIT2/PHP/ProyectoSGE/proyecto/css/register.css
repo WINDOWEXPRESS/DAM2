@@ -1,0 +1,22 @@
+#divFondo{
+    margin-top:5px;
+    width: 400px;
+    border-left: 4px outset black;
+    border-right: 4px outset black;
+    border-top: 1px inset black;
+    border-bottom: 1px inset black;
+    background-color: white;
+}
+#pIdioma{
+    display: inline;
+    margin-right: 20px;
+}
+select{
+    max-width:70%;
+    max-height: 35px;
+}
+
+.pPais{
+    width: 70px;
+    padding-top: 2px;
+}

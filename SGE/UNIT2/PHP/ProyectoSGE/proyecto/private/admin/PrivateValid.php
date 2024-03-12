@@ -1,0 +1,10 @@
+<?php
+    if(isset($_SESSION['user'])){
+        header("location:../user/homeUsuario.php?message=user_Is_Login");
+        exit();
+    }
+    if(isset($_SESSION['admin'])){
+        header("location:./homeAdmin.php?=message=Admin_Is_Login");
+        exit();
+    }
+?>

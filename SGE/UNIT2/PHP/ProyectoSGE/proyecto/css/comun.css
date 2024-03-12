@@ -1,0 +1,12 @@
+#imgLogo{
+    width: 100px;
+    height: 100px;
+}
+
+body{
+    background-color: #F4F6F6;
+    font-size: 15px;
+}
+#hrfood{
+    border-top: 2px solid;
+}
