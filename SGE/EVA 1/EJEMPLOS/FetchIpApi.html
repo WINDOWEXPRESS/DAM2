@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="button" value="Click" id="Boton" /><br>
+
+    <ul id="listaUl"></ul>
+  </body>
+  <script>
+
+    //document.getElementById("Boton").addEventListener("click",espiar);
+    document.getElementById("Boton").addEventListener("click",imprimir);
+    function espiar() {
+      fetch("https://api.geoapify.com/v1/ipinfo?&apiKey=b98ff35227454ba18d39fd9c1759ea03")
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+
+
+    
+    const url = 'https://mangaverse-api.p.rapidapi.com/manga/fetch?page=1&genres=Harem%2CFantasy';
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '8fd23bd095msh86d2825434432d5p1d45e1jsnffc5245fbe4d',
+        'X-RapidAPI-Host': 'mangaverse-api.p.rapidapi.com'
+      }
+    };
+
+    fetch(url, options)
+      .then(response => response.json())
+      .then(result => imprimir(result))
+      .catch(error => console.log('error', error));
+
+    function imprimir(datos) {
+      let contenido = "titulo: "+datos.data['1'].title+"<br>\tSubtitulo: "+datos.data.sub_title;
+      console.log(contenido);
+
+      let elementUl = document.getElementById("listaUl");
+      for (let index = 0; index < datos.data.length; index++) {
+        const element = datos.data[index];
+        let elementoLi = document.createElement("li");
+        let contenido = "titulo: "+element.title+"<br>\tSubtitulo: "+element.sub_title;
+        console.log(contenido);
+        elementoLi.innerHTML= contenido;
+        elementUl.appendChild(elementoLi);
+      }
+
+    }
+    
+
+  </script>
+</html>

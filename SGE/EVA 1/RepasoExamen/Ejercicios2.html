@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="Nombre">
+    <input type="text" value="Apellido">
+    <input type="checkbox" value="Azul">"Azul"</input>
+    <input type="checkbox" value="Rojo">"Rojo"</input>
+    <input type="checkbox" value="Verde">"Verde"</input>
+    <input type="button" value="Enviar">
+
+    
+    
+</body>
+<script>
+    let listaElementoInput = document.getElementsByTagName("input");
+    /*for (let index = 0; index < listaElementoInput.length; index++) {
+        const element = listaElementoInput[index];
+        if(element.value == "Enviar"){
+            element.addEventListener("click",comprobarDatos);
+        }
+    }*/
+    listaElementoInput[5].addEventListener("click",comprobarDatos);
+
+    function comprobarDatos(){
+        if(listaElementoInput[0].value != "" && listaElementoInput[1].value != "" && 
+            (listaElementoInput[0].value.length>=5 && listaElementoInput[0].value.length<=40)){
+
+            console.log("Campos completo");
+        }
+        if(listaElementoInput[2].checked == true || listaElementoInput[3].checked == true ||listaElementoInput[4].checked == true ){
+            console.log("Tiene color seleccionado");
+        }else{
+            console.log("Tiene que seleccionar minimo un color");
+        }
+    }
+
+
+</script>
+
+</html>

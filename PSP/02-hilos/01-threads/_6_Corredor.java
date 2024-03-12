@@ -13,7 +13,7 @@ public class _6_Corredor implements Runnable {
         this.kmTotales = kmTotales;
         this.dorsal = dorsal;
         this.kmRecorrido = 0;
-    }
+    }   
 
     @Override
     public void run() {
@@ -45,8 +45,8 @@ public class _6_Corredor implements Runnable {
             System.out.println(String.format("¡¡Soy el dorsal %d TERMINÉ!! He llegado a la meta en %d milisegundos. Tiempo : %d", dorsal, time, llegada));
 
             // Notificar al disparador de la llegada
-            synchronized (_6_Disparador.PISTOLA_LLEGADA) {
-                _6_Disparador.PISTOLA_LLEGADA.notify();
+            synchronized (_6_Disparador.CINTA_LLEGADA) {
+                _6_Disparador.CINTA_LLEGADA.notify();
             }
         } catch (InterruptedException e) {
             // En caso de interrupción, imprimir mensaje parcial de la carrera

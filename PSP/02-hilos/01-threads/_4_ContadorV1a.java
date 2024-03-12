@@ -17,14 +17,14 @@ public class _4_ContadorV1a extends Thread {
     }
 
     public synchronized void incrementar() {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
             contador++;
         }
 
     }
 
     public synchronized void decrementar() {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
             contador--;
         }
 

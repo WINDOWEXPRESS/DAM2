@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+
+</head>
+<body>
+    <div>
+        <form action="" method="post">
+            <label >Marca<input type="text" id="Marca"></label>
+            <label >Modelo<input type="text" id="Modelo"></label>
+            <input type="button" value="Añadir" id="boton">
+    
+            <ul id = "listaCoche" >
+                <li>Marca : Kia , Modelo : Krion</li>º  
+            </ul>
+        </form>
+    </div>
+    <div id="imagenes">
+        <input type="button" value="Añadir" id="botonImagen"></br>
+    </div>
+</body>
+
+<script>
+    document.getElementById("boton").addEventListener("click",appendInfo);
+
+    function appendInfo() {
+        //obtener dato de cada variable
+        var marca = document.getElementById("Marca").value;
+        var modelo = document.getElementById("Modelo").value;
+
+        //obtener dato de primer li  NO HACE FALTA
+        //var linea = document.getElementsByTagName("li")[0].innerHTML;
+
+        //crear nuevo elemento li
+        var nuevoLi = document.createElement("li");
+
+        //añadir contenido de para ese elemento
+        var contenidoLi = document.createTextNode("Marca : "+marca+" , Modelo : "+modelo);
+        
+        //concatenarlo
+        nuevoLi.appendChild(contenidoLi);
+        //NO HACE FALTA UNA VARIABLE
+        var listaCoche = document.getElementById("listaCoche").appendChild(nuevoLi);
+
+        
+    }
+
+    document.getElementById("botonImagen").addEventListener("click",appendImg);
+    var tamanio = 550;
+    function appendImg() {
+        let imagen = document.createElement("img");
+        
+        imagen.setAttribute("src","https://cdn.pixabay.com/photo/2021/12/26/17/31/pokemon-6895600_1280.png");
+        imagen.setAttribute("width",tamanio);
+        imagen.setAttribute("height",tamanio);
+        tamanio -= (50); 
+        window
+        let divImagen = document.getElementById("imagenes");
+        divImagen.appendChild(imagen);
+        
+    }
+
+    
+</script>
+
+</html>

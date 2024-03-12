@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Esto es mi primer WEB</h1>
+    <h1>Introducir dia </h1>
+    <input type = "dia" id="campo1"></input>
+    <button onclick="dia()">SUBIR</button>
+</body>
+
+
+<script>
+    //COMENTARIO
+    //alert("esto es una ventana emergente")
+    //console.log("mensaje en consola")
+
+    let nombre = "pepe" //let variable limitado temporal
+    var apellido = "garcia" // variable global o local
+
+    //console.log(nombre + apellido)
+
+    //prompt("dime tu nombre")   siendo prompt siempre es de tipo string si quiere otro tipo hay que hacer casting
+
+    /*se puede poner sin tipo de variable
+
+    nombre1 =prompt("DIME TU NOMBRE!!!!")
+    console.log("TU NOMBRE ES "+nombre1)
+    */
+
+    /*              USANDO IF
+    //UN PROGRAMA QUE DIGA SI ES MAYOR O MENOR DE EDAD
+    var edad = parseInt(prompt("Dime tu edad"));
+
+    if (edad <= 17) { 
+        console.log("Eres menor de edad");
+    }else if (edad >17 && edad <= 65) { 
+        console.log("Tienes edad de trabajar");
+    }else {
+        console.log("Tienes edad para jubilar");
+    }
+    */
+
+    /*              USANDO SWITCH
+    //UN PROGRAMA QUE BUSCA DIAS LABORALES 
+    var dia = prompt("introducir dia ");
+    dia = dia.toLowerCase();
+
+    switch (dia) {
+        case "lunes":
+        case "martes":
+        case "miercoles":
+        case "jueves":
+        case "viernes":
+            alert(dia + " es dia laboral");
+            break;
+        case "sabados":
+        case "domingo":
+            alert(dia + " es fin de semana");
+            break;
+        default:
+            alert(dia + " palabra invalido!");
+
+    }             
+    */          
+    
+    /*               USANDO function()
+    //utilizando en HTML funcion(metodo java)
+    function dia(){
+        var dia = document.getElementById("campo1").value;
+        dia = dia.toLowerCase();
+
+        switch (dia) {
+            case "lunes":
+            case "martes":
+            case "miercoles":
+            case "jueves":
+            case "viernes":
+                alert(dia + " es dia laboral");
+                break;
+            case "sabados":
+            case "domingo":
+                alert(dia + " es fin de semana");
+                break;
+            default:
+                alert(dia + " palabra invalido!");
+
+        }         
+    }
+    */
+   /*               USANDO Array
+    function dia(){
+        const listSemana = ["lunes","martes","miercoles","jueves","viernes","sabados","domingo"];
+        var dia =  document.getElementById("campo1").value;
+        let isDiaInListSemana = false;
+        dia = dia.toLowerCase();
+
+        for (let index = 0; index < listSemana.length; index++) {
+            if (dia == listSemana[index])
+            isDiaInListSemana = true;
+        }
+        if(isDiaInListSemana){
+            console.log("dia introducido se encuentra en la array");
+        }else{
+            console.log(dia+" introducido no se encuentra en la array");
+        }
+    }
+    */
+
+    /*               Metiendo cosas a un array
+    const listSemana = [];
+    let contador = 0;
+    function dia(){
+        var dia =  document.getElementById("campo1").value.toLowerCase();
+        listSemana[contador] = dia;
+        contador++;
+
+        for (let index = 0; index < listSemana.length; index++) {
+            console.log(listSemana[index]);
+        }
+    }
+    */
+
+    const listSemana = [];
+    var dia = "";
+    do {
+        dia = prompt("Introducir dia para guardar en un array").toLowerCase();
+        if(dia == "fin"){
+            confirm("Pulsa Aceptar para terminar")?dia = "salir":dia = null;
+        }
+        listSemana.push(dia);
+    } while (dia != "salir");
+    for (let index = 0; index < listSemana.length; index++) {
+            console.log(listSemana[index]);
+    }
+
+</script>
+
+</html>

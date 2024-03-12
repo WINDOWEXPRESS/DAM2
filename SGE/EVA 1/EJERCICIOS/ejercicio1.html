@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {font-size: 50px;}
+        #lipsum{
+            margin : 5%
+            
+        }
+        p{
+            text-align: start;
+        }
+        div{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="ejercicio1">
+        <!--crear una funcion en javascript que me cambie la direccion y el texto del 3 enlace 
+        por uno que entre por prompt-->
+        <a href="https://www.google.es/" >Google</a><br>
+        <a href="https://aulavirtual33.educa.madrid.org/ies.juandelacierva.madrid/" >AulaVirtual:"Juan de la cierva"</a></br>
+        <a href="https://www.liaoxuefeng.com/" id="3enlace" >Liaoxuefeng</a></br>
+        <input type="button" value="Cambiar tercer enlace" id="botonCambiar">
+        <input type="button" value="Cambiar parrafo" id="botonCambiarP">
+    </div>
+    
+    <!--crea una funcion en javascript que cambie el texto que entre por prompt por el texto
+    que haya en el 2 parrafo <p>-->
+    <div id="lipsum">
+        <p id="primerP">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at dui consectetur, volutpat nulla id, efficitur orci. 
+        Donec faucibus magna eget lorem aliquam finibus. In a fermentum nulla. Donec non nisl faucibus, gravida libero ut, pulvinar ex. 
+        Sed a ornare nunc, sit amet suscipit nisl. Suspendisse potenti. Quisque semper dictum massa sit amet tincidunt. 
+        Integer id posuere nulla.
+        </p>
+        <p>
+        Aenean ut odio commodo, elementum magna vel, pharetra metus. Ut in viverra lacus. Maecenas interdum ultrices tortor sed tempor. 
+        Quisque sagittis purus id tellus feugiat, a consequat dolor consectetur. Curabitur tristique augue vitae mollis scelerisque. 
+        In congue ante diam, dictum malesuada justo tincidunt ac. Proin efficitur, massa quis luctus bibendum, erat urna posuere ipsum, 
+        vitae scelerisque mauris arcu sed massa. Ut lacinia vehicula ipsum et condimentum. Maecenas rhoncus augue laoreet dignissim sodales.
+        </p>
+        <p>
+        Aliquam ut facilisis urna, id maximus odio. In hac habitasse platea dictumst. Integer malesuada leo ut felis interdum maximus. 
+        Sed condimentum ullamcorper magna. Fusce lorem justo, imperdiet quis malesuada vitae, egestas ac orci. Praesent felis mauris, 
+        porttitor at est at, condimentum tincidunt urna. Integer id velit et orci interdum cursus. Aliquam a lacus feugiat leo ultrices 
+        volutpat quis eu quam. Sed fringilla ante at odio imperdiet rutrum. Donec et velit diam. Fusce volutpat congue urna et viverra. 
+        Nullam nec nisi ut dolor lobortis ultricies. Phasellus non leo libero. Suspendisse nec tempus odio.
+        </p>
+        <p>
+        Morbi sit amet euismod enim. Ut aliquam tortor non diam maximus molestie. Suspendisse venenatis, nulla eget scelerisque consectetur, 
+        tortor urna placerat turpis, nec varius nisi metus varius nunc. Aliquam erat volutpat. Sed pharetra elementum metus, 
+        sodales egestas dolor pretium at. Fusce a vulputate nisi, ut egestas turpis. Integer eget congue nisl, vitae bibendum massa. 
+        Quisque et aliquam nibh. Sed euismod nunc et ipsum suscipit luctus. Ut eget bibendum quam.
+        </p>
+        <p>
+        Pellentesque vehicula id mauris a rhoncus. Mauris molestie porta justo eget venenatis. Proin nec tincidunt quam. 
+        Cras porttitor suscipit nulla, vitae lacinia elit gravida eget. Aliquam a mollis justo, rutrum semper felis. Quisque cursus varius felis, 
+        a aliquam eros elementum eu. Ut vitae augue vestibulum, tempor erat sed, egestas justo. Quisque volutpat convallis 
+        felis sit amet sollicitudin. Sed eu nunc malesuada, finibus lectus vitae, vestibulum justo. Aliquam sit amet enim id urna laoreet pharetra. 
+        Nunc nec venenatis libero. Duis magna tortor, bibendum et nisl vitae, dignissim elementum nunc. Sed diam lacus, pharetra blandit est at, 
+        hendrerit consequat diam. Praesent at arcu egestas, pulvinar tortor et, bibendum ex. Sed placerat, nisi imperdiet aliquam accumsan, 
+        velit est tempor eros, non finibus odio diam sed velit. Morbi et porta lacus, quis tincidunt purus.
+        </p>
+    </div>
+    <div id="ejercicio3">
+        <label>Pulsame!<input type="button" value="Enlaces" id="VerEnlaces"></label>
+    </div>
+</body>
+<script>
+    document.getElementById("botonCambiar").addEventListener("click",cambiarEnlace);
+
+    function cambiarEnlace(){
+        //console.log(document.getElementById("3enlace").innerHTML);
+        //console.log(document.getElementById("3enlace")["href"]);
+        
+        document.getElementById("3enlace")["href"] =  "https://"+window.prompt("Introducir URL");
+        document.getElementById("3enlace").innerHTML = window.prompt("Introducir nombre URL");
+
+    }
+
+    document.getElementById("botonCambiarP").addEventListener("click",cambiarParrafo);
+    function cambiarParrafo(){
+       document.getElementById("primerP").innerHTML =  window.prompt("Introducir algo para cambiar un parrafo")
+       
+    }
+
+    document.getElementById("VerEnlaces").addEventListener("click",bucleEnlaces);
+    function bucleEnlaces(){
+        var listaEnlace = document.getElementsByTagName("a");
+        
+        for (let index = 0; index < listaEnlace.length; index++) {
+            console.log(listaEnlace[index].innerHTML);
+            
+        }
+
+        Array.from(document.getElementsByTagName("a")).forEach(element =>{
+            console.log(element.innerHTML)
+            }
+        );
+    }
+
+</script>
+</html>
+
+
+

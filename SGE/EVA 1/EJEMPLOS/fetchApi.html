@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="2"> -->
+    <title>Document</title>
+    <link rel="stylesheet" href="Pokemon.css">
+</head>
+<body>
+    <div class = "Pokemon_details">
+        <div id="nombreCodigo"></div>
+        <div class="img_perfil">
+            <img src="" alt="" id="perfil">
+        </div>
+        <div id="anterior"><input type="button" value="Anterior" id="last"></div>
+        <div id="tipo"><h2>Tipo</h2><ul id="tipoUl"></ul></div>
+        <div id="movimientos"><h2>movimientos</h2><ul id="movimientoUl"></ul></div>
+        <div id="siguiente"><input type="button" value="Siguiente" id="before"></div>
+        <div id="estadistica"><h2>Estadisticas</h2><ul id="estadisticaUl" id="before"></ul></div>
+        
+    </div>
+</body>
+
+<script>
+    var pokemonId;
+    fetch('https://pokeapi.co/api/v2/pokemon/rayquaza')
+    .then(response => response.json())
+    .then(data => formatear(data));
+
+    
+    function formatear(datos){
+        pokemonId = datos.id;
+        //Imprimir por consola
+        console.log("=====POKEMON=====");
+        console.log("Nombre: ");
+        console.log("\n\t"+datos.name)
+        console.log("Tipos: ");
+        for (let index = 0; index < datos.types.length; index++) {
+            const tipos = datos.types[index];
+            console.log("\n\t"+tipos.type.name);
+        }
+
+        console.log("Stats: ");
+        for (let index = 0; index < datos.stats.length; index++) {
+            const stats = datos.stats[index];
+            console.log("\n\tStat name: "+stats.stat.name);
+            console.log("\n\t\tBase stat: "+stats.base_stat);
+            console.log("\n\t\tEffort: "+stats.effort);
+        }
+
+        console.log("Moves: ");
+        let numeroHabilidad = 6;
+        for (let index = 0; index < numeroHabilidad; index++) {
+            const moves = datos.moves[index];
+            console.log("\n\tname: "+moves.move.name);
+        }
+        
+        console.log("Moves with forEach: ");
+        let contador = 0;
+        datos.moves.forEach((hability) => {
+            if(contador == 5) return;
+            console.log("\n\tname: "+hability.move.name);
+            contador++;
+        });
+
+        //vaciar los li 
+        eliminarLi("estadisticaUl");
+        eliminarLi("tipoUl");
+        eliminarLi("movimientoUl");
+        //Imprimir por html
+        //aparecer img de perfil
+        var perfil = document.getElementById("perfil");
+        perfil.setAttribute("src",datos.sprites.other["official-artwork"].front_default);
+
+        //nombre y codigo de pokemon
+        document.getElementById("nombreCodigo").innerHTML = datos.name + " N.º "+datos.id;
+
+        //estadisticas de pokemon
+        for (let index = 0; index < datos.stats.length; index++) {
+            const stats = datos.stats[index];
+            let elementUl = document.getElementById("estadisticaUl");
+            let elementLi = document.createElement("li");
+            let estadisticas = "Stat name: " + stats.stat.name + "<br>Base stat: " + stats.base_stat + "<br>Effort: " + stats.effort;
+            //let contenidoLi = document.createTextNode(estadisticas);
+            elementLi.innerHTML = estadisticas;
+            elementUl.appendChild(elementLi);
+        }
+
+        //tipo de pokemon
+        for (let index = 0; index < datos.types.length; index++) {
+            const tipos = datos.types[index];
+            let elementUl = document.getElementById("tipoUl");
+            let elementLi = document.createElement("li");
+            let tipo = tipos.type.name;
+            elementLi.innerHTML = tipo;
+            elementUl.appendChild(elementLi);
+        }
+
+        //movimientos de pokemon
+        for (let index = 0; index < numeroHabilidad; index++) {
+            const movimientos = datos.moves[index];
+            let elementUl = document.getElementById("movimientoUl");
+            let elementLi = document.createElement("li");
+            let movimiento = movimientos.move.name;
+            elementLi.innerHTML = movimiento;
+            elementUl.appendChild(elementLi);
+        }
+
+
+    }
+    function eliminarLi(id){
+        let lista = document.getElementById(""+id);
+        while (lista.firstChild) {
+            lista.removeChild(lista.firstChild);
+        }
+    }
+
+    //boton anterior 
+    document.getElementById("last").addEventListener("click",anterior);
+    function anterior(){
+        fetch('https://pokeapi.co/api/v2/pokemon/'+(pokemonId-1))
+        .then(response => response.json())
+        .then(data => formatear(data));
+        pokemonId = (pokemonId-1);
+    }
+    
+    //boton siguiente
+    document.getElementById("before").addEventListener("click",siguiente);
+    function siguiente(){
+        fetch('https://pokeapi.co/api/v2/pokemon/'+(pokemonId+1))
+        .then(response => response.json())
+        .then(data => formatear(data));
+        pokemonId = (pokemonId+1);
+    }
+
+
+</script>
+
+</html>

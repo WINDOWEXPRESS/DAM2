@@ -1,31 +1,56 @@
 public class _5_Principal {
-    public static void main(String[] args) {
-        _5_Bancos banco = new _5_Bancos("Chen bank", 1000000);
-        _5_Usuario alice = new _5_Usuario("alice", 40000);
-        banco.aniadirUsuario(alice);
+    public static void main(String[] args) throws InterruptedException {
 
-        _5_Usuario bob = new _5_Usuario("bob", 70000);
-        banco.aniadirUsuario(bob);
+        // // Crear cuentas
+        // _5_Cuenta cuentaAlice = new _5_Cuenta(10000);
+        // _5_Cuenta cuentaBob = new _5_Cuenta(10000);
 
-        _5_Usuario chen = new _5_Usuario("chen", 0);
-        banco.aniadirUsuario(chen);
+        // // Ejecución sin sincronización
+        // Thread threadAlice = new Thread(new _5_Usuario(cuentaAlice, cuentaBob));
+        // Thread threadBob = new Thread(new _5_Usuario(cuentaBob, cuentaAlice));
 
-        Thread hiloAlice = new Thread(alice);
-        Thread hiloBob = new Thread(bob);
+        // threadAlice.start();
+        // threadBob.start();
 
-        hiloAlice.start();
+        // threadAlice.join();
+        // threadBob.join();
 
-        hiloBob.start();
+        // System.out.println("Saldo de cuenta de Alice: " + cuentaAlice.getSaldo());
+        // System.out.println("Saldo de cuenta de Bob: " + cuentaBob.getSaldo());
 
-        try {
-            Thread.sleep(6000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        // Ejecución sincronizada
+        _5_Cuenta cuentaSincronizadaAlice = new _5_Cuenta(10000);
+        _5_Cuenta cuentaSincronizadaBob = new _5_Cuenta();
 
-        System.out.println("alice.getDinero() : " + alice.getDinero());
-        System.out.println("bob.getDinero() : " + bob.getDinero());
-        System.out.println("chen.getDinero() : " + chen.getDinero());
+        Thread threadSincronizadoAlice = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (cuentaSincronizadaAlice) {
+                    for (int i = 0; i < 1000; i++) {
+                        cuentaSincronizadaAlice.transferir(cuentaSincronizadaBob, 10);
+                    }
+                }
+            }
+        });
+
+        Thread threadSincronizadoBob = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (cuentaSincronizadaAlice) {
+                    for (int i = 0; i < 1000; i++) {
+                        cuentaSincronizadaBob.transferir(cuentaSincronizadaAlice, 10);
+                    }
+                }
+            }
+        });
+
+        threadSincronizadoAlice.start();
+        threadSincronizadoBob.start();
+
+        threadSincronizadoAlice.join();
+        threadSincronizadoBob.join();
+
+        System.out.println("Saldo de cuenta de Alice (sincronizado): " + cuentaSincronizadaAlice.getSaldo());
+        System.out.println("Saldo de cuenta de Bob (sincronizado): " + cuentaSincronizadaBob.getSaldo());
     }
 }

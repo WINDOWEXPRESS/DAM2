@@ -1,0 +1,38 @@
+{
+    "Coches": [
+      {
+        "Marca": "Tesla",
+        "Modelo": "Model 3",
+        "Tipo": "Electrico",
+        "Potencia": 283,
+        "Color": "Azul",
+        "CambiosAceite": [
+          {
+            "Kms": 1000,
+            "$": 20
+          },
+          {
+            "Kms": 10000,
+            "$": 200
+          }
+        ]
+      },
+      {
+        "Marca": "BMW",
+        "Modelo": "X6",
+        "Tipo": "Diesel",
+        "Potencia": 333,
+        "Color": "Negro",
+        "CambiosAceite": [
+          {
+            "Kms": 1000,
+            "$": 200
+          },
+          {
+            "Kms": 20000,
+            "$": 350
+          }
+        ]
+      }
+    ]
+  }

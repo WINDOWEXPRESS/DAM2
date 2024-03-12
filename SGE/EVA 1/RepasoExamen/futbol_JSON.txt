@@ -1,0 +1,63 @@
+{
+  "equipos": [
+    {
+      "equipo": "Real Madrid",
+      "jugadores": [
+        {
+          "dorsal": 1,
+          "nombre": "Casilla",
+          "desmarcaciones": [
+            "portero"
+          ],
+          "goles": 2,
+          "asistencias": 0,
+          "tarjetas": [
+            {
+              "amarillas": 2,
+              "rojas": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "equipo": "Fc Barcelona",
+      "jugadores": [
+        {
+          "dorsal": 23,
+          "nombre": "Messi",
+          "desmarcaciones": [
+            "ariete",
+            "medio apuntado centro"
+          ],
+          "goles": 288,
+          "asistencias": 33,
+          "tarjetas": [
+            {
+              "amarillas": 14
+            },
+            {
+              "rojas": 2
+            }
+          ]
+        },
+        {
+          "dorsal": 14,
+          "nombre": "Iniesta",
+          "desmarcaciones": [
+            "medio centro",
+            "medio"
+          ],
+          "goles": 66,
+          "asistencias": 24,
+          "tarjetas": [
+            {
+              "amarillas": 4,
+              "rojas": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

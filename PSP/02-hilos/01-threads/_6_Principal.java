@@ -34,9 +34,9 @@ public class _6_Principal {
         }
 
         // Esperar a que el primer que llegue a la meta
-        synchronized (_6_Disparador.PISTOLA_LLEGADA) {
+        synchronized (_6_Disparador.CINTA_LLEGADA) {
             try {
-                _6_Disparador.PISTOLA_LLEGADA.wait();
+                _6_Disparador.CINTA_LLEGADA.wait();
             } catch (InterruptedException e) {
                 // Manejar excepciones de interrupción
                 throw new RuntimeException(e);

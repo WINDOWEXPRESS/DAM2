@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Esto es mi segundo WEB</h1>
+    Nombre<input type="text" name="datospersonales" id="nombre">
+    Apellido<input type="text" name="datospersonales" id="apellido">
+    <!--Esta muy mal usar onclick porque hay que separa script con html para ser mas facil de editar y mantener-->
+    <input type="submit" id="boton" value="Enviar" /><!--onclick=saludar()-->
+</body>
+
+<script>
+    //clase document se refiere paginablanca y window a navegador  
+    document.getElementById("boton").addEventListener("click",saludar);
+
+    function saludar(){
+        //para obtener valor introducido
+        //alert(document.getElementById("nombre").value);
+
+        //para obtener el id de un elemento con nombre de elemento
+        //alert(document.getElementsByTagName("input")[0].id);
+
+        //innerHTML sirve para obtener text de un elemento entre dos etiquetas
+        cadena = window.prompt("Que info quieres que ponga");
+        document.getElementsByTagName("h1")[0].innerHTML = cadena;
+
+        console.log(document.getElementsByName("datospersonales")[0].value);
+        console.log(document.getElementsByName("datospersonales")[1].value);
+    }
+
+</script>
+
+</html>

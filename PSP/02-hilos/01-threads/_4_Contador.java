@@ -17,7 +17,7 @@ public class _4_Contador extends Thread{
 
     @Override
     public void run() {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
             incrementar();
         }
 
@@ -30,6 +30,14 @@ public class _4_Contador extends Thread{
 
         contador2.start();
         contador1.start();
+
+        try {
+            contador2.join();
+            contador1.join();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         System.out.println("contador1.getContador() :"+contador1.getContador());
         System.out.println("contador2.getContador() :"+contador2.getContador());

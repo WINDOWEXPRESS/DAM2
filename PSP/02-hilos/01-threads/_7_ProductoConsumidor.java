@@ -2,8 +2,8 @@ public class _7_ProductoConsumidor {
     public static void main(String[] args) {
         MonitorCompartido monitor = new MonitorCompartido();
 
-        Thread hiloProductor = new Thread(new Productor(monitor), "Productor");
-        Thread hiloConsumidor = new Thread(new Consumidor(monitor), "Consumidor");
+        Thread hiloProductor = new Thread(new Productor7(monitor), "Productor");
+        Thread hiloConsumidor = new Thread(new Consumidor7(monitor), "Consumidor");
 
         hiloProductor.start();
         hiloConsumidor.start();
@@ -52,10 +52,10 @@ class MonitorCompartido {
     }
 }
 
-class Productor implements Runnable {
+class Productor7 implements Runnable {
     private MonitorCompartido monitor;
 
-    public Productor(MonitorCompartido monitor) {
+    public Productor7(MonitorCompartido monitor) {
         this.monitor = monitor;
     }
 
@@ -75,10 +75,10 @@ class Productor implements Runnable {
     }
 }
 
-class Consumidor implements Runnable {
+class Consumidor7 implements Runnable {
     private MonitorCompartido monitor;
 
-    public Consumidor(MonitorCompartido monitor) {
+    public Consumidor7(MonitorCompartido monitor) {
         this.monitor = monitor;
     }
 

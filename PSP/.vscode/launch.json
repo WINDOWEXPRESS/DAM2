@@ -6,6 +6,153 @@
     "configurations": [
         {
             "type": "java",
+            "name": "_6_Principal",
+            "request": "launch",
+            "mainClass": "_6_Principal",
+            "projectName": "PSP_aa74c759"
+        },
+        {
+            "type": "java",
+            "name": "EjemploJoin",
+            "request": "launch",
+            "mainClass": "EjemploJoin",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "PrincipalConWait",
+            "request": "launch",
+            "mainClass": "PrincipalConWait",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "PrincipalProductorConsumo",
+            "request": "launch",
+            "mainClass": "Producto_Consumo.PrincipalProductorConsumo",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ThreadInterCommunicationMain",
+            "request": "launch",
+            "mainClass": "Libros.ThreadInterCommunicationMain",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Principal.Main",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "_7_ProductoConsumidor",
+            "request": "launch",
+            "mainClass": "_7_ProductoConsumidor",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "_6_Principal",
+            "request": "launch",
+            "mainClass": "_6_Principal",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "_5_Principal",
+            "request": "launch",
+            "mainClass": "_5_Principal",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "ContadorV1",
+            "request": "launch",
+            "mainClass": "ContadorV1",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "_4_ContadorV1a",
+            "request": "launch",
+            "mainClass": "_4_ContadorV1a",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "_4_ContadorV1",
+            "request": "launch",
+            "mainClass": "_4_ContadorV1",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "_4_Contador",
+            "request": "launch",
+            "mainClass": "_4_Contador",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "_1_CrearHilo",
+            "request": "launch",
+            "mainClass": "_1_CrearHilo",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Synchronized.Main",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "MainSynchronized",
+            "request": "launch",
+            "mainClass": "Synchronized.MainSynchronized",
+            "projectName": "sf_PSP_e84bccfb"
+        },
+        {
+            "type": "java",
+            "name": "MainSynchronized",
+            "request": "launch",
+            "mainClass": "Synchronized.MainSynchronized",
+            "projectName": "PSP_aa74c759"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "syncronized.Main",
+            "projectName": "PSP_aa74c759"
+        },
+        {
+            "type": "java",
+            "name": "EjemploJoin",
+            "request": "launch",
+            "mainClass": "EjemploJoin",
+            "projectName": "PSP_aa74c759"
+        },
+        {
+            "type": "java",
+            "name": "EjemploContador",
+            "request": "launch",
+            "mainClass": "EjemploContador",
+            "projectName": "PSP_aa74c759"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Principal.Main",
+            "projectName": "PSP_aa74c759"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Ejercicio2.Main",

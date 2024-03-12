@@ -19,7 +19,7 @@ public class _4_ContadorV1 extends Thread {
     @Override
     public void run() {
         for (int i = 0; i < 1000; i++) {
-            synchronized (lock) {
+            synchronized (lock) {//puede ser en bloque o en metodo
                 incrementar();
             }
 
