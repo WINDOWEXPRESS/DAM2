@@ -8,24 +8,24 @@ if (isset($_SESSION['admin'])) {
 }
 $idiomaSelect = "";
 $poblacion = "";
-if (!isset($_SESSION['user'])){
+if (!isset($_SESSION['user'])) {
 	header("location: ../../public/Login.php?Message=User_Is_Not_Login");
 	exit();
 } else {
 	$baseDato->ejecuta("SELECT * FROM usuarios WHERE ID = ?", $_SESSION['user']);
 	$user = $baseDato->obtenDatos();
 	unset($baseDato);
-	setcookie("idioma",$user[0]['idioma']);
+	setcookie("idioma", $user[0]['idioma']);
 	$idiomaSelect = $idioma[$user[0]['idioma']];
-	
+
 	$poblacion = "<h6 id='tiempoPoblacion'>" . $user[0]['poblacion'] . "</h6> <input type='hidden' id='poblacionId' name='poblacionHidden' value='" . $user[0]['poblacion_id'] . "'/>";
 }
 
-if(isset($_COOKIE['idioma'])){
+if (isset($_COOKIE['idioma'])) {
 	$idiomaSelect = $idioma[$_COOKIE['idioma']];
 }
 
-if(isset($_SESSION['mensajeErrorPrestacion'])){
+if (isset($_SESSION['mensajeErrorPrestacion'])) {
 	$_SESSION['mensajeErrorPrestacion'] = $idiomaSelect['ErrorPrestacion'];
 }
 
@@ -48,7 +48,7 @@ if(isset($_SESSION['mensajeErrorPrestacion'])){
 	<div class="header">
 		<div class="Bienvenido">
 			<img class="Favicon32x32" src="../../src/img/logo.svg" alt="Favicon32x32">
-			<p><?php echo$idiomaSelect['Bienvenido']?></p>
+			<p><?php echo $idiomaSelect['Bienvenido'] ?></p>
 		</div>
 		<div class="Nav-Menu">
 			<div class="Dest">
@@ -57,17 +57,17 @@ if(isset($_SESSION['mensajeErrorPrestacion'])){
 			<nav class="Menu">
 				<ul>
 					<li>
-						<a><?php echo$idiomaSelect['Idioma']?></a>
+						<a><?php echo $idiomaSelect['Idioma'] ?></a>
 						<ul>
-							<li><a href=<?php echo "./cambiarIdioma.php?user=".$_SESSION['user']."&idioma=es"?>><?php echo$idiomaSelect['ES']?></a></li>
-							<li><a href=<?php echo "./cambiarIdioma.php?user=".$_SESSION['user']."&idioma=en"?>><?php echo$idiomaSelect['EN']?></a></li>
+							<li><a href=<?php echo "./cambiarIdioma.php?user=" . $_SESSION['user'] . "&idioma=es" ?>><?php echo $idiomaSelect['ES'] ?></a></li>
+							<li><a href=<?php echo "./cambiarIdioma.php?user=" . $_SESSION['user'] . "&idioma=en" ?>><?php echo $idiomaSelect['EN'] ?></a></li>
 						</ul>
 					</li>
 					<li>
-						<a href="./datosUsuario.php"><?php echo$idiomaSelect['Mis datos']?></a>
+						<a href="./datosUsuario.php"><?php echo $idiomaSelect['Mis datos'] ?></a>
 					</li>
 					<li>
-						<a href="../salir.php"><?php echo$idiomaSelect['Salir']?></a>
+						<a href="../salir.php"><?php echo $idiomaSelect['Salir'] ?></a>
 					</li>
 				</ul>
 			</nav>
@@ -76,9 +76,9 @@ if(isset($_SESSION['mensajeErrorPrestacion'])){
 
 	<div class="cuerpo">
 		<div class="search bar1">
-			<h1 style="color: white;"><?php echo$idiomaSelect['Introducir el id para prestacion']?></h1>
+			<h1 style="color: white;"><?php echo $idiomaSelect['Introducir el id para prestacion'] ?></h1>
 			<form action="./prestacionLibro.php" method="post" id="formularioEnvioPrestacion">
-				<input type="text" placeholder= "<?php echo$idiomaSelect['Introducir el id de libro']?>" id="idInputLibro" name="idLibro">
+				<input type="text" placeholder="<?php echo $idiomaSelect['Introducir el id de libro'] ?>" id="idInputLibro" name="idLibro">
 				<button type="submit" id="botonConfirmar"><img src="../../src/img/check-circle.svg" width="25" height="25" alt="Icono"></button>
 			</form>
 			<?php
@@ -91,11 +91,11 @@ if(isset($_SESSION['mensajeErrorPrestacion'])){
 				<table width="90%" class="table">
 					<thead>
 						<tr>
-							<th><?php echo$idiomaSelect['ID']?></th>
-							<th><?php echo$idiomaSelect['Titulo']?></th>
-							<th><?php echo$idiomaSelect['Autor']?></th>
-							<th><?php echo$idiomaSelect['Isbn']?></th>
-							<th><?php echo$idiomaSelect['Estado']?></th>
+							<th><?php echo $idiomaSelect['ID'] ?></th>
+							<th><?php echo $idiomaSelect['Titulo'] ?></th>
+							<th><?php echo $idiomaSelect['Autor'] ?></th>
+							<th><?php echo $idiomaSelect['Isbn'] ?></th>
+							<th><?php echo $idiomaSelect['Estado'] ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -116,10 +116,10 @@ if(isset($_SESSION['mensajeErrorPrestacion'])){
 								echo ("<td>" .   $libro["isbn"] . "</td>");
 								switch ($libro["prestado"]) {
 									case 1:
-										echo ("<td>".$idiomaSelect['Prestado']."</td>");
+										echo ("<td>" . $idiomaSelect['Prestado'] . "</td>");
 										break;
 									case 0:
-										echo ("<td>".$idiomaSelect['No prestado']."</td>");
+										echo ("<td>" . $idiomaSelect['No prestado'] . "</td>");
 										break;
 									case is_null($libro["prestado"]):
 										echo ("<td> Null </td>");
@@ -139,13 +139,13 @@ if(isset($_SESSION['mensajeErrorPrestacion'])){
 			</div>
 			<div class="tablaDevolver">
 				<br><br><br>
-				<h1 style="color: white;"><?php echo$idiomaSelect['Libros prestado']?></h1>
+				<h1 style="color: white;"><?php echo $idiomaSelect['Libros prestado'] ?></h1>
 				<table width="90%" class="table">
 					<thead>
 						<tr>
-							<th><?php echo$idiomaSelect['Titulo']?></th>
-							<th><?php echo$idiomaSelect['Fecha Inicio']?></th>
-							<th><?php echo$idiomaSelect['Devolucion']?></th>
+							<th><?php echo $idiomaSelect['Titulo'] ?></th>
+							<th><?php echo $idiomaSelect['Fecha Inicio'] ?></th>
+							<th><?php echo $idiomaSelect['Devolucion'] ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -153,7 +153,7 @@ if(isset($_SESSION['mensajeErrorPrestacion'])){
 						try {
 							$stmt = $conn1->prepare("SELECT idLibro, titulo,fechaInicio FROM libros , prestamos 
 								where libros.ID = prestamos.idLibro and idUsuario = ? and fechaFinal is null ");
-								
+
 							$stmt->bindParam(1, $_SESSION["user"]);
 							$stmt->execute();
 
@@ -164,7 +164,7 @@ if(isset($_SESSION['mensajeErrorPrestacion'])){
 								echo ("<tr>");
 								echo ("<td>" .   $libro["titulo"] . "</td>");
 								echo ("<td>" .   $libro["fechaInicio"] . "</td>");
-								echo ("<td> <a href='./devolverLibro.php?idLibro=" . $libro["idLibro"]  . "'>".$idiomaSelect['Devolver']."</a> </td>");
+								echo ("<td> <a href='./devolverLibro.php?idLibro=" . $libro["idLibro"]  . "'>" . $idiomaSelect['Devolver'] . "</a> </td>");
 								echo ("</tr>");
 								$posicion += 1;
 							}
